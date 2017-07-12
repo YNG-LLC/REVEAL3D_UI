@@ -339,23 +339,24 @@ client1.system.getCommands().done(function(response){
     console.dir(response);
 
     // Source
-    commandSource[0] = JSON.stringify(Object.keys(response)[0]);
-    commandSource[1] = JSON.stringify(Object.keys(response)[1]);
+    commandSource[0] = JSON.stringify(Object.keys(response)[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandSource[1] = JSON.stringify(Object.keys(response)[1]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    // Shutdown Commands
-    commandActionCore[0] = JSON.stringify(Object.values(response.core[0])[0]);
-    commandActionCore[1] = JSON.stringify(Object.values(response.core[1])[0]);
-    commandActionCore[2] = JSON.stringify(Object.values(response.core[2])[0]);
-    commandActionCore[3] = JSON.stringify(Object.values(response.core[3])[0]);
+    // Core Commands
+    commandActionCore[0] = JSON.stringify(Object.values(response.core[0])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCore[1] = JSON.stringify(Object.values(response.core[1])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCore[2] = JSON.stringify(Object.values(response.core[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCore[3] = JSON.stringify(Object.values(response.core[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    commandActionCustom[0] = JSON.stringify(Object.values(response.custom[0])[0]);
-    commandActionCustom[1] = JSON.stringify(Object.values(response.custom[1])[0]);
-    commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]);
-    commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]);
+    // Core Commands
+    commandActionCustom[0] = JSON.stringify(Object.values(response.custom[0])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCustom[1] = JSON.stringify(Object.values(response.custom[1])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    // console.log("Source: "+commandSource);
-    // console.log("Core Actions: "+commandActionCore);
-    // console.log("Custom Actions: "+commandActionCustom);
+    console.log("Source: "+commandSource);
+    console.log("Core Actions: "+commandActionCore);
+    console.log("Custom Actions: "+commandActionCustom);
 
 });
 
