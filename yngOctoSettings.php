@@ -594,7 +594,7 @@
                                             <h2 style="margin-left: 200">Get Updates</h2>
                                             <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br> 
-                                            <button id='getUpdateM' style="margin-left: 25px" type=button><b>Get UI</b> Update</button><button id='getUpdateM' style="margin-left: 170px" type=button><b>Get Manipulate</b> Update</button>
+                                            <button id='getUpdateUI' style="margin-left: 25px" type=button><b>Get UI</b> Update</button><button id='getUpdateM' style="margin-left: 170px" type=button><b>Get Manipulate</b> Update</button>
                                             <br>
                                             <br>
                                             <br>
@@ -648,7 +648,7 @@
 
 
 
-   // check for update
+    // check for updates
     $(document).ready(function(){
             $("#checkUpdateUI").click(function(){
 
@@ -658,22 +658,21 @@
                     success: function(data) {
                         console.log(data);
                         var dataOutput1 = data.search("origin/master");
-                        var maybeUpdate1 = console.log(dataOutput1);
+                        var doWeUpdate1 = console.log(dataOutput1);
                     }
                 });
 
-                if( maybeUpdate1 = -1){
+                if( doWeUpdate1 = 49){
                     sweetAlert("There are no Updates for REVEAL3D UI ");
-                    var slowDown = 1
                 }else{
                     sweetAlert("There is a NEW Reveal3D UI Update Available! ");
-                    var slowDown = 1
                 }
 
                 
 
        });
     });
+
 
     $(document).ready(function(){
             $("#checkUpdateM").click(function(){
@@ -684,14 +683,15 @@
                     success: function(data) {
                         console.log(data);
                         var dataOutput2 = data.search("origin/master");
-                        var maybeUpdate2 = console.log(dataOutput2);
+                        var doWeUpdate2 = console.log(dataOutput2);
+
                     }
                 });
 
 
 
                 if(slowDown = 1){
-                    if( maybeUpdate2 = -1){
+                    if( doWeUpdate2 = -1){
                         sweetAlert("There are no Updates for MANIPULATE");
                     }else{
                         sweetAlert("There is a NEW Manipulate Update Available! ");
@@ -702,28 +702,34 @@
     });
 
 
+
+    // get updates
     $(document).ready(function(){
-            $("#getUpdate").click(function(){
+        $("#getUpdateUI").click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'update.php',
+                success: function(data) {
+                    console.log(data);
+                    // $("p").text(data);
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'update.php',
-                    success: function(data) {
-                        console.log(data);
-                        // $("p").text(data);
+                }
+            });
+       });
+    });
 
-                    }
-                });
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'update2.php',
-                    success: function(data) {
-                        console.log(data);
-                        // $("p").text(data);
+    $(document).ready(function(){
+        $("#getUpdate").click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'update2.php',
+                success: function(data) {
+                    console.log(data);
+                    // $("p").text(data);
 
-                    }
-                });
+                }
+            });
        });
     });
 
