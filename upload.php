@@ -187,8 +187,6 @@
 
     <title>Post Upload</title>
 
-    <?php include 'YNG_ACR.php';?>
-
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
