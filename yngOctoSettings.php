@@ -517,7 +517,7 @@
             <div class="col-lg-4">
                                     <div class="panel panel-success">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-rebel"></i> Auto Load Length </h3>
+                                            <h3 class="panel-title"><i class="fa fa-arrows-h"></i> Auto Load Length </h3>
                                         </div>
                                         <br>
                                         <form method="post">
@@ -582,14 +582,22 @@
                                         </th>
                                     </div>
                                     <br><br>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4" style="width: 550px">
                                         <div class="panel panel-yellow" >
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><i class="fa fa-cog"></i> Version</h3>
+                                                <h3 class="panel-title"><i class="fa fa-check   "></i> Updates</h3>
                                             </div>
+                                            <h2 style="margin-left: 125">Check For Updates</h2>
+                                            <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br>
-                                            <button id='checkUpdate' type=button>Check For Update</button><br><br>
-                                            <button id='getUpdate' type=button>Get Update</button>
+                                            <button id='checkUpdateUI' style="margin-left: 25px" type=button><b>Check UI</b> Update</button> <button id='checkUpdateM' style="margin-left: 150px" type=button><b>Check Manipulate</b> Update</button><br><br><br><br>
+                                            <h2 style="margin-left: 200">Get Updates</h2>
+                                            <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
+                                            <br> 
+                                            <button id='getUpdateM' style="margin-left: 25px" type=button><b>Get UI</b> Update</button><button id='getUpdateM' style="margin-left: 170px" type=button><b>Get Manipulate</b> Update</button>
+                                            <br>
+                                            <br>
+                                            <br>
                                         </div>
                                     </div>
                                     </div>
@@ -642,7 +650,7 @@
 
    // check for update
     $(document).ready(function(){
-            $("#checkUpdate").click(function(){
+            $("#checkUpdateUI").click(function(){
 
                 $.ajax({
                     type: 'POST',
@@ -654,6 +662,22 @@
                     }
                 });
 
+                if( maybeUpdate1 = -1){
+                    sweetAlert("There are no Updates for REVEAL3D UI ");
+                    var slowDown = 1
+                }else{
+                    sweetAlert("There is a NEW Reveal3D UI Update Available! ");
+                    var slowDown = 1
+                }
+
+                
+
+       });
+    });
+
+    $(document).ready(function(){
+            $("#checkUpdateM").click(function(){
+
                 $.ajax({
                     type: 'POST',
                     url: 'checkUpdate2.php',
@@ -664,13 +688,7 @@
                     }
                 });
 
-                if( maybeUpdate1 = -1){
-                    sweetAlert("There are no Updates for REVEAL3D UI ");
-                    var slowDown = 1
-                }else{
-                    sweetAlert("There is a NEW Reveal3D UI Update Available! ");
-                    var slowDown = 1
-                }
+
 
                 if(slowDown = 1){
                     if( maybeUpdate2 = -1){
