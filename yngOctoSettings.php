@@ -658,8 +658,8 @@
                     success: function(data) {
                         console.log(data);
                         var doWeUpdate1 = data.search("behind");
-                        console.log("update?: "+doWeUpdate1);
                         // var doWeUpdate1 = console.log(dataOutput1);
+                        console.log("updateUI?: "+doWeUpdate1);
                     }
                 });
 
@@ -684,8 +684,8 @@
                     success: function(data) {
                         console.log(data);
                         var doWeUpdate2 = data.search("behind");
-                        console.log("update?: "+doWeUpdate2);
                         // var doWeUpdate2 = console.log(dataOutput2);
+                        console.log("updateM?: "+doWeUpdate2);
 
                     }
                 });
