@@ -647,9 +647,9 @@
                               closeOnConfirm: false
                             },
                             function(){
-                              swal("Updated!", "REVEAL3D UI has been Updated. The Page will soon reload", "success");
-                              var iReload = location.reload()
-                              setTimeout(iReload, 10000);
+                              swal("Updated!", "REVEAL3D UI has been Updated. Please Reload", "success");
+                              // var iReload = location.reload()
+                              // setTimeout(iReload, 10000);
                             });
                         }
                     }
@@ -688,9 +688,9 @@
                               closeOnConfirm: false
                             },
                             function(){
-                              swal("Updated!", "MANIPULATE has been Updated. The Page will soon reload", "success");
-                              var iReload = location.reload()
-                              setTimeout(iReload, 10000);
+                              swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
+                              // var iReload = location.reload()
+                              // setTimeout(iReload, 10000);
 
                             });
                         }
