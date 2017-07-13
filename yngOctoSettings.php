@@ -640,7 +640,19 @@
                             sweetAlert("There are no Updates for REVEAL3D UI ");
                         }
                         if(doWeUpdate1 > 0){
-                            sweetAlert("There is a NEW Reveal3D UI Update Available! ");
+                            swal({
+                              title: "There is a NEW Reveal3D UI Update Available!?",
+                              text: "Would You Like to Update?",
+                              type: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: "#38ff48",
+                              confirmButtonText: "Yes, Update!",
+                              closeOnConfirm: false
+                            },
+                            function(){
+                              swal("Updated!", "REVEAL3D UI has been Updated. The Page will soon reload", "success");
+                              setTimeout(location.reload(), 5000);
+                            });
                         }
                     }
                 });
@@ -668,7 +680,20 @@
                             sweetAlert("There are no Updates for MANIPULATE");
                         }
                         if(doWeUpdate2 > 0){
-                            sweetAlert("There is a NEW Manipulate Update Available! ");
+                            swal({
+                              title: "There is a new MANIPULATE Update Available!?",
+                              text: "Would You Like to Update?",
+                              type: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: "#38ff48",
+                              confirmButtonText: "Yes, Update!",
+                              closeOnConfirm: false
+                            },
+                            function(){
+                              swal("Updated!", "MANIPULATE has been Updated. The Page will soon reload", "success");
+                              setTimeout(location.reload(), 5000);
+
+                            });
                         }
 
                     }
