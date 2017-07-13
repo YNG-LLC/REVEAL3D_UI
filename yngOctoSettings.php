@@ -667,7 +667,7 @@
                         if(doWeUpdate2 < 0){
                             sweetAlert("There are no Updates for MANIPULATE");
                         }
-                        if(doWeUpdate2 > 0) {
+                        if(doWeUpdate2 > 0){
                             sweetAlert("There is a NEW Manipulate Update Available! ");
                         }
 
