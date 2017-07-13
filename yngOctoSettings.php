@@ -663,13 +663,14 @@
                         var doWeUpdate2 = data.search("behind");
                         // var doWeUpdate2 = console.log(dataOutput2);
                         console.log("updateM?: "+doWeUpdate2);
+                        var upFlag2 = -1
 
                     }
                 });
 
-                if(doWeUpdate2 = -1){
+                if(doWeUpdate2 = upFlag2){
                     sweetAlert("There are no Updates for MANIPULATE");
-                }else if(doWeUpdate2 != -1) {
+                }else if(doWeUpdate2 != upFlag2) {
                     sweetAlert("There is a NEW Manipulate Update Available! ");
                 }
 
