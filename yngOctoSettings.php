@@ -619,92 +619,106 @@
     }
 
 
+    function upBar() {
+        var elem = document.getElementById("myBar");   
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+        } else {
+          width++; 
+          elem.style.width = width + '%'; 
+        }
+        }
+    }
+
+
+
     // check for updates
     $(document).ready(function(){
-            $("#checkUpdateUI").click(function(){
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'checkUpdate.php',
-                    success: function(data) {
-                        console.log(data);
-                        var doWeUpdate1 = data.search("behind");
-                        // var doWeUpdate1 = console.log(dataOutput1);
-                        console.log("updateUI?: "+doWeUpdate1);
-                        if(doWeUpdate1 < 0){
-                            sweetAlert("There are no Updates for REVEAL3D UI ");
-                        }
-                        if(doWeUpdate1 > 0){
-                            swal({
-                              title: "There is a NEW Reveal3D UI Update Available!?",
-                              text: "Would You Like to Update?",
-                              type: "warning",
-                              showCancelButton: true,
-                              confirmButtonColor: "#00b21a",
-                              confirmButtonText: "Yes, Update!",
-                              closeOnConfirm: false
-                            },
-                            function(){
-                            runUpdateUI();
-
-                            var message = swal("Updated!", "REVEAL3D UI has been Updated. Please Reload", "success");
-                            // var iReload = location.reload()
-                            setTimeout(message, 15000);
-                                
-                            });
-                        }
+        $("#checkUpdateUI").click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'checkUpdate.php',
+                success: function(data) {
+                    console.log(data);
+                    var doWeUpdate1 = data.search("behind");
+                    console.log("updateUI?: "+doWeUpdate1);
+                    if(doWeUpdate1 < 0){
+                        sweetAlert("There are no Updates for REVEAL3D UI ");
                     }
-                });
+                    if(doWeUpdate1 < 0){
+                        swal({
+                          title: "There is a NEW Reveal3D UI Update Available!?",
+                          text: "Would You Like to Update?",
+                          type: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#00b21a",
+                          confirmButtonText: "Yes, Update!",
+                          closeOnConfirm: false
+                        },
+                        
+                        function(){
+                        var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
+                        runUpdateUI();
+                        
 
-                
+                        var message = swal({
 
-                
+                            title:"REVEAL3D UI has been Updated. Please Reload",
 
-       });
+                            text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>",
+                            html: true
+                            });
+                        // var iReload = location.reload()
+                        upBar();
+                        setTimeout(message, 15000);
+                            
+                        });
+                    }
+                }
+            });
+        });
     });
 
 
     $(document).ready(function(){
-            $("#checkUpdateM").click(function(){
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'checkUpdate2.php',
-                    success: function(data) {
-                        console.log(data);
-                        var doWeUpdate2 = data.search("behind");
-                        // var doWeUpdate2 = console.log(dataOutput2);
-                        console.log("updateM?: "+doWeUpdate2);
-                        if(doWeUpdate2 < 0){
-                            sweetAlert("There are no Updates for MANIPULATE");
-                        }
-                        if(doWeUpdate2 > 0){
-                            swal({
-                              title: "There is a new MANIPULATE Update Available!?",
-                              text: "Would You Like to Update?",
-                              type: "warning",
-                              showCancelButton: true,
-                              confirmButtonColor: "#00b21a",
-                              confirmButtonText: "Yes, Update!",
-                              closeOnConfirm: false
-                            },
-                            function(){
-                              runUpdateM();
-
-                              var message = swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
-                              // var iReload = location.reload()
-
-                              setTimeout(message, 15000);
-
-                            });
-                        }
-
+        $("#checkUpdateM").click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'checkUpdate2.php',
+                success: function(data) {
+                    console.log(data);
+                    var doWeUpdate2 = data.search("behind");
+                    console.log("updateM?: "+doWeUpdate2);
+                    if(doWeUpdate2 < 0){
+                        sweetAlert("There are no Updates for MANIPULATE");
                     }
-                });
+                    if(doWeUpdate2 > 0){
+                        swal({
+                          title: "There is a new MANIPULATE Update Available!?",
+                          text: "Would You Like to Update?",
+                          type: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#00b21a",
+                          confirmButtonText: "Yes, Update!",
+                          closeOnConfirm: false
+                        },
+                        function(){
+                          runUpdateM();
+                          upBar();
 
-                
+                          var message = swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
+                          // var iReload = location.reload()
 
-       });
+                          setTimeout(message, 15000);
+
+                        });
+                    }
+                }
+            });
+        });
     });
 
 
