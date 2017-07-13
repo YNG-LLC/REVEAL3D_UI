@@ -642,13 +642,14 @@
                               text: "Would You Like to Update?",
                               type: "warning",
                               showCancelButton: true,
-                              confirmButtonColor: "#38ff48",
+                              confirmButtonColor: "#00b21a",
                               confirmButtonText: "Yes, Update!",
                               closeOnConfirm: false
                             },
                             function(){
                               swal("Updated!", "REVEAL3D UI has been Updated. The Page will soon reload", "success");
-                              setTimeout(location.reload(), 5000);
+                              var iReload = location.reload()
+                              setTimeout(iReload, 10000);
                             });
                         }
                     }
@@ -682,13 +683,14 @@
                               text: "Would You Like to Update?",
                               type: "warning",
                               showCancelButton: true,
-                              confirmButtonColor: "#38ff48",
+                              confirmButtonColor: "#00b21a",
                               confirmButtonText: "Yes, Update!",
                               closeOnConfirm: false
                             },
                             function(){
                               swal("Updated!", "MANIPULATE has been Updated. The Page will soon reload", "success");
-                              setTimeout(location.reload(), 5000);
+                              var iReload = location.reload()
+                              setTimeout(iReload, 10000);
 
                             });
                         }
