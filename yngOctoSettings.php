@@ -690,8 +690,6 @@
                     }
                 });
 
-
-
                 if( doWeUpdate2 = -1){
                     sweetAlert("There are no Updates for MANIPULATE");
                 }else{
