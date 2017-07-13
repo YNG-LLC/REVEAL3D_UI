@@ -72,7 +72,6 @@
                                             echo "0 results";
                                         }
                                             
-                                        // mysqli_close($dbc);
 
                                         ?>
                                     </td>
@@ -82,7 +81,6 @@
                                     <td id="currentNozzle" style="text-align:left;width:75%;">
                                     <?php
 
-                                        // session_start();
 
 
                                         if (mysqli_num_rows($resultN) > 0) {
@@ -95,7 +93,6 @@
                                             echo "0 results";
                                         }
                                             
-                                        // mysqli_close($dbc);
 
                                         ?>
                                     </td>
@@ -138,7 +135,7 @@
                                             echo "0 results";
                                         }
 
-                                        // mysqli_close($dbc);
+                                        // 
 
 
                                         ?>
@@ -161,7 +158,7 @@
                                             echo "0 results";
                                         }
 
-                                        // mysqli_close($dbc);
+                                        // 
 
                                         ?>
                                         </td>
@@ -183,7 +180,7 @@
                                    	        echo "0 results";
                                    	    }
 
-                                   	    // mysqli_close($dbc);
+                                   	    // 
 
                                    	    ?>
                                    	    </td>
@@ -205,7 +202,7 @@
                                             echo "0 results";
                                         }
 
-                                        // mysqli_close($dbc);
+                                        // 
 
                                         ?>
                                         </td>
@@ -227,7 +224,7 @@
                                             echo "0 results";
                                         }
 
-                                        // mysqli_close($dbc);
+                                        // 
 
 
                                         ?>
@@ -336,7 +333,7 @@
 
                                 }
                             
-                                // mysqli_close($dbc);
+                                // 
                                 echo "
                                     <script>
                                         window.location.href = yngSelf;
