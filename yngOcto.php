@@ -143,7 +143,8 @@ session_start();
 									</tr>
 								</tbody>
 							</table><br>
-							<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 150px">Reload Filament</button>
+							<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 100px">Reload Filament</button>
+							<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="margin-left: 50px">Retract Filament</button>
 							<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="margin-left:50px">Disable Active Extruder Motors</button>
 							<hr style="color:blue"><br>
 							<h1 style="text-align:center;" class="panel-heading">Zone</h1>
@@ -373,7 +374,7 @@ session_start();
 					// console.log(list);
 					table = table + "<thead>";
 					table = table + "<tr>";
-					table = table + "<th onclick='sortQuotes1(0);'>File Name</th>";
+					table = table + "<th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
 					table = table + "<th>Size (MB)</th>";
 					table = table + "<th>Volume (cm<sup>3</sup>)</th>";
 					table = table + "<th onclick='sortQuotes1(1);'>Print Time (Hours)</th>";
@@ -397,7 +398,7 @@ session_start();
 						
 
 						controlstart = '<a href="'+printerURL+"/downloads/files/local/"+name+'" title="Download" ';
-						controlend = '< class="btn btn-sq-xs btn-primary"><i class="fa fa-download fa-1x"></i><br/></a><a id="name_ID_'+buttonID_num+'" onclick="deleteLocal(this.id)" title="Delete File" class="btn btn-sq-xs btn-danger"><i class="fa fa-trash-o fa-1x"></i><br/></a><a id="name_ID_'+buttonID_num+'" onclick="loadJob(this.id)" title="Print Now" class="btn btn-sq-xs btn-success"><i class="fa fa-print fa-1x"></i><br/></a><a href="#" title="This is Tux" class="btn btn-sq-xs btn-default"><i class="fa fa-linux fa-1x">';
+						controlend = '< class="btn btn-sq-xs btn-primary"><i class="fa fa-download fa-1x"></i><br/></a><a id="name_ID_'+buttonID_num+'" onclick="deleteLocal(this.id)" title="Delete File" class="btn btn-sq-xs btn-danger"><i class="fa fa-trash-o fa-1x"></i><br/></a><a id="name_ID_'+buttonID_num+'" onclick="printNow(this.id)" title="Load & Print Now" class="btn btn-sq-xs btn-success"><i class="fa fa-print fa-1x"></i><br/></a><a id="name_ID_'+buttonID_num+'" href="#" title="Load Job" onclick="loadJob(this.id)" class="btn btn-sq-xs btn-warning"><i class="fa  fa-file-o   fa-1x">';
 						controls = controlstart+controlend;
 						// console.log(controls);
 						// depth = list[x][2];
@@ -829,6 +830,50 @@ session_start();
 					if((counterCheck == f) && (Final_eNUM != 0)){
 						fullCommand = fullCommand + "G92 E0\r\n";
 						fullCommand = fullCommand + "G1 E"+Final_eNUM+" F500\r\n";
+						fullCommand = fullCommand + "G92 E0\r\n";
+						counterCheck == 0;
+						f == 0;
+					}
+					if(fullCommand == ""){
+						console.log("there was an error");
+					}else{
+						client1.control.sendGcode(fullCommand);
+					}
+		}
+
+		function filamentRetract(){
+
+					// ### Sends commands straight to the terminal ### \\
+					// client1.control.sendGcode();
+
+					var eNUM = 650;     // extruder length ? (E#)
+					var fNUM = 5000;    //feed rate
+					var numCounter = (fillLength/(eNUM));
+					var Final_eNUM = (fillLength%(eNUM));
+					var roundedCounter = Math.round(numCounter);
+					var counterCheck = 0;
+					var fullCommand = "";
+
+					for(var f = 0;f<roundedCounter;f++){
+						fullCommand = fullCommand + "G92 E650\r\n";
+						counterCheck++;
+
+						if((Final_eNUM == 0) && (f == roundedCounter - 1)){
+							counterCheck == 0;
+							f == 0;
+							fullCommand = fullCommand + "G1 E0 F500\r\n";
+							fullCommand = fullCommand + "G92 E650\r\n";
+
+						}else{
+							fullCommand = fullCommand + "G1 E0 F5000\r\n";
+
+						}
+					}
+
+
+					if((counterCheck == f) && (Final_eNUM != 0)){
+						fullCommand = fullCommand + "G92 E"+Final_eNUM+"\r\n";
+						fullCommand = fullCommand + "G1 E0 F500\r\n";
 						fullCommand = fullCommand + "G92 E0\r\n";
 						counterCheck == 0;
 						f == 0;
@@ -1300,9 +1345,19 @@ session_start();
 			
 		};
 
-		var runningActJob = setInterval(updateAJob,25000);
+		var runningActJob = setInterval(updateAJob,15000);
 
 // ############################################################################# //
+
+		function printNow(clicked_id){
+
+			var fileLoad = document.getElementById(clicked_id).textContent;
+
+			$id('jobActive').innerHTML = JSON.stringify(fileLoad);
+			client1.files.select("local",fileLoad,true);
+			startPrint()
+
+		}
 
 		function loadJob(clicked_id){
 
@@ -1311,7 +1366,6 @@ session_start();
 			$id('jobActive').innerHTML = JSON.stringify(fileLoad);
 			client1.files.select("local",fileLoad,true);
 		}
-
 
 		function showSettings(){
 
