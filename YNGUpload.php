@@ -310,21 +310,20 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                             <div id="printerSelect"  class="menu" style="display: none">
                                 <span> Select a PRINTER (GT is 4 Beds) : </span>
                                 <select name="printerSelection" id="printerSelection" class="btn btn-primary" >
-                                <option selected="selected">reveal3D</option>
                                 </select>
 
                             </div>
                             <p></p>
                             <div id="zoneSelect" style="display: none">
-                                        <span> Select a ZONE (GT is only Zones 1-4!) : </span>
-                                        <select name="zoneSelection" id="zoneSelection" class="menu"></select>
+                                <span> Select a ZONE (GT is only Zones 1-4) : </span>
+                                <select name="zoneSelection" id="zoneSelection" class="menu"><option disabled='disabled' selected='selected'>-Select-</option></select>
 
                                                 <!-- <option disabled="disabled" selected="selected"> - Select - </option> -->
                             </div>
                             <br>
                             <div id="nozzleSelect" style="display: none">
-                                        <span> Single or Duplication: </span>
-                                        <select name="nozzleSelection" id="nozzleSelection" class="menu"></select>
+                                <span> Single or Duplication: </span>
+                                <select name="nozzleSelection" id="nozzleSelection" class="menu"><option disabled='disabled' selected='selected'>-Select-</option></select>
                                                 <!-- <option disabled="disabled" selected="selected"> - Select - </option> -->
                             </div>
                             <br>
@@ -542,6 +541,10 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 
 
     <script>
+
+
+        var dd_AP = JSON.stringify(document.getElementById("currentPrinter").innerText);
+
         var client1 = new OctoPrintClient({baseurl: printerURL, apikey: apiKey});
         // easy ele call
         function $id(id){
@@ -553,11 +556,11 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 
             // var client1 = new OctoPrintClient({baseurl: printerURL, apikey: "78F2E50B42564B1C8A15C3311923C72F"});
             
-            console.log('i c getPrinterState()');
+            // console.log('i c getPrinterState()');
 
             client1.connection.getSettings().done(function(response){
 
-                console.log('client1 est.');
+                // console.log('client1 est.');
 
                 var getState = JSON.stringify(response.current.state);
 
@@ -571,32 +574,33 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 
 
 
-        //## sets the dropdown printer select to default to the ACTIVE PRINTER (AP) ##     
-        function autoSelectAP(){
+        //## sets the dropdown printer select to default to the ACTIVE PRINTER (AP) ##
 
+        // ### Disabled, redundant? ### 
+        // function autoSelectAP(){
 
-            var dd_AP = JSON.stringify(document.getElementById("currentPrinter").innerText);
-            var ddIntro = '<span> Select a PRINTER (GT is 4 Beds) : </span>'
+        //     var ddIntro = '<span> Select a PRINTER (GT is 4 Beds) : </span>'
 
-            if(dd_AP == '"reveal3D"'){
-                console.log('found reveal3D as AP');
-                reveal3D_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="reveal3D">reveal3D</option></select>';
-                document.getElementById("printerSelect").innerHTML = ddIntro+reveal3D_AP;
+        //     if(dd_AP == '"reveal3D"'){
+        //         console.log('found reveal3D as AP');
+        //         reveal3D_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="reveal3D">reveal3D</option></select>';
+        //         document.getElementById("printerSelect").innerHTML = ddIntro+reveal3D_AP;
 
-            }else if(dd_AP =='"FRANK3"'){
-                FRANK3_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="FRANK3">FRANK3</option></select>';
-                document.getElementById("printerSelect").innerHTML = ddIntro+FRANK3_AP;
+        //     }else if(dd_AP =='"FRANK3"'){
+        //         FRANK3_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="FRANK3">FRANK3</option></select>';
+        //         document.getElementById("printerSelect").innerHTML = ddIntro+FRANK3_AP;
 
-            }else if(dd_AP =='"GT"'){
-                gt_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="GT">GT</option></select>';
-                document.getElementById("printerSelect").innerHTML = ddIntro+gt_AP;
+        //     }else if(dd_AP =='"GT"'){
+        //         gt_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="GT">GT</option></select>';
+        //         document.getElementById("printerSelect").innerHTML = ddIntro+gt_AP;
 
-            }else{
-                console.log('autoSelectAP() not working');
-            }
+        //     }else{
+        //         console.log('autoSelectAP() not working');
+        //     }
 
-        }
-        autoSelectAP();
+        // }
+
+        // autoSelectAP();
 
 
 

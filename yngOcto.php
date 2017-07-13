@@ -107,7 +107,7 @@ session_start();
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover table-striped">
-							<h3 style="text-align:center;" class="panel-heading">Extruders</h3>
+							<h1 style="text-align:center;" class="panel-heading">Extruders</h1>
 							<table id='bedTemps' class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
@@ -142,9 +142,11 @@ session_start();
 										</td>
 									</tr>
 								</tbody>
-							</table>
-							<!-- <br><br> -->
-							<h3 style="text-align:center;" class="panel-heading">Zone</h3>
+							</table><br>
+							<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 150px">Reload Filament</button>
+							<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="margin-left:50px">Disable Active Extruder Motors</button>
+							<hr style="color:blue"><br>
+							<h1 style="text-align:center;" class="panel-heading">Zone</h1>
 							<table id='bedTemps' class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
@@ -208,7 +210,7 @@ session_start();
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel panel-primary">
+				<div class="panel panel-primary" style="width:1000px; margin-left:15px">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 					</div>
@@ -218,31 +220,36 @@ session_start();
 						<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
 						<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
 						<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
-						<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()">Reload Filament</button>
-						
-						<b style="align-items: center;  justify-content: center; margin-left: 185px"> Enter Custom Commands</b><br>
-						<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 1100px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
+						<br><br><br>
+						<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
+						<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
 						<br><br><br>
 						<div class="panel panel-success">
 							<div class="panel-heading">
 								<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
 							</div>
 						</div>
-						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
-						<b style="align-items: center;  justify-content: center; margin-left: 250px"> Enter Axis Movement Length (mm) </b>
+						<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
+						<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 50px" min="0"><br><br><br>
+						<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
+						<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
 						<br><br>
-						<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 0px">X-</button>
-						<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 125px">X+</button><input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 200px" min="0"><br><br>
+						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
+						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
+						<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
+						<br>
+						<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
+						<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
 						<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
-						<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 380px">Home X</button>
+						<br><br>
+						
+						<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
+						<br><br>
+						<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
 						<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
 						<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
-						<br><br>
-						<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 475px">Home XYZ</button>
-						<br><br><br>
-						<b style="align-items: center;  justify-content: center; margin-left: 150px"> Z-Axis Control </b><br><br>
-						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
-						<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 40px">Z-</button>
+						<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
+						<br>
 					</div>
 				</div>
 			</div>
@@ -292,7 +299,7 @@ session_start();
 		if ($id('currentState').innerHTML == ''){
 
 			$id('currentState').innerHTML = '<b style="color: red;">ERROR: FIX ME!</b>';
-			console.log("blank");
+			// console.log("blank");
 
 
 		}
@@ -833,10 +840,29 @@ session_start();
 					}
 		}
 
+		function disableExtruders(){
 
-		// var jogLength = JSON.stringify(document.getElementById("jogLength")
-		// var jogLengthDOWN = JSON.stringify("-"+document.getElementById("jogLengthDOWN")
-		// var jogLengthLEFT = JSON.stringify("-"+document.getElementById("jogLengthLEFT")
+			swal({
+				  title: "Disable Active Extruder Motors?",
+				  text: "Are you sure you want to DISABLE any Active Extruder Motors?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, DISABLE Active Extruders",
+				  closeOnConfirm: false
+				},
+				function(){
+
+					client1.control.sendGcode("M18 E0");
+					client1.control.sendGcode("M18 E1");
+
+					swal("Command Executed", "Active Extruder Motors DISABLED", "success");
+				});
+			
+
+
+		}
+
 
 		// ###  Axis Movement (JOG COMMAND) & Homing commands  ###
 
@@ -951,42 +977,20 @@ session_start();
 
 		get_tool0_temp();
 
-		
-
-		function set_tool1_temp(){
-
-			var tool_temp1 = parseInt($id('tool1').value);
-
-			swal({
-				  title: "TOOL_1 Temp Change",
-				  text: "You are changing TOOL_1's Temperature to: " + "'" + tool_temp1 + "'",
-				  type: "warning",
-				  showCancelButton: true,
-				  confirmButtonColor: "#DD6B55",
-				  confirmButtonText: "Yes, update TOOL_1's Temp!",
-				  closeOnConfirm: false
-				},
-				function(){
-
-					client1.printer.setToolTargetTemperatures({"tool1": tool_temp1});
-
-					swal("Updated!", "TOOL_1's Temperature has been UPDATED!", "success");
-				});
-
-		}
-
 
 
 		function get_tool1_temp(){
 
 			if(noz_count != '"   Single"'){
 
+				console.log("noz: "+noz_count);
+
 			client1.printer.getFullState().done(function(response){
 
 				// Actual Temp
 				var getTemp1A = JSON.stringify(response.temperature.tool1.actual);
 				$id('tempStatus1A').innerHTML = getTemp1A;
-				console.log("getTemp1A: "+getTemp1A);
+				// console.log("getTemp1A: "+getTemp1A);
 
 				// Target Temp
 				var getTemp1T = JSON.stringify(response.temperature.tool1.target);
@@ -1024,6 +1028,54 @@ session_start();
 		}
 
 		get_tool1_temp();
+
+
+		function set_tool0_temp(){
+
+			var tool_temp0 = parseInt($id('tool0').value);
+
+			swal({
+				  title: "TOOL_0 Temp Change",
+				  text: "You are changing TOOL_1's Temperature to: " + "'" + tool_temp0 + "'",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, update TOOL_1's Temp!",
+				  closeOnConfirm: false
+				},
+				function(){
+
+					client1.printer.setToolTargetTemperatures({"tool0": tool_temp0});
+
+					swal("Updated!", "TOOL_0's Temperature has been UPDATED!", "success");
+				});
+
+		}
+
+		
+
+		function set_tool1_temp(){
+
+			var tool_temp1 = parseInt($id('tool1').value);
+
+			swal({
+				  title: "TOOL_1 Temp Change",
+				  text: "You are changing TOOL_1's Temperature to: " + "'" + tool_temp1 + "'",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, update TOOL_1's Temp!",
+				  closeOnConfirm: false
+				},
+				function(){
+
+					client1.printer.setToolTargetTemperatures({"tool1": tool_temp1});
+
+					swal("Updated!", "TOOL_1's Temperature has been UPDATED!", "success");
+				});
+
+		}
+
 
 
 		// Update Actual Temp
@@ -1328,8 +1380,15 @@ session_start();
 			}
 			}
 		}
+
 		sortQuotes1();
-  
+		$(document).ready(function(){
+			sortQuotes1();
+
+			window.onload(sortQuotes1(0));
+
+		});
+
 	</script>
 
 

@@ -336,7 +336,7 @@ function $id(id){
 client1.system.getCommands().done(function(response){
     // client1.system.getCommands();
     var getCommand = JSON.stringify(response)
-    console.dir(response);
+    // console.dir(response);
 
     // Source
     commandSource[0] = JSON.stringify(Object.keys(response)[0]).replace(/[^a-zA-Z0-9 ]/g, "");
@@ -354,9 +354,9 @@ client1.system.getCommands().done(function(response){
     commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
     commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    console.log("Source: "+commandSource);
-    console.log("Core Actions: "+commandActionCore);
-    console.log("Custom Actions: "+commandActionCustom);
+    // console.log("Source: "+commandSource);
+    // console.log("Core Actions: "+commandActionCore);
+    // console.log("Custom Actions: "+commandActionCustom);
 
 });
 
