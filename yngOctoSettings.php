@@ -636,10 +636,10 @@
                         var doWeUpdate1 = data.search("behind");
                         // var doWeUpdate1 = console.log(dataOutput1);
                         console.log("updateUI?: "+doWeUpdate1);
-                        if(doWeUpdate1 = -1){
+                        if(doWeUpdate1 < 0){
                             sweetAlert("There are no Updates for REVEAL3D UI ");
                         }
-                        if(doWeUpdate1 != -1){
+                        if(doWeUpdate1 > 0){
                             sweetAlert("There is a NEW Reveal3D UI Update Available! ");
                         }
                     }
@@ -664,10 +664,10 @@
                         var doWeUpdate2 = data.search("behind");
                         // var doWeUpdate2 = console.log(dataOutput2);
                         console.log("updateM?: "+doWeUpdate2);
-                        if(doWeUpdate2 = -1){
+                        if(doWeUpdate2 < 0){
                             sweetAlert("There are no Updates for MANIPULATE");
                         }
-                        if(doWeUpdate2 != -1) {
+                        if(doWeUpdate2 > 0) {
                             sweetAlert("There is a NEW Manipulate Update Available! ");
                         }
 
