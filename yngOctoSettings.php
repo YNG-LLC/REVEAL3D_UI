@@ -613,8 +613,6 @@
     <script>
 
     
-    // var client1 = new OctoPrintClient({baseurl: "http://192.168.0.180:5000", apikey: "78F2E50B42564B1C8A15C3311923C72F"});
-
     // easy ele call (DSA)
     function $id(id){
         return document.getElementById(id);
@@ -695,7 +693,7 @@
 
                               var message = swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
                               // var iReload = location.reload()
-                              
+
                               setTimeout(message, 15000);
 
                             });
