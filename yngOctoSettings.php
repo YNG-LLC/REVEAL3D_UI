@@ -637,14 +637,16 @@
                         // var doWeUpdate1 = console.log(dataOutput1);
                         console.log("updateUI?: "+doWeUpdate1);
                         var upFlag = -1
+
+                        if(doWeUpdate1 = upFlag){
+                            sweetAlert("There are no Updates for REVEAL3D UI ");
+                        }else if(doWeUpdate1 != upFlag){
+                            sweetAlert("There is a NEW Reveal3D UI Update Available! ");
+                        }
                     }
                 });
 
-                if(doWeUpdate1 = upFlag){
-                    sweetAlert("There are no Updates for REVEAL3D UI ");
-                }else if(doWeUpdate1 != upFlag){
-                    sweetAlert("There is a NEW Reveal3D UI Update Available! ");
-                }
+                
 
                 
 
@@ -664,15 +666,16 @@
                         // var doWeUpdate2 = console.log(dataOutput2);
                         console.log("updateM?: "+doWeUpdate2);
                         var upFlag2 = -1
+                        if(doWeUpdate2 = upFlag2){
+                            sweetAlert("There are no Updates for MANIPULATE");
+                        }else if(doWeUpdate2 != upFlag2) {
+                            sweetAlert("There is a NEW Manipulate Update Available! ");
+                        }
 
                     }
                 });
 
-                if(doWeUpdate2 = upFlag2){
-                    sweetAlert("There are no Updates for MANIPULATE");
-                }else if(doWeUpdate2 != upFlag2) {
-                    sweetAlert("There is a NEW Manipulate Update Available! ");
-                }
+                
 
        });
     });
