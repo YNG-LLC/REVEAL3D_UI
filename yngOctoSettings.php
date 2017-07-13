@@ -662,7 +662,7 @@
                     }
                 });
 
-                if( doWeUpdate1 = 49){
+                if( doWeUpdate1 = 79){
                     sweetAlert("There are no Updates for REVEAL3D UI ");
                 }else{
                     sweetAlert("There is a NEW Reveal3D UI Update Available! ");
@@ -690,12 +690,10 @@
 
 
 
-                if(slowDown = 1){
-                    if( doWeUpdate2 = -1){
-                        sweetAlert("There are no Updates for MANIPULATE");
-                    }else{
-                        sweetAlert("There is a NEW Manipulate Update Available! ");
-                    }
+                if( doWeUpdate2 = 79){
+                    sweetAlert("There are no Updates for MANIPULATE");
+                }else{
+                    sweetAlert("There is a NEW Manipulate Update Available! ");
                 }
 
        });
