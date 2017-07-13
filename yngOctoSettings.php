@@ -637,7 +637,6 @@
                         // var doWeUpdate1 = console.log(dataOutput1);
                         console.log("updateUI?: "+doWeUpdate1);
                         var upFlag = -1
-
                         if(doWeUpdate1 = upFlag){
                             sweetAlert("There are no Updates for REVEAL3D UI ");
                         }else if(doWeUpdate1 != upFlag){
