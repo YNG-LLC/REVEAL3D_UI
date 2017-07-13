@@ -983,7 +983,6 @@ session_start();
 
 			if(noz_count != '"   Single"'){
 
-				// console.log("noz: "+noz_count);
 
 			client1.printer.getFullState().done(function(response){
 
