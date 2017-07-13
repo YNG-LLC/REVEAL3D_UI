@@ -657,12 +657,13 @@
                     url: 'checkUpdate.php',
                     success: function(data) {
                         console.log(data);
-                        var dataOutput1 = data.search("origin/master");
-                        var doWeUpdate1 = console.log(dataOutput1);
+                        var doWeUpdate1 = data.search("behind");
+                        console.log("update?: "+doWeUpdate1);
+                        // var doWeUpdate1 = console.log(dataOutput1);
                     }
                 });
 
-                if( doWeUpdate1 = 79){
+                if( doWeUpdate1 = -1){
                     sweetAlert("There are no Updates for REVEAL3D UI ");
                 }else{
                     sweetAlert("There is a NEW Reveal3D UI Update Available! ");
@@ -682,15 +683,16 @@
                     url: 'checkUpdate2.php',
                     success: function(data) {
                         console.log(data);
-                        var dataOutput2 = data.search("origin/master");
-                        var doWeUpdate2 = console.log(dataOutput2);
+                        var doWeUpdate2 = data.search("behind");
+                        console.log("update?: "+doWeUpdate2);
+                        // var doWeUpdate2 = console.log(dataOutput2);
 
                     }
                 });
 
 
 
-                if( doWeUpdate2 = 79){
+                if( doWeUpdate2 = -1){
                     sweetAlert("There are no Updates for MANIPULATE");
                 }else{
                     sweetAlert("There is a NEW Manipulate Update Available! ");
