@@ -636,12 +636,13 @@
                         var doWeUpdate1 = data.search("behind");
                         // var doWeUpdate1 = console.log(dataOutput1);
                         console.log("updateUI?: "+doWeUpdate1);
+                        var upFlag = -1
                     }
                 });
 
-                if(doWeUpdate1 = -1){
+                if(doWeUpdate1 = upFlag){
                     sweetAlert("There are no Updates for REVEAL3D UI ");
-                }else if(doWeUpdate1 != -1){
+                }else if(doWeUpdate1 != upFlag){
                     sweetAlert("There is a NEW Reveal3D UI Update Available! ");
                 }
 
