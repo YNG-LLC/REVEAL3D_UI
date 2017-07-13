@@ -647,9 +647,12 @@
                               closeOnConfirm: false
                             },
                             function(){
-                              swal("Updated!", "REVEAL3D UI has been Updated. Please Reload", "success");
-                              // var iReload = location.reload()
-                              // setTimeout(iReload, 10000);
+                            runUpdateUI();
+
+                            var message = swal("Updated!", "REVEAL3D UI has been Updated. Please Reload", "success");
+                            // var iReload = location.reload()
+                            setTimeout(message, 15000);
+                                
                             });
                         }
                     }
@@ -688,9 +691,12 @@
                               closeOnConfirm: false
                             },
                             function(){
-                              swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
+                              runUpdateM();
+
+                              var message = swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
                               // var iReload = location.reload()
-                              // setTimeout(iReload, 10000);
+                              
+                              setTimeout(message, 15000);
 
                             });
                         }
@@ -720,6 +726,18 @@
        });
     });
 
+    function runUpdateUI(){
+        $.ajax({
+            type: 'POST',
+            url: 'update.php',
+            success: function(data) {
+                console.log(data);
+                // $("p").text(data);
+
+            }
+        });
+    }
+
 
     $(document).ready(function(){
         $("#getUpdate").click(function(){
@@ -734,6 +752,21 @@
             });
        });
     });
+
+
+    function runUpdateM(){
+        $.ajax({
+            type: 'POST',
+            url: 'update2.php',
+            success: function(data) {
+                console.log(data);
+                // $("p").text(data);
+
+            }
+        });
+
+    }
+
 
     </script>
 
