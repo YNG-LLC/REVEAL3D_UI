@@ -624,30 +624,6 @@
     }
 
 
-    function settingsUI(){
-
-
-        // console.log('settings: ')
-        // console.log(client1.settings.get);
-
-    }
-
-    // settingsUI();
-
-    function checkForUpdate(){
-
-
-        sweetAlert("Checking For Update");
-
-
-
-    };
-
-    // checkForUpdate();
-
-
-
-
     // check for updates
     $(document).ready(function(){
             $("#checkUpdateUI").click(function(){
