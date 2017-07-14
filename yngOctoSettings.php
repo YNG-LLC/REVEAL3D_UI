@@ -588,13 +588,13 @@
                                             <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br>
                                             <button id='checkUpdateUI' style="margin-left: 25px" type=button><b>Check UI</b> Update</button> <button id='checkUpdateM' style="margin-left: 150px" type=button><b>Check Manipulate</b> Update</button><br><br><br><br>
-                                            <h2 style="margin-left: 200">Get Updates</h2>
+                                            <!-- <h2 style="margin-left: 200">Get Updates</h2>
                                             <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br> 
                                             <button id='getUpdateUI' style="margin-left: 25px" type=button><b>Get UI</b> Update</button><button id='getUpdateM' style="margin-left: 170px" type=button><b>Get Manipulate</b> Update</button>
                                             <br>
                                             <br>
-                                            <br>
+                                            <br> -->
                                         </div>
                                     </div>
                                     </div>
@@ -662,18 +662,23 @@
                         function(){
                         var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
                         runUpdateUI();
-                        
+                        var t0 = performance.now();
 
                         var message = swal({
 
-                            title:"REVEAL3D UI has been Updated. Please Reload",
+                            title:"REVEAL3D UI is now updating. Please Wait",
 
                             text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>",
                             html: true
                             });
+
+                            setTimeout(function(){
+                               swal("REVEALD UI Update Complete. Please Reload Your Page");
+                             }, t0);
                         // var iReload = location.reload()
                         upBar();
-                        setTimeout(message, 15000);
+                        setTimeout(message, t0);
+                        console.log("time:"+t0);
                             
                         });
                     }
@@ -706,13 +711,14 @@
                           closeOnConfirm: false
                         },
                         function(){
-                          runUpdateM();
-                          upBar();
+                            var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
+                            runUpdateM();
+                            upBar();
 
-                          var message = swal("Updated!", "MANIPULATE has been Updated. Please Reload", "success");
-                          // var iReload = location.reload()
-
-                          setTimeout(message, 15000);
+                            var message = swal("Updated!", "MANIPULATE has been     Updated. Please Reload", "success");      
+                            // var iReload = location.reload()      
+        
+                            setTimeout(message, 15000);
 
                         });
                     }
@@ -738,17 +744,7 @@
        });
     });
 
-    function runUpdateUI(){
-        $.ajax({
-            type: 'POST',
-            url: 'update.php',
-            success: function(data) {
-                console.log(data);
-                // $("p").text(data);
 
-            }
-        });
-    }
 
 
     $(document).ready(function(){
@@ -764,6 +760,19 @@
             });
        });
     });
+
+
+    function runUpdateUI(){
+        $.ajax({
+            type: 'POST',
+            url: 'update.php',
+            success: function(data) {
+                console.log(data);
+                // $("p").text(data);
+
+            }
+        });
+    }
 
 
     function runUpdateM(){
