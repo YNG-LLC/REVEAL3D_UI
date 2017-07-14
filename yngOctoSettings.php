@@ -618,18 +618,18 @@
         return document.getElementById(id);
     }
 
-
-    function upBar() {
+    function upBar(t0) {
         var elem = document.getElementById("myBar");   
         var width = 1;
-        var id = setInterval(frame, 10);
+        var id = setInterval(frame, t0/100);
         function frame() {
         if (width >= 100) {
           clearInterval(id);
         } else {
           width++; 
-          elem.style.width = width + '%'; 
+          elem.style.width = width + '%';
         }
+        console.log('completed'); 
         }
     }
 
@@ -648,9 +648,9 @@
                     if(doWeUpdate1 < 0){
                         sweetAlert("There are no Updates for REVEAL3D UI ");
                     }
-                    if(doWeUpdate1 < 0){
+                    if(doWeUpdate1 > 0){
                         swal({
-                          title: "There is a NEW Reveal3D UI Update Available!?",
+                          title: "There is a NEW Reveal3D UI Update Available!",
                           text: "Would You Like to Update?",
                           type: "warning",
                           showCancelButton: true,
@@ -660,27 +660,31 @@
                         },
                         
                         function(){
-                        var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
-                        runUpdateUI();
-                        var t0 = performance.now();
-
-                        var message = swal({
-
-                            title:"REVEAL3D UI is now updating. Please Wait",
-
-                            text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>",
-                            html: true
+                            var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
+                            var t0 = performance.now(                            runUpdateUI());
+                            console.log("time:"+t0);
+                            swal({
+                              title: "REVEAL3D UI UPDATING",
+                              text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>Click to run Update",
+                              type: "info",
+                              showCancelButton: true,
+                              closeOnConfirm: false,
+                              showLoaderOnConfirm: true,
+                              html: true
+                            },
+                            function(){
+                                upBar(t0);
+                                setTimeout(function(){
+                                    swal({
+                                        title: "Update Complete",
+                                        text: "Please refresh the page",
+                                        imageUrl: "https://www.shareicon.net/download/2016/08/20/817721_check.ico"
+                                        });
+                              }, t0*2);
                             });
-
-                            setTimeout(function(){
-                               swal("REVEALD UI Update Complete. Please Reload Your Page");
-                             }, t0);
-                        // var iReload = location.reload()
-                        upBar();
-                        setTimeout(message, t0);
-                        console.log("time:"+t0);
-                            
                         });
+
+
                     }
                 }
             });
@@ -702,7 +706,7 @@
                     }
                     if(doWeUpdate2 > 0){
                         swal({
-                          title: "There is a new MANIPULATE Update Available!?",
+                          title: "There is a NEW MANIPULATE  Update Available!",
                           text: "Would You Like to Update?",
                           type: "warning",
                           showCancelButton: true,
@@ -710,17 +714,33 @@
                           confirmButtonText: "Yes, Update!",
                           closeOnConfirm: false
                         },
+                        
                         function(){
                             var bar = "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>"
-                            runUpdateM();
-                            upBar();
-
-                            var message = swal("Updated!", "MANIPULATE has been     Updated. Please Reload", "success");      
-                            // var iReload = location.reload()      
-        
-                            setTimeout(message, 15000);
-
+                            var t1 = performance.now(                            runUpdateM());
+                            console.log("time:"+t1);
+                            swal({
+                              title: "MANIPULATE UPDATE",
+                              text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>Click to Update",
+                              type: "info",
+                              showCancelButton: true,
+                              closeOnConfirm: false,
+                              showLoaderOnConfirm: true,
+                              html: true
+                            },
+                            function(){
+                                upBar(t1);
+                                setTimeout(function(){
+                                    swal({
+                                        title: "Update Complete",
+                                        text: "Please refresh the page",
+                                        imageUrl: "https://www.shareicon.net/download/2016/08/20/817721_check.ico"
+                                        });
+                              }, t1*2);
+                            });
                         });
+
+
                     }
                 }
             });
@@ -762,14 +782,13 @@
     });
 
 
-    function runUpdateUI(){
+    function runUpdateUI(request_time){
         $.ajax({
             type: 'POST',
             url: 'update.php',
             success: function(data) {
                 console.log(data);
                 // $("p").text(data);
-
             }
         });
     }
