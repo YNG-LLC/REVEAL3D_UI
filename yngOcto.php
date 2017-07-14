@@ -1165,14 +1165,14 @@ session_start();
 			var ddZoneSelect = document.getElementById("zoneSelect");
 			var zoneSelect = ddZoneSelect.options[ddZoneSelect.selectedIndex].value;
 			var zoneTemp = document.getElementById("zoneTempInput").value;
-
+			var zoneOptVal = ddZoneSelect.options[ddZoneSelect.selectedIndex].text;
 			// console.log(zoneSelect);
 
 
 
 			swal({
 				  title: "Zone Temperature Change",
-				  text: "You are changing Zone"+" "+zoneSelect+" Temperature to: " + "'" + zoneTemp + "'",
+				  text: "You are changing Zone"+" "+zoneOptVal+" Temperature to: " + "'" + zoneTemp + "'",
 				  type: "warning",
 				  showCancelButton: true,
 				  confirmButtonColor: "#DD6B55",
