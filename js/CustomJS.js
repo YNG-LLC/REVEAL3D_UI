@@ -12,13 +12,15 @@ if (dd_AP = '"reveal3D"'){
     printers = {"reveal3D": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
 
     nozzle = {"reveal3D": [" Single", " Duplication"]};
-}else if(dd_AP = '"FRANK3"'){
+}
+if(dd_AP = '"FRANK3"'){
     console.log("dd_AP: "+dd_AP);
 
     printers = {"FRANK3": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
 
     nozzle = {"FRANK3": [" Single", " Duplication"]};
-}else if(dd_AP = '"GT"'){
+}
+if(dd_AP = '"GT"'){
     console.log("dd_AP: "+dd_AP);
 
     printers = {"GT": [" 1", " 2", " 3", " 4"]};
