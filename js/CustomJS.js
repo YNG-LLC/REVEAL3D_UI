@@ -6,38 +6,38 @@
 // var nozzle = "";
 
 
-if (dd_AP = 'reveal3D'){
-    console.log("dd_AP: "+dd_AP);
+// if (dd_AP = 'reveal3D'){
+//     console.log("dd_AP: "+dd_AP);
 
-    printers = {"reveal3D": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
+//     printers = {"reveal3D": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
 
-    nozzle = {"reveal3D": [" Single", " Duplication"]};
-}else if(dd_AP = 'FRANK3'){
-    console.log("dd_AP: "+dd_AP);
+//     nozzle = {"reveal3D": [" Single", " Duplication"]};
+// }else if(dd_AP = 'FRANK3'){
+//     console.log("dd_AP: "+dd_AP);
 
-    printers = {"FRANK3": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
+//     printers = {"FRANK3": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"]};
 
-    nozzle = {"FRANK3": [" Single", " Duplication"]};
-}else if(dd_AP = 'GT'){
-    console.log("dd_AP: "+dd_AP);
+//     nozzle = {"FRANK3": [" Single", " Duplication"]};
+// }else if(dd_AP = 'GT'){
+//     console.log("dd_AP: "+dd_AP);
 
-    printers = {"GT": [" 1", " 2", " 3", " 4"]};
+//     printers = {"GT": [" 1", " 2", " 3", " 4"]};
 
-    nozzle = {"GT": [" Single", " Duplication"]};
+//     nozzle = {"GT": [" Single", " Duplication"]};
+// };
+
+
+printers = {
+    "reveal3D": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"],
+    "FRANK3": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"],
+    "GT": [" 1", " 2", " 3", " 4"]
 };
 
-
-// printers = {
-//     "reveal3D": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"],
-//     "FRANK3": [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " 11", " 12", " 13", " 14", " 15", " 16"],
-//     "GT": [" 1", " 2", " 3", " 4"]
-// };
-
-// nozzle = {
-//     "reveal3D": [" Single", " Duplication"],
-//     "FRANK3": [" Single", " Duplication"],
-//     "GT": [" Single", " Duplication"]
-// };
+nozzle = {
+    "reveal3D": [" Single", " Duplication"],
+    "FRANK3": [" Single", " Duplication"],
+    "GT": [" Single", " Duplication"]
+};
 
 
 $.each(printers, function(key, value) {
