@@ -621,7 +621,7 @@
     function upBar(t0) {
         var elem = document.getElementById("myBar");   
         var width = 1;
-        var id = setInterval(frame, t0/100);
+        var id = setInterval(frame, t0/1000);
         function frame() {
         if (width >= 100) {
           clearInterval(id);
@@ -680,7 +680,7 @@
                                         text: "Please refresh the page",
                                         imageUrl: "https://www.shareicon.net/download/2016/08/20/817721_check.ico"
                                         });
-                              }, t0*2);
+                              }, t0*1.2);
                             });
                         });
 
@@ -736,7 +736,7 @@
                                         text: "Please refresh the page",
                                         imageUrl: "https://www.shareicon.net/download/2016/08/20/817721_check.ico"
                                         });
-                              }, t1*2);
+                              }, t1*1.2);
                             });
                         });
 
