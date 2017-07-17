@@ -1,0 +1,10 @@
+/* #dialog-window {
+  height: 200px;
+  border: 1px black solid;
+}
+ */
+#scrollable-content {
+  height: 180px;
+  overflow: auto;
+  background-color: blue;
+}

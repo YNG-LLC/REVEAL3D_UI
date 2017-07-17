@@ -230,6 +230,8 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <!-- <link href="vendor/morrisjs/morris.css" rel="stylesheet"> -->
+    <!-- Custom CSS -->
+    <link href="css/customCSS.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- JS ALerts -->

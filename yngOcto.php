@@ -215,7 +215,7 @@ session_start();
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body" style="overflow: auto;">
 						<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
 						<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
