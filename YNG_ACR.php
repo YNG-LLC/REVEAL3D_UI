@@ -330,7 +330,8 @@ var commandActionCustom = [];
 function $id(id){
     return document.getElementById(id);
 }
- 
+
+
 client1.system.getCommands().done(function(response){
     client1.system.getCommands();
     var getCommand = JSON.stringify(response)
@@ -353,56 +354,61 @@ client1.system.getCommands().done(function(response){
     commandActionCore[3] = JSON.stringify(Object.values(response.core[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
     // ### Custom Commands ###
-    commandActionCustom[0] = JSON.stringify(Object.values(response.custom[0])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
-    commandActionCustom[1] = JSON.stringify(Object.values(response.custom[1])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
-    commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
-    commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    // commandActionCustom[0] = JSON.stringify(Object.values(response.custom[0])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    // commandActionCustom[1] = JSON.stringify(Object.values(response.custom[1])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    // commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    // commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
     // console.log("Source: "+commandSource);
     // console.log("Core Actions: "+commandActionCore);
     // console.log("Custom Actions: "+commandActionCustom);
 
 
-    // var commandTotal = (commandSource[1].length)-2;
-    // console.log('Array Total: '+commandTotal);
+    var commandTotal = (commandSource[1].length)-2;
+    console.log('Array Total: '+commandTotal);
+    var functinArray = [];
 
 
-    // // Dynamically Create 
-    // for(d = 0;d < commandTotal;d++){
-    //     // console.log('value of d: '+d);
-    //     commandActionCustom[d] = JSON.stringify(Object.values(response.custom[d])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
+    // Dynamically Create 
+    for(d = 0;d < commandTotal;d++){
+        // console.log('value of d: '+d);
+        commandActionCustom[d] = JSON.stringify(Object.values(response.custom[d])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    //     var ul = $id('ccOptions');
-    //     var li = document.createElement('li');
-    //     var a = document.createElement('a');
-    //     a.appendChild(document.createTextNode(""+commandActionCustom[d]+""));
-    //     ul.appendChild(li);
-    //     li.appendChild(a);
-    //     a.setAttribute("href", "#");
-    //     a.setAttribute("id", ""+commandActionCustom[d]+"");
+        var ul = $id('ccOptions');
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.appendChild(document.createTextNode(""+commandActionCustom[d]+""));
+        ul.appendChild(li);
+        li.appendChild(a);
+        a.setAttribute("href", "#");
+        a.setAttribute("id", ""+commandActionCustom[d]+"");
         
 
-    //     var name = JSON.stringify(commandActionCustom[d]);
-    //     console.log('name BEFORE: '+name);
-    //     name = name.replace(/\s/g, '');
-    //     name = name.replace(/[^a-zA-Z0-9 ]/g, "")
-    //     a.setAttribute("onclick", ""+name+"()");
-    //     console.log('name AFTER: '+name);
+        var name = JSON.stringify(commandActionCustom[d]);
+        // console.log('name BEFORE: '+name);
+        name = name.replace(/\s/g, '');
+        name = name.replace(/[^a-zA-Z0-9 ]/g, "")
+        // console.log('name AFTER: '+name);
 
-    //     var filler = "client1.system.getCommands().done(function(){swal({title: 'Are you sure you want to issue the command: "+commandActionCustom[d]+" ?',text: '',type: 'warning', showCancelButton: true,confirmButtonColor: '#14b200',                  confirmButtonText: 'Yes, run the command:  "+commandActionCustom[d]+" !', closeOnConfirm: false }, function(){                   swal('Command:  "+commandActionCustom[d]+" Initiated', '"+commandActionCustom[d]+" ran successfully', 'success');    client1.system.executeCommand("+commandSource[1]+",'"+commandActionCustom[d]+"').done(function(response){  }); }); });"
-
-
-    //     var newFunction = new Function("return function " + name + "(){"+filler+"}" )();
-
-    //     var newFunction = new Function('name', 'return alert("hello, " + name + "!");');
-    //     newFunction(name);
-
-    //     // var newFunction = function () {return true;};
-    //     // Object.defineProperty(newFunction, name, {value: filler, writable: false});
-    //     console.log(newFunction);
+        var filler = "client1.system.getCommands().done(function(){swal({title: 'Are you sure you want to issue the command: "+commandActionCustom[d]+" ?',text: '',type: 'warning', showCancelButton: true,confirmButtonColor: '#14b200',confirmButtonText: 'Yes, run the command:  "+commandActionCustom[d]+" !', closeOnConfirm: false }, function(){swal('Command:  "+commandActionCustom[d]+" Initiated', '"+commandActionCustom[d]+" ran successfully', 'success');    client1.system.executeCommand("+'"'+commandSource[1]+'"'+",'"+commandActionCustom[d]+"').done(function(response){  }); }); });"
 
 
-    // }
+        var newFunction = new Function("return function " + name + "(){"+filler+"}" )();
+
+        functinArray.push(newFunction);
+        a.setAttribute("onclick", filler);
+
+
+
+
+
+
+        console.log("added to array: "+functinArray);
+        console.log(newFunction);
+
+
+
+    }
 
 });
 
@@ -577,7 +583,6 @@ client1.system.getCommands().done(function(response){
 
 
 </script>
-
 
 
 
