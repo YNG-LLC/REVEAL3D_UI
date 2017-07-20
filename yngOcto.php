@@ -1073,18 +1073,17 @@ session_start();
 
 		get_tool1_temp();
 
-
 		function set_tool0_temp(){
 
 			var tool_temp0 = parseInt($id('tool0').value);
 
 			swal({
 				  title: "TOOL_0 Temp Change",
-				  text: "You are changing TOOL_1's Temperature to: " + "'" + tool_temp0 + "'",
+				  text: "You are changing TOOL_0's Temperature to: " + "'" + tool_temp0 + "'",
 				  type: "warning",
 				  showCancelButton: true,
 				  confirmButtonColor: "#DD6B55",
-				  confirmButtonText: "Yes, update TOOL_1's Temp!",
+				  confirmButtonText: "Yes, update TOOL_0's Temp!",
 				  closeOnConfirm: false
 				},
 				function(){

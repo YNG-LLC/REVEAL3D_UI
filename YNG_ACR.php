@@ -359,9 +359,9 @@ client1.system.getCommands().done(function(response){
     // commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
     // commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    // console.log("Source: "+commandSource);
-    // console.log("Core Actions: "+commandActionCore);
-    // console.log("Custom Actions: "+commandActionCustom);
+    console.log("Source: "+commandSource);
+    console.log("Core Actions: "+commandActionCore);
+    console.log("Custom Actions: "+commandActionCustom);
 
 
     var commandTotal = (commandSource[1].length)-2;
@@ -385,10 +385,10 @@ client1.system.getCommands().done(function(response){
         
 
         var name = JSON.stringify(commandActionCustom[d]);
-        // console.log('name BEFORE: '+name);
+        console.log('name BEFORE: '+name);
         name = name.replace(/\s/g, '');
         name = name.replace(/[^a-zA-Z0-9 ]/g, "")
-        // console.log('name AFTER: '+name);
+        console.log('name AFTER: '+name);
 
         var filler = "client1.system.getCommands().done(function(){swal({title: 'Are you sure you want to issue the command: "+commandActionCustom[d]+" ?',text: '',type: 'warning', showCancelButton: true,confirmButtonColor: '#14b200',confirmButtonText: 'Yes, run the command:  "+commandActionCustom[d]+" !', closeOnConfirm: false }, function(){swal('Command:  "+commandActionCustom[d]+" Initiated', '"+commandActionCustom[d]+" ran successfully', 'success');    client1.system.executeCommand("+'"'+commandSource[1]+'"'+",'"+commandActionCustom[d]+"').done(function(response){  }); }); });"
 
