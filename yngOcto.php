@@ -1354,7 +1354,7 @@ session_start();
 
 			$id('jobActive').innerHTML = JSON.stringify(fileLoad);
 			client1.files.select("local",fileLoad,true);
-			startPrint()
+			// startPrint()
 
 		}
 
@@ -1363,7 +1363,7 @@ session_start();
 			var fileLoad = document.getElementById(clicked_id).textContent;
 
 			$id('jobActive').innerHTML = JSON.stringify(fileLoad);
-			client1.files.select("local",fileLoad,true);
+			client1.files.select("local",fileLoad,false);
 		}
 
 		function showSettings(){
