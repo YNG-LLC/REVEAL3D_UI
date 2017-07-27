@@ -20,7 +20,7 @@ session_start();
 		<br>
 		<!-- </div> -->
 		<div class="row">
-			<div class="col-lg-5" style="max-width:100%;max-height:100%; ">
+			<div class="col-lg-5" style="max-width:100%;max-height:100%;">
 				<div class="panel panel-green">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
@@ -94,7 +94,7 @@ session_start();
 				</div>
 			</div>
 			</div>
-		<div class="col-lg-6" style="max-width:50%;max-height:50%;float:right; margin-right: auto">
+		<div class="col-lg-6" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-red">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
@@ -102,61 +102,63 @@ session_start();
 					<div class="panel-body">
 						<div class="table-responsive">
 							<table class="table table-bordered table-hover table-striped">
-								<h1 style="text-align:center;" class="panel-heading">Extruders</h1>
+								<h1 style="max-width:100%;max-height:100%;text-align:center;" class="panel-heading">Extruders</h1>
 								<table id='bedTemps' class="table table-bordered table-hover table-striped">
 									<thead>
 										<tr>
-											<th style="text-align:center;">Extruder</th>
-											<th style="text-align:center;">Input Temp (&#8451; )</th>
-											<th style="text-align:center;">Actual (&#8451; )</th>
-											<th style="text-align:center;">Target (&#8451;)</th>
+											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Extruder</th>
+											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Input Temp (&#8451; )</th>
+											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Actual (&#8451; )</th>
+											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Target (&#8451;)</th>
 											<th>Controls</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<th style="text-align:center;">#1</th>
+											<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
 											<td>
-												<input type="number" id="tool0"  min="0">
+												<input type="number" id="tool0"  min="0" style="max-width:100%;max-height:100%;">
 											</td>
-											<td id="tempStatus0A" style="text-align:center;width:auto;"></td>
-											<td id="tempStatus0T" style="text-align:center;width:auto;"></td>
-											<td id="extUpdate0" style="text-align:center;width:auto;">
+											<td id="tempStatus0A" style="max-width:100%;max-height:100%;"></td>
+											<td id="tempStatus0T" style="max-width:100%;max-height:100%;"></td>
+											<td id="extUpdate0" style="max-width:100%;max-height:100%;">
 												<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
 											</td>
 										</tr>
 										<tr id='dualNoz' class='' >
-											<th style="text-align:center;">#2</th>
+											<th style="max-width:100%;max-height:100%;">#2</th>
 											<td>
-												<input type="number" id="tool1"  min="0">
+												<input type="number" id="tool1"  min="0" style="max-width:100%;max-height:100%;">
 											</td>
-											<td id="tempStatus1A" style="text-align:center;width:auto;"></td>
-											<td id="tempStatus1T" style="text-align:center;width:auto;"></td>
-											<td id="extUpdat1e" style="text-align:center;width:auto;">
+											<td id="tempStatus1A" style="max-width:100%;max-height:100%;"></td>
+											<td id="tempStatus1T" style="max-width:100%;max-height:100%;"></td>
+											<td id="extUpdat1e" style="max-width:100%;max-height:100%;">
 												<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
 											</td>
 										</tr>
 									</tbody>
-								</table><br>
-								<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 100px">Reload Filament</button>
-								<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="margin-left: 50px">Retract Filament</button>
-								<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="margin-left:50px">Disable Active Extruder Motors</button>
+								</table>
+								<!-- <div > -->
+									<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
+									<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
+									<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
+								<!-- </div> -->
 								<hr style="color:blue"><br>
-								<h1 style="text-align:center;" class="panel-heading">Zone</h1>
-								<table id='bedTemps' class="table table-bordered table-hover table-striped">
+								<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
+								<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
 									<thead>
 										<tr>
-											<th style="text-align:center;">Zone</th>
-											<th style="text-align:center;">Input Temperature (&#8451; )</th>
-											<th style="text-align:center;">Zone Temp (&#8451; )</th>
-											<th style="text-align:center;">Controls</th>
+											<th style="max-width:100%;max-height:100%;text-align:center;">Zone</th>
+											<th style="max-width:100%;max-height:100%;text-align:center;">Input Temperature (&#8451; )</th>
+											<th style="max-width:100%;max-height:100%;text-align:center;">Zone Temp (&#8451; )</th>
+											<th style="max-width:100%;max-height:100%;text-align:center;">Controls</th>
 											<!-- <th>Target Temp (&#8451; )</th> -->
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<!-- // in file units, changed in to cm () -->
-											<th style="text-align:center;width:auto;">
+											<th style="text-align:center;max-width:100%;max-height:100%;">
 												<?php
 												// session_start();
 												// include 'YNG_ACR.php';
@@ -186,11 +188,11 @@ session_start();
 												
 												// mysqli_close($dbc);
 											?></th>
-											<td style="text-align:center;width:auto;">
+											<td style="text-align:center;max-width:100%;max-height:100%;">
 												<input type="number" name="zoneTempInput" id="zoneTempInput" min="0">
 											</td>
-											<td id="bedTemp" style="text-align:center;width:auto;">N/A</td>
-											<td id="bedUpdate" style="text-align:center;width:auto;">
+											<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
+											<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
 												<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
 											</td>
 										</td>
@@ -204,7 +206,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-				<div class="col-lg-5" style=" max-width:100%;max-height:100%; ">
+				<div class="col-lg-5" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
 					<div class="panel panel-primary"  >
 						<div class="panel-heading" >
 							<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
@@ -213,14 +215,15 @@ session_start();
 					</div>
 				</div>
 		</div> <!-- ROW END-->
+		<br><br>
 		<div class="row">
 			<!-- add printer control here -->
-			<div class="col-lg-12" style="max-width:100%;max-height:100%;">
+			<div class="col-lg-12" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 					</div>
-					<div class="panel-body" style="overflow: auto; height:auto; width:auto;">
+					<div class="panel-body" style="overflow: auto; max-width:100%;max-height:100%;">
 						<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
 						<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
@@ -259,12 +262,12 @@ session_start();
 					</div>
 				</div>
 				</div>
-			<div class="col-lg-12" style="width:auto; height: auto;">
+			<div class="col-lg-12" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
 					</div>
-					<div class="col-lg-4" style="width:auto; height: auto;">
+					<div class="col-lg-4" style="max-width:100%;max-height:100%;">
 						<br><br><br><br><br><br>
 						<!-- <div class="panel panel-info">
 									<div class="panel-heading">
@@ -279,7 +282,7 @@ session_start();
 						</div> -->
 					</div>
 					<div class="panel-body">
-						<div id="table_contents" class="table-responsive" style="width:auto; height:auto;">
+						<div id="table_contents" class="table-responsive" style="max-width:100%;max-height:100%;">
 						</div>
 						<!-- <div class="text-right">
 									<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
@@ -358,7 +361,7 @@ session_start();
 		function create_a_table(list,list_count){
 				if(list_count > 0){
 
-					var table = "<table id='dynTable'class='table table-bordered table-hover table-striped'>";
+					var table = "<table id='dynTable' class='table table-bordered table-hover table-striped'  style='max-width:100%;max-height:100%;'>";
 					// var name = "";
 					// var size = "";
 					// var volume = "";
@@ -373,7 +376,7 @@ session_start();
 
 					// console.log(list);
 					table = table + "<thead>";
-					table = table + "<tr>";
+					table = table + "<tr style='max-width:100%;max-height:100%;'>";
 					table = table + "<th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
 					table = table + "<th>Size (MB)</th>";
 					table = table + "<th>Volume (cm<sup>3</sup>)</th>";
@@ -407,14 +410,14 @@ session_start();
 						//FOLDER DOWNLOAD: store file path in 'name' and use regex clean up the path. or add a new element to the array for 'name'
 
 
-						table = table + "<tr id='row"+rowID+"'>";
+						table = table + "<tr style='max-width:100%;max-height:100%;' id='row"+rowID+"'>";
 						// table = table + "<td style='text-align:left;width:25%; align='>" + id + "</td>";
-						table = table + "<td id='name_ID_"+nameID_num+"' style='text-align:left;width:25%; align=''>" + name + "</td>";
-						table = table + "<td style='text-align:left;width:10%;'>" + size + "</td>";
-						table = table + "<td style='text-align:left;width:10%;'>" + volume + "</td>"
+						table = table + "<td id='name_ID_"+nameID_num+"' style='max-width:100%;max-height:100%;'>" + name + "</td>";
+						table = table + "<td style='max-width:100%;max-height:100%;'>" + size + "</td>";
+						table = table + "<td style='max-width:100%;max-height:100%;'>" + volume + "</td>"
 						// table = table + "<td style='text-align:left;width:20%;'>" + depth + "</td>";
-						table = table + "<td style='text-align:left;width:11%;'>" + time + "</td>";
-						table = table + "<td style='text-align:left;width:23%;'>" + controls + "</td>";
+						table = table + "<td style='max-width:100%;max-height:100%;'>" + time + "</td>";
+						table = table + "<td style='max-width:100%;max-height:100%;'>" + controls + "</td>";
 						table = table + "</tr>";
 					}
 
