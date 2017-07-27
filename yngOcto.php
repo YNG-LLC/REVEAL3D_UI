@@ -21,7 +21,7 @@ session_start();
 		<!-- </div> -->
 		<div class="row">
 			<div class="col-lg-5">
-				<div class="panel panel-green">
+				<div class="panel panel-green" style="height:auto; width:auto;" >
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
 					</div>
@@ -94,13 +94,19 @@ session_start();
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-5">
-			<div class="panel panel-blue">
-				
-			</div>
-		</div>
+		
 		<div class="col-lg-6">
-			<div class="panel panel-red" style="margin-top: -22px">
+		    <div class="panel panel-primary">
+		        <div class="panel-heading">
+		            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Live Print</h3>
+		        </div>
+		        <div class="panel-body" align="center">
+		            <img src='http://<?php echo $fetchIp; ?>' width="auto" height="auto">
+		        </div>
+		    </div>
+		</div>
+		<div class="col-lg-6" style="width:auto;height:auto">
+			<div class="panel panel-red" style="width:auto; height: auto;">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
 				</div>
@@ -209,8 +215,9 @@ session_start();
 				</div>
 			</div>
 		</div>
+		    
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-12" style="width:auto;height:auto">
 				<div class="panel panel-primary" style="width:1000px; margin-left:15px">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
@@ -255,7 +262,7 @@ session_start();
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-12">
+		<div class="col-lg-12" style="width:auto;height:auto">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
@@ -275,7 +282,7 @@ session_start();
 					</div> -->
 				</div>
 				<div class="panel-body">
-					<div id="table_contents" class="table-responsive">
+					<div id="table_contents" class="table-responsive" style="width:auto; height:auto;">
 					</div>
 					<!-- <div class="text-right">
 								<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
