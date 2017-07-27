@@ -20,21 +20,20 @@ session_start();
 		<br>
 		<!-- </div> -->
 		<div class="row">
-			<div class="col-lg-5">
-				<div class="panel panel-green" style="height:auto; width:auto;" >
+			<div class="col-lg-5" style="max-width:100%;max-height:100%; ">
+				<div class="panel panel-green">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
 					</div>
-					<div class="panel-body">
-						<!-- <div id="morris-donut-chart"></div> -->
-						<table id='printerState'>
+					<div class="panel-body" style="max-width:100%;max-height:100%;">
+						<table id='printerState' style="max-width:100%;max-height:100%;">
 							<tr>
 								<th>State<span id="printOptions"></span><sup></sup>:</th>
-								<td id="currentState" style="text-align:left;width:75%;"></td>
+								<td id="currentState" style="text-align:left;width:auto;"></td>
 							</tr>
 							<tr>
 								<th>Active Printer<span id="printOptions"></span><sup></sup>:</th>
-								<td id="currentPrinter" style="text-align:left;width:75%;">&nbsp;&nbsp;&nbsp;
+								<td id="currentPrinter" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;
 									<?php
 									// session_start();
 									if (!$dbc) {
@@ -55,7 +54,7 @@ session_start();
 							</tr>
 							<tr>
 								<th>Active Nozzle<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentNozzle" style="text-align:left;width:75%;">&nbsp;&nbsp;&nbsp;<?php
+								<td id="currentNozzle" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;<?php
 										// session_start();
 										$db_tablename = "yngUI";
 										if (mysqli_num_rows($resultN) > 0) {
@@ -72,15 +71,15 @@ session_start();
 							</tr>
 							<tr>
 								<th>Port<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentPort" style="text-align:left;width:75%;"></td>
+								<td id="currentPort" style="text-align:left;width:auto;"></td>
 							</tr>
 							<tr>
 								<th>Baudrate<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentBR" style="text-align:left;width:75%;">&nbsp;&nbsp;</td>
+								<td id="currentBR" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
 							</tr>
 							<tr>
 								<th>Profile<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentProfile" style="text-align:left;width:75%;">&nbsp;&nbsp;</td>
+								<td id="currentProfile" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
 							</tr>
 							<!-- <tr>
 										<th>Job Selected<span id="jobOptions"></span><sup></sup>: </th>
@@ -88,141 +87,140 @@ session_start();
 										<br><br><br>
 							</tr> -->
 							<tr><th>Active Job<span id="jobOptions"></span><sup></sup>: </th>
-							<td id="jobActive" style="text-align:left;width:75%;">&nbsp;&nbsp;</td>
+							<td id="jobActive" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
 						</tr>
 					</table>
+					<br>
 				</div>
 			</div>
-		</div>
-		
-		<div class="col-lg-6" style="width:auto;height:auto">
-		    <div class="panel panel-primary">
-		        <div class="panel-heading">
-		            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Live Print</h3>
-		        </div>
-		        <div class="panel-body" align="center">
-		            <img src='http://<?php echo $fetchIp; ?>' width="auto" height="auto">
-		        </div>
-		    </div>
-		</div>
-		<div class="col-lg-6" style="width:auto;height:auto">
-			<div class="panel panel-red" style="width:auto; height: auto;">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
-				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover table-striped">
-							<h1 style="text-align:center;" class="panel-heading">Extruders</h1>
-							<table id='bedTemps' class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th style="text-align:center;">Extruder</th>
-										<th style="text-align:center;">Input Temp (&#8451; )</th>
-										<th style="text-align:center;">Actual (&#8451; )</th>
-										<th style="text-align:center;">Target (&#8451;)</th>
-										<th>Controls</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th style="text-align:center;">#1</th>
-										<td>
-											<input type="number" id="tool0"  min="0">
-										</td>
-										<td id="tempStatus0A" style="text-align:center;width:60%;"></td>
-										<td id="tempStatus0T" style="text-align:center;width:60%;"></td>
-										<td id="extUpdate0" style="text-align:center;width:10%;">
-											<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-										</td>
-									</tr>
-									<tr id='dualNoz' class='' >
-										<th style="text-align:center;">#2</th>
-										<td>
-											<input type="number" id="tool1"  min="0">
-										</td>
-										<td id="tempStatus1A" style="text-align:center;width:50%;"></td>
-										<td id="tempStatus1T" style="text-align:center;width:50%;"></td>
-										<td id="extUpdat1e" style="text-align:center;width:10%;">
-											<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+			</div>
+		<div class="col-lg-6" style="width:auto;height:auto;float:right; margin-right: auto">
+				<div class="panel panel-red">
+					<div class="panel-heading">
+						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-striped">
+								<h1 style="text-align:center;" class="panel-heading">Extruders</h1>
+								<table id='bedTemps' class="table table-bordered table-hover table-striped">
+									<thead>
+										<tr>
+											<th style="text-align:center;">Extruder</th>
+											<th style="text-align:center;">Input Temp (&#8451; )</th>
+											<th style="text-align:center;">Actual (&#8451; )</th>
+											<th style="text-align:center;">Target (&#8451;)</th>
+											<th>Controls</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th style="text-align:center;">#1</th>
+											<td>
+												<input type="number" id="tool0"  min="0">
+											</td>
+											<td id="tempStatus0A" style="text-align:center;width:auto;"></td>
+											<td id="tempStatus0T" style="text-align:center;width:auto;"></td>
+											<td id="extUpdate0" style="text-align:center;width:auto;">
+												<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+											</td>
+										</tr>
+										<tr id='dualNoz' class='' >
+											<th style="text-align:center;">#2</th>
+											<td>
+												<input type="number" id="tool1"  min="0">
+											</td>
+											<td id="tempStatus1A" style="text-align:center;width:auto;"></td>
+											<td id="tempStatus1T" style="text-align:center;width:auto;"></td>
+											<td id="extUpdat1e" style="text-align:center;width:auto;">
+												<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table><br>
+								<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 100px">Reload Filament</button>
+								<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="margin-left: 50px">Retract Filament</button>
+								<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="margin-left:50px">Disable Active Extruder Motors</button>
+								<hr style="color:blue"><br>
+								<h1 style="text-align:center;" class="panel-heading">Zone</h1>
+								<table id='bedTemps' class="table table-bordered table-hover table-striped">
+									<thead>
+										<tr>
+											<th style="text-align:center;">Zone</th>
+											<th style="text-align:center;">Input Temperature (&#8451; )</th>
+											<th style="text-align:center;">Zone Temp (&#8451; )</th>
+											<th style="text-align:center;">Controls</th>
+											<!-- <th>Target Temp (&#8451; )</th> -->
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<!-- // in file units, changed in to cm () -->
+											<th style="text-align:center;width:auto;">
+												<?php
+												// session_start();
+												// include 'YNG_ACR.php';
+												$db_tablename = "yngUI";
+												$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
+													or die('Error communicating to MySQL server');
+												/// SELECT for : does value exist?
+												$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
+												$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
+												$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
+												// if(isset($is_reveal3D)){
+												if($is_reveal3D->num_rows == 1){
+													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+												}
+												// if(isset($is_FRANK3)){
+												elseif($is_FRANK3->num_rows == 1){
+													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+													
+												}
+												// if(isset($is_GT)){
+												elseif($is_GT->num_rows == 1){
+													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
+												}else{
+													echo 'No Active Printer has been Set';
+												};
+												// }
+												
+												// mysqli_close($dbc);
+											?></th>
+											<td style="text-align:center;width:auto;">
+												<input type="number" name="zoneTempInput" id="zoneTempInput" min="0">
+											</td>
+											<td id="bedTemp" style="text-align:center;width:auto;">N/A</td>
+											<td id="bedUpdate" style="text-align:center;width:auto;">
+												<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+											</td>
 										</td>
 									</tr>
 								</tbody>
-							</table><br>
-							<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="margin-left: 100px">Reload Filament</button>
-							<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="margin-left: 50px">Retract Filament</button>
-							<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="margin-left:50px">Disable Active Extruder Motors</button>
-							<hr style="color:blue"><br>
-							<h1 style="text-align:center;" class="panel-heading">Zone</h1>
-							<table id='bedTemps' class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th style="text-align:center;">Zone</th>
-										<th style="text-align:center;">Input Temperature (&#8451; )</th>
-										<th style="text-align:center;">Zone Temp (&#8451; )</th>
-										<th style="text-align:center;">Controls</th>
-										<!-- <th>Target Temp (&#8451; )</th> -->
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<!-- // in file units, changed in to cm () -->
-										<th style="text-align:center;width:13%;">
-											<?php
-											// session_start();
-											// include 'YNG_ACR.php';
-											$db_tablename = "yngUI";
-											$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
-												or die('Error communicating to MySQL server');
-											/// SELECT for : does value exist?
-											$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
-											$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
-											$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
-											// if(isset($is_reveal3D)){
-											if($is_reveal3D->num_rows == 1){
-												echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-											}
-											// if(isset($is_FRANK3)){
-											elseif($is_FRANK3->num_rows == 1){
-												echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-												
-											}
-											// if(isset($is_GT)){
-											elseif($is_GT->num_rows == 1){
-												echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
-											}else{
-												echo 'No Active Printer has been Set';
-											};
-											// }
-											
-											// mysqli_close($dbc);
-										?></th>
-										<td style="text-align:center;width:30%;">
-											<input type="number" name="zoneTempInput" id="zoneTempInput" min="0">
-										</td>
-										<td id="bedTemp" style="text-align:center;width:45%;">N/A</td>
-										<td id="bedUpdate" style="text-align:center;width:10%;">
-											<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-										</td>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+							</table>
+						</div>
+						<!-- <div class="text-right">
+									<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+						</div> -->
 					</div>
-					<!-- <div class="text-right">
-								<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-					</div> -->
 				</div>
 			</div>
-		</div>
-		    
+				<div class="col-lg-5" style=" max-width:100%;max-height:100%; ">
+					<div class="panel panel-primary"  >
+						<div class="panel-heading" >
+							<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
+						</div>
+			            <img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
+					</div>
+				</div>
+		</div> <!-- ROW END-->
 		<div class="row">
-			<div class="col-lg-12" style="width:auto;height:auto">
-				<div class="panel panel-primary" style="width:1000px; margin-left:15px">
+			<!-- add printer control here -->
+			<div class="col-lg-12" style="max-width:100%;max-height:100%;">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 					</div>
-					<div class="panel-body" style="overflow: auto;">
+					<div class="panel-body" style="overflow: auto; height:auto; width:auto;">
 						<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
 						<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
@@ -260,47 +258,42 @@ session_start();
 						<br>
 					</div>
 				</div>
+				</div>
+			<div class="col-lg-12" style="width:auto; height: auto;">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
+					</div>
+					<div class="col-lg-4" style="width:auto; height: auto;">
+						<br><br><br><br><br><br>
+						<!-- <div class="panel panel-info">
+									<div class="panel-heading">
+												<h3 class="panel-title"><i class="fa fa-file fa-fw"></i> File Controls</h3>
+									</div>
+							<div class="panel-body"> -->
+								<!-- <input type="button" value="Create Folder" class="btn btn-outline btn-primary" onclick="createFolder()"></>&nbsp; -->
+								<!-- <input type="text" id="fName" name="fName" ></><br><br> -->
+								<!-- <input id="gcode_upload" class="btn btn-outline btn-success" content-type="multipart/form-data" accept=".stl,.gcode,.gco,.g" type="file" name="file" class="fileinput-button" data-bind="enable: loginState.isUser()"><br>
+								&nbsp;&nbsp;<button  id="uploadFile" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+							</div>
+						</div> -->
+					</div>
+					<div class="panel-body">
+						<div id="table_contents" class="table-responsive" style="width:auto; height:auto;">
+						</div>
+						<!-- <div class="text-right">
+									<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+						</div> -->
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="col-lg-12" style="width:auto;height:auto">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
-				</div>
-				<div class="col-lg-4">
-					<br><br><br><br><br><br>
-					<!-- <div class="panel panel-info">
-								<div class="panel-heading">
-											<h3 class="panel-title"><i class="fa fa-file fa-fw"></i> File Controls</h3>
-								</div>
-						<div class="panel-body"> -->
-							<!-- <input type="button" value="Create Folder" class="btn btn-outline btn-primary" onclick="createFolder()"></>&nbsp; -->
-							<!-- <input type="text" id="fName" name="fName" ></><br><br> -->
-							<!-- <input id="gcode_upload" class="btn btn-outline btn-success" content-type="multipart/form-data" accept=".stl,.gcode,.gco,.g" type="file" name="file" class="fileinput-button" data-bind="enable: loginState.isUser()"><br>
-							&nbsp;&nbsp;<button  id="uploadFile" class="btn btn-primary" onclick="uploadFile()">Upload</button>
-						</div>
-					</div> -->
-				</div>
-				<div class="panel-body">
-					<div id="table_contents" class="table-responsive" style="width:auto; height:auto;">
-					</div>
-					<!-- <div class="text-right">
-								<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-					</div> -->
-				</div>
-			</div>
 		</div>
 	</div>
-	
-	<!-- /.panel .chat-panel -->
 </div>
-<!-- /.col-lg-4 -->
 </div>
-<!-- /.row -->
 </div>
-<!-- /#page-wrapper -->
 </div>
-<!-- /#wrapper -->
 
 	<script type="text/javascript">
 
@@ -1474,8 +1467,10 @@ session_start();
 
 </body>
 
+
 <footer class="panel-footer" align="center">
 	<p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
 </footer>
+
 
 </html>
