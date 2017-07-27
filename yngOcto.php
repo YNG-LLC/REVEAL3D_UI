@@ -95,7 +95,7 @@ session_start();
 			</div>
 		</div>
 		
-		<div class="col-lg-6">
+		<div class="col-lg-6" style="width:auto;height:auto">
 		    <div class="panel panel-primary">
 		        <div class="panel-heading">
 		            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Live Print</h3>
