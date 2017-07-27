@@ -94,7 +94,7 @@ session_start();
 				</div>
 			</div>
 			</div>
-		<div class="col-lg-6" style="width:auto;height:auto;float:right; margin-right: auto">
+		<div class="col-lg-6" style="max-width:50%;max-height:50%;float:right; margin-right: auto">
 				<div class="panel panel-red">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
