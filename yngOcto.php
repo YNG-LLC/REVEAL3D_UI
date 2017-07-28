@@ -222,7 +222,7 @@ session_start();
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 						</div>
-						<div class="panel-body" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;clear:both;overflow:auto;">
+						<div class="panel-body" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;clear:both;overflow:auto;">
 							<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
 							<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
@@ -261,7 +261,7 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
+				<div class="col-lg-12" >
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
@@ -1475,7 +1475,7 @@ session_start();
 </body>
 
 
-<footer class="panel-footer" align="center" style="position:relative" >
+<footer class="panel-footer" align="center" >
 	<p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
 </footer>
 
