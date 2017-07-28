@@ -115,34 +115,34 @@ session_start();
 									<tbody>
 										<tr>
 											<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
-											<td>
-												<input type="number" id="tool0"  min="0" style="max-width:100%;max-height:100%;">
+											<td style=" text-align:center;max-width:100%;max-height:100%;">
+												<input type="number" id="tool0"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
 											</td>
-											<td id="tempStatus0A" style="max-width:100%;max-height:100%;"></td>
-											<td id="tempStatus0T" style="max-width:100%;max-height:100%;"></td>
-											<td id="extUpdate0" style="max-width:100%;max-height:100%;">
+											<td id="tempStatus0A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+											<td id="tempStatus0T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+											<td id="extUpdate0" style=" text-align:center;max-width:100%;max-height:100%;">
 												<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
 											</td>
 										</tr>
 										<tr id='dualNoz' class='' >
-											<th style="max-width:100%;max-height:100%;">#2</th>
-											<td>
-												<input type="number" id="tool1"  min="0" style="max-width:100%;max-height:100%;">
+											<th style=" text-align:center;max-width:100%;max-height:100%;">#2</th>
+											<td style=" text-align:center;max-width:100%;max-height:100%;">
+												<input type="number" id="tool1"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
 											</td>
-											<td id="tempStatus1A" style="max-width:100%;max-height:100%;"></td>
-											<td id="tempStatus1T" style="max-width:100%;max-height:100%;"></td>
-											<td id="extUpdat1e" style="max-width:100%;max-height:100%;">
+											<td id="tempStatus1A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+											<td id="tempStatus1T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+											<td id="extUpdat1e" style=" text-align:center;max-width:100%;max-height:100%;">
 												<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
-								<!-- <div > -->
+								<div style=" text-align:center;max-width:100%;max-height:100%;">
 								<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
 								<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
 								<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
-								<!-- </div> -->
-								<hr style="color:blue"><br>
+								</div>
+								<hr style="color:blue">
 								<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
 								<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
 									<thead>
@@ -188,7 +188,7 @@ session_start();
 												// mysqli_close($dbc);
 											?></th>
 											<td style="text-align:center;max-width:100%;max-height:100%;">
-												<input type="number" name="zoneTempInput" id="zoneTempInput" min="0">
+												<input style=" text-align:center;max-width:100%;max-height:100%;" type="number" name="zoneTempInput" id="zoneTempInput" min="0">
 											</td>
 											<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
 											<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
