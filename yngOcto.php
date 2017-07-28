@@ -19,7 +19,7 @@ session_start();
 			<br>
 			<!-- </div> -->
 			<div class="row">
-				<div class="col-lg-5" style="max-width:100%;max-height:100%;">
+				<div class="col-lg-5" style="max-width:auto;max-height:auto;">
 					<div class="panel panel-green">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
@@ -93,7 +93,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
+			<div class="col-lg-7" style="max-width:auto;max-height:auto;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-red">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
@@ -199,13 +199,10 @@ session_start();
 								</tbody>
 							</table>
 						</div>
-						<!-- <div class="text-right">
-										<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-						</div> -->
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-5" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
+			<div class="col-lg-5" style="max-width:auto;max-height:auto;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-primary"  >
 					<div class="panel-heading" >
 						<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
@@ -217,12 +214,12 @@ session_start();
 			<br><br>
 			<div class="row">
 				<!-- add printer control here -->
-				<div class="col-lg-12" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;clear:both">
+				<div class="col-lg-12" style="max-width:auto;max-height:auto;">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
 						</div>
-						<div class="panel-body" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;clear:both;overflow:auto;">
+						<div class="panel-body" style="max-width:100%;max-height:100%;overflow:auto;">
 							<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
 							<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
@@ -261,38 +258,21 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12" >
+				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both' >
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
 						</div>
-						<div class="col-lg-4" style="max-width:100%;max-height:100%;">
-							<br><br><br><br><br><br>
-							<!-- <div class="panel panel-info">
-											<div class="panel-heading">
-															<h3 class="panel-title"><i class="fa fa-file fa-fw"></i> File Controls</h3>
-											</div>
-								<div class="panel-body"> -->
-									<!-- <input type="button" value="Create Folder" class="btn btn-outline btn-primary" onclick="createFolder()"></>&nbsp; -->
-									<!-- <input type="text" id="fName" name="fName" ></><br><br> -->
-									<!-- <input id="gcode_upload" class="btn btn-outline btn-success" content-type="multipart/form-data" accept=".stl,.gcode,.gco,.g" type="file" name="file" class="fileinput-button" data-bind="enable: loginState.isUser()"><br>
-									&nbsp;&nbsp;<button  id="uploadFile" class="btn btn-primary" onclick="uploadFile()">Upload</button>
-								</div>
-							</div> -->
-						</div>
 						<div class="panel-body">
 							<div id="table_contents" class="table-responsive" style="max-width:100%;max-height:100%;">
 							</div>
-							<!-- <div class="text-right">
-											<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-							</div> -->
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row" style="max-width:100%;max-height:100%;clear:both">
+			<div class="row" style="max-width:100%;max-height:100%;">
 			</div>
-			<div class="row" style="max-width:100%;max-height:100%;clear:both">
+			<div class="row" style="max-width:100%;max-height:100%;">
 			</div>
 		</div>
 	</div>
@@ -300,8 +280,6 @@ session_start();
 </div>
 </div>
 </div>
-
-
 	<script type="text/javascript">
 
 		if ($id('currentState').innerHTML == ''){
@@ -365,7 +343,7 @@ session_start();
 		function create_a_table(list,list_count){
 				if(list_count > 0){
 
-					var table = "<table id='dynTable' class='table table-bordered table-hover table-striped'  style='max-width:100%;max-height:100%;'>";
+					var table = "<table id='dynTable' class='table table-bordered table-hover table-striped' style=' max-width:100%;max-height:100%;'>";
 					// var name = "";
 					// var size = "";
 					// var volume = "";
@@ -379,13 +357,13 @@ session_start();
 					var controls = "";
 
 					// console.log(list);
-					table = table + "<thead>";
-					table = table + "<tr style='max-width:100%;max-height:100%;'>";
-					table = table + "<th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
-					table = table + "<th>Size (MB)</th>";
-					table = table + "<th>Volume (cm<sup>3</sup>)</th>";
-					table = table + "<th onclick='sortQuotes1(1);'>Print Time (Hours)</th>";
-					table = table + "<th>Controls</th>";
+					table = table + "<thead style=' text-align:center;max-width:100%;max-height:100%;'>";
+					table = table + "<tr>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Size (MB)</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Volume (cm<sup>3</sup>)</th>";
+					table = table + "<th  style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Print Time (Hours)</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Controls</th>";
 					table = table + "</tr>";
 					table = table + "</thead>";
 					table = table + "<tbody>";
@@ -415,13 +393,11 @@ session_start();
 
 
 						table = table + "<tr style='max-width:100%;max-height:100%;' id='row"+rowID+"'>";
-						// table = table + "<td style='text-align:left;width:25%; align='>" + id + "</td>";
 						table = table + "<td id='name_ID_"+nameID_num+"' style='max-width:100%;max-height:100%;'>" + name + "</td>";
-						table = table + "<td style='max-width:100%;max-height:100%;'>" + size + "</td>";
-						table = table + "<td style='max-width:100%;max-height:100%;'>" + volume + "</td>"
-						// table = table + "<td style='text-align:left;width:20%;'>" + depth + "</td>";
-						table = table + "<td style='max-width:100%;max-height:100%;'>" + time + "</td>";
-						table = table + "<td style='max-width:100%;max-height:100%;'>" + controls + "</td>";
+						table = table + "<td style=' text-align:center;max-width:100%;max-height:100%;'>" + size + "</td>";
+						table = table + "<td style=' text-align:center;max-width:100%;max-height:100%;'>" + volume + "</td>"
+						table = table + "<td style=' text-align:center;max-width:100%;max-height:100%;'>" + time + "</td>";
+						table = table + "<td style=' text-align:center;max-width:100%;max-height:100%;'>" + controls + "</td>";
 						table = table + "</tr>";
 					}
 
