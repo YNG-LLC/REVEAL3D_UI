@@ -5,96 +5,95 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-<body>
-	<div id="wrapper">
-	</div>
-	<div id="page-wrapper">
-		<div class="row">
-			<h1 id='banner' style="text-align:center"  class="col-lg-12">
-			</h1>
-			<!-- /.col-lg-12 -->
+	<body>
+		<div id="wrapper">
 		</div>
-		<br>
-		<!-- </div> -->
-		<div class="row">
-			<div class="col-lg-5" style="max-width:100%;max-height:100%;">
-				<div class="panel panel-green">
-					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
-					</div>
-					<div class="panel-body" style="max-width:100%;max-height:100%;">
-						<table id='printerState' style="max-width:100%;max-height:100%;">
-							<tr>
-								<th>State<span id="printOptions"></span><sup></sup>:</th>
-								<td id="currentState" style="text-align:left;width:auto;"></td>
-							</tr>
-							<tr>
-								<th>Active Printer<span id="printOptions"></span><sup></sup>:</th>
-								<td id="currentPrinter" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;
-									<?php
-									// session_start();
-									if (!$dbc) {
-										die("Connection failed: " . mysqli_connect_error());
-									}
-									if (mysqli_num_rows($resultAP) > 0) {
-										// output data of each row
-										while($row = mysqli_fetch_assoc($resultAP)) {
-											echo $row["ActivePrinter"];
-											// echo $row;
-										}
-									} else {
-										echo "0 results";
-									}
-										
-									// mysqli_close($dbc);
-								?></td>
-							</tr>
-							<tr>
-								<th>Active Nozzle<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentNozzle" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;<?php
+		<div id="page-wrapper">
+			<div class="row">
+				<h1 id='banner' style="text-align:center"  class="col-lg-12">
+				</h1>
+				<!-- /.col-lg-12 -->
+			</div>
+			<br>
+			<!-- </div> -->
+			<div class="row">
+				<div class="col-lg-5" style="max-width:100%;max-height:100%;">
+					<div class="panel panel-green">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
+						</div>
+						<div class="panel-body" style="max-width:100%;max-height:100%;">
+							<table id='printerState' style="max-width:100%;max-height:100%;">
+								<tr>
+									<th>State<span id="printOptions"></span><sup></sup>:</th>
+									<td id="currentState" style="text-align:left;width:auto;"></td>
+								</tr>
+								<tr>
+									<th>Active Printer<span id="printOptions"></span><sup></sup>:</th>
+									<td id="currentPrinter" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;
+										<?php
 										// session_start();
-										$db_tablename = "yngUI";
-										if (mysqli_num_rows($resultN) > 0) {
+										if (!$dbc) {
+											die("Connection failed: " . mysqli_connect_error());
+										}
+										if (mysqli_num_rows($resultAP) > 0) {
 											// output data of each row
-											while($row = mysqli_fetch_assoc($resultN)) {
-												echo $row["NozzleType"];
+											while($row = mysqli_fetch_assoc($resultAP)) {
+												echo $row["ActivePrinter"];
 												// echo $row;
 											}
 										} else {
 											echo "0 results";
 										}
+											
 										// mysqli_close($dbc);
-								?></td>
+									?></td>
+								</tr>
+								<tr>
+									<th>Active Nozzle<span id="printOptions"></span><sup></sup>: </th>
+									<td id="currentNozzle" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;<?php
+												// session_start();
+												$db_tablename = "yngUI";
+												if (mysqli_num_rows($resultN) > 0) {
+													// output data of each row
+													while($row = mysqli_fetch_assoc($resultN)) {
+														echo $row["NozzleType"];
+														// echo $row;
+													}
+												} else {
+													echo "0 results";
+												}
+												// mysqli_close($dbc);
+									?></td>
+								</tr>
+								<tr>
+									<th>Port<span id="printOptions"></span><sup></sup>: </th>
+									<td id="currentPort" style="text-align:left;width:auto;"></td>
+								</tr>
+								<tr>
+									<th>Baudrate<span id="printOptions"></span><sup></sup>: </th>
+									<td id="currentBR" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
+								</tr>
+								<tr>
+									<th>Profile<span id="printOptions"></span><sup></sup>: </th>
+									<td id="currentProfile" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
+								</tr>
+								<!-- <tr>
+												<th>Job Selected<span id="jobOptions"></span><sup></sup>: </th>
+												<td id="jobStatus" style="text-align:left;width:75%;">&nbsp;&nbsp;</td>
+												<br><br><br>
+								</tr> -->
+								<tr><th>Active Job<span id="jobOptions"></span><sup></sup>: </th>
+								<td id="jobActive" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
 							</tr>
-							<tr>
-								<th>Port<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentPort" style="text-align:left;width:auto;"></td>
-							</tr>
-							<tr>
-								<th>Baudrate<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentBR" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
-							</tr>
-							<tr>
-								<th>Profile<span id="printOptions"></span><sup></sup>: </th>
-								<td id="currentProfile" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
-							</tr>
-							<!-- <tr>
-										<th>Job Selected<span id="jobOptions"></span><sup></sup>: </th>
-										<td id="jobStatus" style="text-align:left;width:75%;">&nbsp;&nbsp;</td>
-										<br><br><br>
-							</tr> -->
-							<tr><th>Active Job<span id="jobOptions"></span><sup></sup>: </th>
-							<td id="jobActive" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
-						</tr>
-					</table>
-					<br>
+						</table>
+						<br>
+					</div>
 				</div>
 			</div>
-			</div>
-		<div class="col-lg-6" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
+			<div class="col-lg-6" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-red">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
@@ -139,9 +138,9 @@ session_start();
 									</tbody>
 								</table>
 								<!-- <div > -->
-									<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
-									<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
-									<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
+								<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
+								<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
+								<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
 								<!-- </div> -->
 								<hr style="color:blue"><br>
 								<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
@@ -201,102 +200,107 @@ session_start();
 							</table>
 						</div>
 						<!-- <div class="text-right">
-									<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+										<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
 						</div> -->
 					</div>
 				</div>
 			</div>
-				<div class="col-lg-5" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
-					<div class="panel panel-primary"  >
-						<div class="panel-heading" >
-							<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
-						</div>
-			            <img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
+			<div class="col-lg-5" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
+				<div class="panel panel-primary"  >
+					<div class="panel-heading" >
+						<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
 					</div>
+					<img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
 				</div>
-		</div> <!-- ROW END-->
-		<br><br>
-		<div class="row">
-			<!-- add printer control here -->
-			<div class="col-lg-12" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
-					</div>
-					<div class="panel-body" style="overflow: auto; max-width:100%;max-height:100%;">
-						<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
-						<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
-						<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
-						<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
-						<br><br><br>
-						<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
-						<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
-						<br><br><br>
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
+			</div>
+			</div> <!-- ROW END-->
+			<br><br>
+			<div class="row">
+				<!-- add printer control here -->
+				<div class="col-lg-12" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;clear:both">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
+						</div>
+						<div class="panel-body" style="max-width:100%;max-height:100%;float:right;flex-wrap: wrap;flex: 1 0 auto;clear:both;overflow:auto;">
+							<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
+							<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
+							<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
+							<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
+							<br><br><br>
+							<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
+							<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
+							<br><br><br>
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
+								</div>
 							</div>
+							<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
+							<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 50px" min="0"><br><br><br>
+							<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
+							<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
+							<br><br>
+							<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
+							<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
+							<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
+							<br>
+							<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
+							<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
+							<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
+							<br><br>
+							
+							<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
+							<br><br>
+							<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
+							<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
+							<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
+							<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
+							<br>
 						</div>
-						<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
-						<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 50px" min="0"><br><br><br>
-						<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
-						<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
-						<br><br>
-						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
-						<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
-						<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
-						<br>
-						<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
-						<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
-						<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
-						<br><br>
-						
-						<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
-						<br><br>
-						<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
-						<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
-						<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
-						<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
-						<br>
 					</div>
 				</div>
-				</div>
-			<div class="col-lg-12" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
-					</div>
-					<div class="col-lg-4" style="max-width:100%;max-height:100%;">
-						<br><br><br><br><br><br>
-						<!-- <div class="panel panel-info">
-									<div class="panel-heading">
-												<h3 class="panel-title"><i class="fa fa-file fa-fw"></i> File Controls</h3>
-									</div>
-							<div class="panel-body"> -->
-								<!-- <input type="button" value="Create Folder" class="btn btn-outline btn-primary" onclick="createFolder()"></>&nbsp; -->
-								<!-- <input type="text" id="fName" name="fName" ></><br><br> -->
-								<!-- <input id="gcode_upload" class="btn btn-outline btn-success" content-type="multipart/form-data" accept=".stl,.gcode,.gco,.g" type="file" name="file" class="fileinput-button" data-bind="enable: loginState.isUser()"><br>
-								&nbsp;&nbsp;<button  id="uploadFile" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+				<div class="col-lg-12" style="max-width:100%;max-height:100%;flex-wrap: wrap;flex: 1 0 auto;">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
+						</div>
+						<div class="col-lg-4" style="max-width:100%;max-height:100%;">
+							<br><br><br><br><br><br>
+							<!-- <div class="panel panel-info">
+											<div class="panel-heading">
+															<h3 class="panel-title"><i class="fa fa-file fa-fw"></i> File Controls</h3>
+											</div>
+								<div class="panel-body"> -->
+									<!-- <input type="button" value="Create Folder" class="btn btn-outline btn-primary" onclick="createFolder()"></>&nbsp; -->
+									<!-- <input type="text" id="fName" name="fName" ></><br><br> -->
+									<!-- <input id="gcode_upload" class="btn btn-outline btn-success" content-type="multipart/form-data" accept=".stl,.gcode,.gco,.g" type="file" name="file" class="fileinput-button" data-bind="enable: loginState.isUser()"><br>
+									&nbsp;&nbsp;<button  id="uploadFile" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+								</div>
+							</div> -->
+						</div>
+						<div class="panel-body">
+							<div id="table_contents" class="table-responsive" style="max-width:100%;max-height:100%;">
 							</div>
-						</div> -->
-					</div>
-					<div class="panel-body">
-						<div id="table_contents" class="table-responsive" style="max-width:100%;max-height:100%;">
+							<!-- <div class="text-right">
+											<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+							</div> -->
 						</div>
-						<!-- <div class="text-right">
-									<a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-						</div> -->
 					</div>
 				</div>
 			</div>
-		</div>
+			<div class="row" style="max-width:100%;max-height:100%;clear:both">
+			</div>
+			<div class="row" style="max-width:100%;max-height:100%;clear:both">
+			</div>
 		</div>
 	</div>
 </div>
 </div>
 </div>
 </div>
+
 
 	<script type="text/javascript">
 
@@ -1471,7 +1475,7 @@ session_start();
 </body>
 
 
-<footer class="panel-footer" align="center">
+<footer class="panel-footer" align="center" style="position:relative" >
 	<p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
 </footer>
 

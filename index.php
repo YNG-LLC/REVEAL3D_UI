@@ -17,14 +17,13 @@ include 'YNG_ACR.php';
                 </div>
                 <!-- /.row -->
                 <div class="clearfix">
-                    <div class="col-lg-7">
+                    <div class="col-lg-7" style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Live Print</h3>
                             </div>
                             <div class="panel-body" align="center">
-                                <!-- <title>Video Stream/s</title><?php echo '<img src='.$fetchIp.' width="640" height="480">'?> -->
-                                <img src='http://<?php echo $fetchIp; ?>' width="640" height="480">
+                                <img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;" >
                             </div>
                         </div>
                     </div>
@@ -33,16 +32,6 @@ include 'YNG_ACR.php';
             <!-- /.panel-footer -->
         </div>
         <!-- /.panel .chat-panel -->
-    </div>
-    <!-- /.col-lg-4 -->
-</div>
-<!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
-</div>
-<!-- /#wrapper -->
-<!-- jQuery -->
-<!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
