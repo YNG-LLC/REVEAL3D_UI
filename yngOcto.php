@@ -24,8 +24,8 @@ session_start();
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
 						</div>
-						<div class="panel-body" style="max-width:100%;max-height:100%;">
-							<table id='printerState' style="max-width:100%;max-height:100%;">
+						<div class="panel-body" style="max-width:auto;max-height:auto;">
+							<table id='printerState'>
 								<tr>
 									<th>State<span id="printOptions"></span><sup></sup>:</th>
 									<td id="currentState"></td>
