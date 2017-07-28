@@ -24,15 +24,15 @@ session_start();
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
 						</div>
-						<div class="panel-body" style="max-width:auto;max-height:auto;">
-							<table id='printerState' style="max-width:auto;max-height:auto;">
+						<div class="panel-body" style="max-width:100%;max-height:100%;">
+							<table id='printerState' style="max-width:100%;max-height:100%;">
 								<tr>
 									<th>State<span id="printOptions"></span><sup></sup>:</th>
-									<td id="currentState" style="text-align:left;width:auto;"></td>
+									<td id="currentState"></td>
 								</tr>
 								<tr>
 									<th>Active Printer<span id="printOptions"></span><sup></sup>:</th>
-									<td id="currentPrinter" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;
+									<td id="currentPrinter" >&nbsp;&nbsp;&nbsp;
 										<?php
 										// session_start();
 										if (!$dbc) {
@@ -53,7 +53,7 @@ session_start();
 								</tr>
 								<tr>
 									<th>Active Nozzle<span id="printOptions"></span><sup></sup>: </th>
-									<td id="currentNozzle" style="text-align:left;width:auto;">&nbsp;&nbsp;&nbsp;<?php
+									<td id="currentNozzle" >&nbsp;&nbsp;&nbsp;<?php
 												// session_start();
 												$db_tablename = "yngUI";
 												if (mysqli_num_rows($resultN) > 0) {
@@ -70,15 +70,15 @@ session_start();
 								</tr>
 								<tr>
 									<th>Port<span id="printOptions"></span><sup></sup>: </th>
-									<td id="currentPort" style="text-align:left;width:auto;"></td>
+									<td id="currentPort" ></td>
 								</tr>
 								<tr>
 									<th>Baudrate<span id="printOptions"></span><sup></sup>: </th>
-									<td id="currentBR" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
+									<td id="currentBR" >&nbsp;&nbsp;</td>
 								</tr>
 								<tr>
 									<th>Profile<span id="printOptions"></span><sup></sup>: </th>
-									<td id="currentProfile" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
+									<td id="currentProfile" >&nbsp;&nbsp;</td>
 								</tr>
 								<!-- <tr>
 												<th>Job Selected<span id="jobOptions"></span><sup></sup>: </th>
@@ -86,7 +86,7 @@ session_start();
 												<br><br><br>
 								</tr> -->
 								<tr><th>Active Job<span id="jobOptions"></span><sup></sup>: </th>
-								<td id="jobActive" style="text-align:left;width:auto;">&nbsp;&nbsp;</td>
+								<td id="jobActive" >&nbsp;&nbsp;</td>
 							</tr>
 						</table>
 						<br>
