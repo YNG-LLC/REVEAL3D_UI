@@ -214,51 +214,55 @@ session_start();
 			<br><br>
 			<div class="row">
 				<!-- add printer control here -->
-				<div class="col-lg-12" style="max-width:auto;max-height:auto;">
-					<div class="panel panel-primary">
+				<div class="col-lg-12" id="accordion" style="max-width:auto;max-height:auto;">
+					<div  class="panel panel-primary" >
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Control</h3>
+							<h3 class="panel-title">
+								<a class="btn btn-primary collapsed" data-toggle="collapse" data-parent="#accordion" href="#printerControls" aria-expanded="false">+</a><i class="fa fa-magic fa-fw"></i> Printer Control
+							</h3>
 						</div>
-						<div class="panel-body" style="max-width:100%;max-height:100%;overflow:auto;">
-							<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
-							<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
-							<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
-							<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
-							<br><br><br>
-							<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
-							<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
-							<br><br><br>
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
+						<div id="printerControls" class="panel-collapse collapse in" aria-expanded="false">
+							<div class="panel-body">
+								<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
+								<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
+								<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
+								<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
+								<br><br><br>
+								<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
+								<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
+								<br><br><br>
+								<div class="panel panel-success">
+									<div class="panel-heading">
+										<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
+									</div>
 								</div>
+								<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
+								<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 50px" min="0"><br><br><br>
+								<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
+								<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
+								<br><br>
+								<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
+								<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
+								<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
+								<br>
+								<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
+								<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
+								<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
+								<br><br>
+								
+								<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
+								<br><br>
+								<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
+								<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
+								<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
+								<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
+								<br>
 							</div>
-							<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
-							<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 50px" min="0"><br><br><br>
-							<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
-							<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
-							<br><br>
-							<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
-							<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
-							<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
-							<br>
-							<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
-							<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
-							<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
-							<br><br>
-							
-							<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
-							<br><br>
-							<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
-							<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
-							<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
-							<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
-							<br>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both' >
+				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both;overflow:auto;' >
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
@@ -360,7 +364,7 @@ session_start();
 					table = table + "<thead style=' text-align:center;max-width:100%;max-height:100%;'>";
 					table = table + "<tr>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
-					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Size (MB)</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Size (MB)</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Volume (cm<sup>3</sup>)</th>";
 					table = table + "<th  style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Print Time (Hours)</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Controls</th>";

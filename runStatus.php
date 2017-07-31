@@ -70,8 +70,8 @@ if ($dbConnection->connect_error) {
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <div class="row">
-                    <div class="col-lg-12">
+            <div class="row" style="overflow:auto;">
+                    <div class="col-lg-12" style="overflow:auto;">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-th-list fa-fw"></i> Uploaded Prints</h3>
@@ -88,10 +88,10 @@ if ($dbConnection->connect_error) {
 
                 // Uploaded Prints Table
                 if ($queryResult->num_rows > 0) {
-                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll'><tr><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>task_id</th><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File</th><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>statusValue</th><th>zone</th><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'printerType</th><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>materialType</th><th title='Click to Sort' href='#' onclick='sortQuotes1(0);'>NozzleMode</th><th>ErrorLog</th></tr>";
+                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll'><tr><th id='fileTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File</th><th title='Click to Sort' id='idTitle' href='#' onclick='sortQuotes1(1);'>task_id</th><th id='statusTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>statusValue</th><th>zone</th><th  id='printerTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'printerType</th>Printer<th title='Click to Sort' id='materialTitle' href='#' onclick='sortQuotes1(0);'>materialType</th><th title='Click to Sort' id='nozzleTitle' href='#' onclick='sortQuotes1(0);'>NozzleMode</th><th>ErrorLog</th></tr>";
                      // output data of each row
                      while($row = $queryResult->fetch_assoc()) {
-                         echo "<tr><td>" . $row["task_id"]. "</td><td>" . $row["file"]. "</td><td> " . $row["statusValue"]. "</td><td> " . $row["zone"]. "</td><td> " . $row["printerType"]. "</td><td> " . $row["materialType"]. "</td><td>" . $row["nozzleMode"]. "</td><td>" . $row["errorLog"]. "</td></tr>";
+                         echo "<tr><td>" . $row["file"]. "</td><td>" . $row["task_id"]. "</td><td> " . $row["statusValue"]. "</td><td> " . $row["zone"]. "</td><td> " . $row["printerType"]. "</td><td> " . $row["materialType"]. "</td><td>" . $row["nozzleMode"]. "</td><td>" . $row["errorLog"]. "</td></tr>";
                      }
                      echo "</table>";
                 } else {
@@ -114,7 +114,7 @@ if ($dbConnection->connect_error) {
                 <div class="col-lg-12">
             <!-- </div> -->
             <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="overflow:auto;">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Materials in DB</h3>
@@ -136,9 +136,7 @@ if ($dbConnection->connect_error) {
                 }
 
                 // mysqli_close($dbConnection); // Connection Closed.
-
                 ?>
-	                		
                		 </div> </div>
                 </div>
                 <!-- /.col-lg-4 -->
@@ -152,63 +150,57 @@ if ($dbConnection->connect_error) {
             table = document.getElementById("runman");
             switching = true;
             dir = "asc";
-            while (switching) {
-            switching = false;
-            rows = table.getElementsByTagName("TR");
-            for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            // console.log(valueX);
-            // console.log(valueY);
-            if(n == 0){
-                if (dir == "asc") {
-            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                shouldSwitch= true;
-                break;
-            }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    shouldSwitch= true;
-                    break;
-                }
-                }
-                }
-            if(n == 1){
-                if (dir == "asc") {
-                if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
-                shouldSwitch= true;
-                break;
-                }
-            }else if (dir == "desc") {
-                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
-                shouldSwitch= true;
-                break;
-                }
-                }
-                }
-            }
-            
-            if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            switchcount ++;
-            } else {
-            if (switchcount == 0 && dir == "asc") {
-            dir = "desc";
-            switching = true;
-            }
-            }
+            while(switching){
+	            switching = false;
+	            rows = table.getElementsByTagName("TR");
+	            console.log();
+	            for(i = 1; i < (rows.length - 1); i++){
+		            shouldSwitch = false;
+		            x = rows[i].getElementsByTagName("TD")[n];
+		            y = rows[i + 1].getElementsByTagName("TD")[n];
+		            // console.log(x);
+		            // console.log(y);
+		            if(n == 0){
+		                if(dir == "asc"){
+				            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+				                shouldSwitch= true;
+				                break;
+			            	}
+			            }else if(dir == "desc"){
+			                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+			                    shouldSwitch= true;
+			                    break;
+			                }
+			                }
+	                }
+		            if(n == 1){
+		                if (dir == "asc"){
+		                	if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+				                shouldSwitch= true;
+				                break;
+		                	}
+		            }else if(dir == "desc"){
+		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+			                shouldSwitch= true;
+			                break;
+		                }
+		                }
+		                }
+	            }
+	            if(shouldSwitch){
+	            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	            switching = true;
+	            switchcount ++;
+	            }else{
+		            if(switchcount == 0 && dir == "asc"){
+		            dir = "desc";
+		            switching = true;
+	            	}
+	            }
             }
         }
 
-        // sortQuotes1();
-        // $(document).ready(function(){
-        //     sortQuotes1();
 
-        //     window.onload(sortQuotes1(0));
-
-        // });
 
 
 
