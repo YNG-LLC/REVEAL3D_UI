@@ -127,24 +127,24 @@
                   $nozzleType = $tmpnoz[0];
 
 
-                  if($nozzleType == "Single"){
-                      // echo "single";
-                      $updateNT = "UPDATE settingsUI SET NozzleType = '$postNozzle' WHERE NozzleType = 'Single'";
-                      $updateDT = "UPDATE settingsUI SET Date_Updated = '$activeDT' WHERE NozzleType = 'Single'";
+                  // if($nozzleType == "Single"){
+                  //     // echo "single";
+                  //     $updateNT = "UPDATE settingsUI SET NozzleType = '$postNozzle' WHERE NozzleType = 'Single'";
+                  //     $updateDT = "UPDATE settingsUI SET Date_Updated = '$activeDT' WHERE NozzleType = 'Single'";
 
-                      $updateNT_Query = mysqli_query($dbc, $updateNT);
-                      $updateDT_Query = mysqli_query($dbc, $updateDT);
+                  //     $updateNT_Query = mysqli_query($dbc, $updateNT);
+                  //     $updateDT_Query = mysqli_query($dbc, $updateDT);
 
-                  }
+                  // }
 
-                  elseif($nozzleType == "Duplication"){
-                      // echo "duplicationDUP";
-                      $updateNT = "UPDATE settingsUI SET NozzleType = '$postNozzle' WHERE NozzleType = 'Duplication'";
-                      $updateDT = "UPDATE settingsUI SET Date_Updated = '$activeDT' WHERE NozzleType = 'Duplication'";
+                  // elseif($nozzleType == "Duplication"){
+                  //     // echo "duplicationDUP";
+                  //     $updateNT = "UPDATE settingsUI SET NozzleType = '$postNozzle' WHERE NozzleType = 'Duplication'";
+                  //     $updateDT = "UPDATE settingsUI SET Date_Updated = '$activeDT' WHERE NozzleType = 'Duplication'";
 
-                      $updateNT_Query = mysqli_query($dbc, $updateNT);
-                      $updateDT_Query = mysqli_query($dbc, $updateDT);
-                  }
+                  //     $updateNT_Query = mysqli_query($dbc, $updateNT);
+                  //     $updateDT_Query = mysqli_query($dbc, $updateDT);
+                  // }
               }
 
 
