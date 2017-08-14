@@ -337,8 +337,12 @@ session_start();
 				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both;overflow:auto;' >
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-folder fa-fw"></i>  Available Files</h3>
+						    <h3 class="panel-title">
+						    	<a class="btn btn-default collapsed in" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false">+</a><i class="fa fa-folder fa-fw"></i> Available Files
+						    </h3>
 						</div>
+						<!-- .panel-heading -->
+						<div id="collapseFour" class="panel-collapse collapse in" aria-expanded="false">
 						<div class="panel-body">
 							<div id="table_contents" class="table-responsive" style="max-width:100%;max-height:100%;">
 							</div>
