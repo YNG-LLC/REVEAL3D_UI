@@ -126,6 +126,7 @@
                   $tmpnoz  = mysqli_fetch_row($dbc->query("SELECT NozzleType FROM settingsUI"));
                   $nozzleType = $tmpnoz[0];
 
+                  // ###  code below was updating nozzle type to posted value during file upload ###
 
                   // if($nozzleType == "Single"){
                   //     // echo "single";

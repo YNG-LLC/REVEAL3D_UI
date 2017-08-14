@@ -93,128 +93,200 @@ session_start();
 					</div>
 				</div>
 			</div>
+
 			<div class="col-lg-7" style="max-width:auto;max-height:auto;float:right;flex-wrap: wrap;flex: 1 0 auto;">
 				<div class="panel panel-red">
 					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-fire fa-fw"></i> Temperature Panel</h3>
+						<h3 class="panel-title">
+			        		<a class="btn btn-red collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">+</a><i class="fa fa-fire fa-fw"></i> Temperature Panel
+			        	</h3>
 					</div>
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<h1 style="max-width:100%;max-height:100%;text-align:center;" class="panel-heading">Extruders</h1>
-								<table id='bedTemps' class="table table-bordered table-hover table-striped">
-									<thead>
-										<tr>
-											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Extruder</th>
-											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Input Temp (&#8451; )</th>
-											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Actual (&#8451; )</th>
-											<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Target (&#8451;)</th>
-											<th>Controls</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
-											<td style=" text-align:center;max-width:100%;max-height:100%;">
-												<input type="number" id="tool0"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
-											</td>
-											<td id="tempStatus0A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-											<td id="tempStatus0T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-											<td id="extUpdate0" style=" text-align:center;max-width:100%;max-height:100%;">
-												<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-											</td>
-										</tr>
-										<tr id='dualNoz' class='' >
-											<th style=" text-align:center;max-width:100%;max-height:100%;">#2</th>
-											<td style=" text-align:center;max-width:100%;max-height:100%;">
-												<input type="number" id="tool1"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
-											</td>
-											<td id="tempStatus1A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-											<td id="tempStatus1T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-											<td id="extUpdat1e" style=" text-align:center;max-width:100%;max-height:100%;">
-												<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+					<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<h1 style="max-width:100%;max-height:100%;text-align:center;" class="panel-heading">Extruders</h1>
+									<table id='bedTemps' class="table table-bordered table-hover table-striped">
+										<thead>
+											<tr>
+												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Extruder</th>
+												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Input Temp (&#8451; )</th>
+												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Actual (&#8451; )</th>
+												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Target (&#8451;)</th>
+												<th>Controls</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
+												<td style=" text-align:center;max-width:100%;max-height:100%;">
+													<input type="number" id="tool0"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
+												</td>
+												<td id="tempStatus0A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+												<td id="tempStatus0T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+												<td id="extUpdate0" style=" text-align:center;max-width:100%;max-height:100%;">
+													<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+												</td>
+											</tr>
+											<tr id='dualNoz' class='' >
+												<th style=" text-align:center;max-width:100%;max-height:100%;">#2</th>
+												<td style=" text-align:center;max-width:100%;max-height:100%;">
+													<input type="number" id="tool1"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
+												</td>
+												<td id="tempStatus1A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+												<td id="tempStatus1T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+												<td id="extUpdat1e" style=" text-align:center;max-width:100%;max-height:100%;">
+													<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div style=" text-align:center;max-width:100%;max-height:100%;">
+									<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
+									<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
+									<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
+									</div>
+									<hr style="color:blue">
+									<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
+									<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
+										<thead>
+											<tr>
+												<th style="max-width:100%;max-height:100%;text-align:center;">Zone</th>
+												<th style="max-width:100%;max-height:100%;text-align:center;">Input Temperature (&#8451; )</th>
+												<th style="max-width:100%;max-height:100%;text-align:center;">Zone Temp (&#8451; )</th>
+												<th style="max-width:100%;max-height:100%;text-align:center;">Controls</th>
+												<!-- <th>Target Temp (&#8451; )</th> -->
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<!-- // in file units, changed in to cm () -->
+												<th style="text-align:center;max-width:100%;max-height:100%;">
+													<?php
+													// session_start();
+													// include 'YNG_ACR.php';
+													$db_tablename = "yngUI";
+													$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
+														or die('Error communicating to MySQL server');
+													/// SELECT for : does value exist?
+													$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
+													$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
+													$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
+													// if(isset($is_reveal3D)){
+													if($is_reveal3D->num_rows == 1){
+														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+													}
+													// if(isset($is_FRANK3)){
+													elseif($is_FRANK3->num_rows == 1){
+														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+														
+													}
+													// if(isset($is_GT)){
+													elseif($is_GT->num_rows == 1){
+														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
+													}else{
+														echo 'No Active Printer has been Set';
+													};
+													// }
+													
+													// mysqli_close($dbc);
+												?></th>
+												<td style="text-align:center;max-width:100%;max-height:100%;">
+													<input style=" text-align:center;max-width:100%;max-height:100%;" type="number" name="zoneTempInput" id="zoneTempInput" min="0">
+												</td>
+												<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
+												<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
+													<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+												</td>
 											</td>
 										</tr>
 									</tbody>
 								</table>
-								<div style=" text-align:center;max-width:100%;max-height:100%;">
-								<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
-								<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
-								<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
-								</div>
-								<hr style="color:blue">
-								<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
-								<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
-									<thead>
-										<tr>
-											<th style="max-width:100%;max-height:100%;text-align:center;">Zone</th>
-											<th style="max-width:100%;max-height:100%;text-align:center;">Input Temperature (&#8451; )</th>
-											<th style="max-width:100%;max-height:100%;text-align:center;">Zone Temp (&#8451; )</th>
-											<th style="max-width:100%;max-height:100%;text-align:center;">Controls</th>
-											<!-- <th>Target Temp (&#8451; )</th> -->
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<!-- // in file units, changed in to cm () -->
-											<th style="text-align:center;max-width:100%;max-height:100%;">
-												<?php
-												// session_start();
-												// include 'YNG_ACR.php';
-												$db_tablename = "yngUI";
-												$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
-													or die('Error communicating to MySQL server');
-												/// SELECT for : does value exist?
-												$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
-												$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
-												$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
-												// if(isset($is_reveal3D)){
-												if($is_reveal3D->num_rows == 1){
-													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-												}
-												// if(isset($is_FRANK3)){
-												elseif($is_FRANK3->num_rows == 1){
-													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-													
-												}
-												// if(isset($is_GT)){
-												elseif($is_GT->num_rows == 1){
-													echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
-												}else{
-													echo 'No Active Printer has been Set';
-												};
-												// }
-												
-												// mysqli_close($dbc);
-											?></th>
-											<td style="text-align:center;max-width:100%;max-height:100%;">
-												<input style=" text-align:center;max-width:100%;max-height:100%;" type="number" name="zoneTempInput" id="zoneTempInput" min="0">
-											</td>
-											<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
-											<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
-												<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-											</td>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-5" style="max-width:auto;max-height:auto;float:right;flex-wrap: wrap;flex: 1 0 auto;">
-				<div class="panel panel-primary"  >
+			
+			<div class="col-lg-5" style="max-width:auto;max-height:auto;flex-wrap: wrap;flex: 1 0 auto;">
+				<div class="panel panel-info">
 					<div class="panel-heading" >
-						<h3 class="panel-title"><i class="fa fa-video-camera   fa-fw"></i> WebCam</h3>
+						<h3 class="panel-title">
+							<a class="btn btn-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
+							<i class="fa fa-video-camera   fa-fw"></i>WebCam
+						</h3>
 					</div>
+					<div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">
+						<div class="panel-body">
 					<img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
+						</div>
+					</div>
 				</div>
 			</div>
+
 			</div> <!-- ROW END-->
 			<br><br>
 			<div class="row">
 				<!-- add printer control here -->
-				<div class="col-lg-12" id="accordion" style="max-width:auto;max-height:auto;">
+				<div class="col-lg-12">
+		            <div class="panel panel-primary">
+		                <div class="panel-heading">
+		                    <h3 class="panel-title">
+		                    	<a class="btn btn-primary collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">+</a><i class="fa fa-magic fa-fw"></i> Printer Control
+		                    </h3>
+		                </div>
+		                <!-- .panel-heading -->
+		                <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false">
+			                <div class="panel-body">
+			                    <div class="panel-group" id="accordion">
+			                    	<div id="printerControls" class="panel-collapse collapse in" aria-expanded="false">
+			                    		<div class="panel-body">
+			                    		<button  id="conPrint" class="btn btn-success" onclick="connectPrint()">Connect to Printer</button>
+			                    		<button  id="disconPrint" class="btn btn-danger" onclick="discoPrint()">Disconnect from Printer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                    		<button  id="resumePrint" class="btn btn-primary" onclick="startPrint()">Start Print</button>
+			                    		<button  id="pausePrint" class="btn btn-info" onclick="PRprint()">Pause/Resume Print</button>
+			                    		<button  id="cancelPrint" class="btn btn-warning" onclick="cancelPrint()">Cancel Print</button>
+			                    		<br><br><br>
+			                    		<b style="align-items: center;  justify-content: center; margin-left: 25px"> Enter Custom Commands</b><br><br>
+			                    		<input type="text" id="customCommand" style="align-items: center;  justify-content: center; margin-left: 25px">&nbsp;&nbsp;<button id="customCommand" class="btn btn-grey"onclick="customCall()" style="align-items: center;  justify-content: center; margin-left: 0px">Submit Command</button>
+			                    		<br><br><br>
+			                    		<div class="panel panel-success">
+			                    			<div class="panel-heading">
+			                    				<h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Axis Control</h3>
+			                    			</div>
+			                    		</div>
+			                    		<br>
+			                    		<b style= "align-items: center;  justify-content: center; margin-left: 25px">Enter Axis Movement Length (mm) </b><br><br>
+			                    		<input type="number" id="jogInput" style="align-items: center;  justify-content: center; margin-left: 25px" min="0"><br><br><br>
+			                    		<b style="align-items: center;  justify-content: center; margin-left: 25px">X/Y Control</b>
+			                    		<b style="align-items: center;  justify-content: center; margin-left: 125px">Z Control</b>
+			                    		<br><br>
+			                    		<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 85px" onclick="moveUP()" >Y+</button>
+			                    		<button id="axisControl" class="btn btn-grey" style="align-items: center;  justify-content: center; margin-left: 120px" onclick="moveZ_UP()" >Z+</button>
+			                    		<button id="axisControl" class="btn btn-grey" onclick="moveZ_DOWN()" style="align-items: center;  justify-content: center; margin-left: 25px">Z-</button>
+			                    		<br>
+			                    		<button id="axisControl" class="btn btn-grey"onclick="moveLEFT()" style="align-items: center;  justify-content: center; margin-left: 25px">X-</button>
+			                    		<button id="axisControl" class="btn btn-grey" onclick="moveRIGHT()" style="align-items: center;  justify-content: center; margin-left: 75px">X+</button><br>
+			                    		<button id="axisControl" class="btn btn-grey" onclick="moveDOWN()" style="display: flex;align-items: center;  justify-content: center; margin-left: 85px">Y-</button>
+			                    		<br><br>
+			                    		
+			                    		<b style= "align-items: center;  justify-content: center; margin-left: 25px">Homing Control</b>
+			                    		<br><br>
+			                    		<button id="homeControl" class="btn btn-grey" onclick="homeX()" style="align-items: center;  justify-content: center; margin-left: 50px">Home X</button>
+			                    		<button id="homeControl" class="btn btn-grey" onclick="homeY()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Y</button>
+			                    		<button id="homeControl" class="btn btn-grey" onclick="homeZ()" style="align-items: center;  justify-content: center; margin-left: 25px">Home Z</button>
+			                    		<button id="homeControl" class="btn btn-grey" onclick="homeAll()" style="align-items: center;  justify-content: center; margin-left: 25px">Home XYZ</button>
+			                    		<br>
+			                    		</div>
+			                    	</div>
+			                    </div>
+			                </div>
+			            </div>
+		                <!-- .panel-body -->
+		            </div>
+	            <!-- /.panel -->
+	        	</div>
+				<!-- <div class="col-lg-12" id="accordion" style="max-width:auto;max-height:auto;">
 					<div  class="panel panel-primary" >
 						<div class="panel-heading">
 							<h3 class="panel-title">
@@ -261,7 +333,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both;overflow:auto;' >
 					<div class="panel panel-info">
 						<div class="panel-heading">
@@ -273,10 +345,6 @@ session_start();
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="max-width:100%;max-height:100%;">
-			</div>
-			<div class="row" style="max-width:100%;max-height:100%;">
 			</div>
 		</div>
 	</div>
@@ -1438,10 +1506,12 @@ session_start();
 	?>
 
 	<!-- jQuery -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
 	<!-- Metis Menu Plugin JavaScript -->
 	<script src="vendor/metisMenu/metisMenu.min.js"></script>
