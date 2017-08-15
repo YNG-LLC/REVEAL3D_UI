@@ -19,19 +19,19 @@
     <title>YNG Settings</title>
 
     <!-- Bootstrap Cor CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet"> -->
 
     <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- <link href="dist/css/sb-admin-2.css" rel="stylesheet"> -->
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 
-	<script src="sweetalert-master/dist/sweetalert.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">	
+	<!-- <script src="sweetalert-master/dist/sweetalert.min.js"></script> -->
+	<!-- <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">	 -->
 
 </head>
 
@@ -816,17 +816,17 @@
      ?>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- <script src="vendor/metisMenu/metisMenu.min.js"></script> -->
 
     <!-- Custom JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
-    <script type="text/javascript" src="js/CustomJS.js"></script>
+    <!-- <script src="dist/js/sb-admin-2.js"></script> -->
+    <!-- <script type="text/javascript" src="js/CustomJS.js"></script> -->
 
 
 </body>

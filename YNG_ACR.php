@@ -596,6 +596,21 @@ client1.system.getCommands().done(function(response){
 <!-- Metis Menu Plugin JavaScript -->
 <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
+<!-- Bootstrap Cor CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">    
+
 <!-- Morris Charts JavaScript -->
 <!-- <script src="vendor/raphael/raphael.min.js"></script> -->
 <!-- <script src="vendor/morrisjs/morris.min.js"></script> -->
