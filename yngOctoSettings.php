@@ -664,7 +664,7 @@
                             var t0 = performance.now(                            runUpdateUI());
                             console.log("time:"+t0);
                             swal({
-                              title: "REVEAL3D UI UPDATE"+,
+                              title: "REVEAL3D UI UPDATE",
                               text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>",
                               type: "info",
                               showCancelButton: true,
