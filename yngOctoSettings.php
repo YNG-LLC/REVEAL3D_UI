@@ -665,7 +665,7 @@
                             console.log("time:"+t0);
                             swal({
                               title: "REVEAL3D UI UPDATING",
-                              text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>Click to run Update",
+                              text: "<div id='myProgress' style='width: 100%;  background-color: #ddd;'><div id='myBar' style='width: 1%; height: 30px; background-color: #4CAF50'></div></div>",
                               type: "info",
                               showCancelButton: true,
                               closeOnConfirm: false,
