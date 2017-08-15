@@ -88,7 +88,7 @@ if ($dbConnection->connect_error) {
 
                 // Uploaded Prints Table
                 if ($queryResult->num_rows > 0) {
-                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll'><tr><th id='fileTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File</th><th title='Click to Sort' id='idTitle' href='#' onclick='sortQuotes1(1);'>task_id</th><th id='statusTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>statusValue</th><th>zone</th><th  id='printerTitle' title='Click to Sort' href='#' onclick='sortQuotes1(0);'printerType</th>Printer<th title='Click to Sort' id='materialTitle' href='#' onclick='sortQuotes1(0);'>materialType</th><th title='Click to Sort' id='nozzleTitle' href='#' onclick='sortQuotes1(0);'>NozzleMode</th><th>ErrorLog</th></tr>";
+                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll'><tr><th id='fileTitle' title='Click to Sort by FileName' href='#' ' onclick='sortFile(0)' >File</th><th title='Click to Sort' id='idTitle' href='#' onclick='sortTaskID(1)'>task_id</th><th id='statusTitle' title='Click to Sort by StatusValue' href='#' onclick='sortStatus(2)' >statusValue</th><th th  id='zoneTitle' title='Click to Sort by Zone' href='#' onclick='sortZone(3)'>zone</th><th  id='printerTitle' title='Click to Sort' href='#' onclick='sortPrinter(4)'>printerType</th>Printer<th title='Click to Sort' id='materialTitle' href='#' onclick='sortMatType(5);'>materialType</th><th title='Click to Sort by Nozzle' id='nozzleTitle' href='#' onclick='sortNozzleMode(6)'>NozzleMode</th><th th title='Click to Sort Logs' id='logTitle' href='#' onclick='sortErrorLog(7)'>ErrorLog</th></tr>";
                      // output data of each row
                      while($row = $queryResult->fetch_assoc()) {
                          echo "<tr><td>" . $row["file"]. "</td><td>" . $row["task_id"]. "</td><td> " . $row["statusValue"]. "</td><td> " . $row["zone"]. "</td><td> " . $row["printerType"]. "</td><td> " . $row["materialType"]. "</td><td>" . $row["nozzleMode"]. "</td><td>" . $row["errorLog"]. "</td></tr>";
@@ -145,7 +145,7 @@ if ($dbConnection->connect_error) {
     <script>
         
 
-        function sortQuotes1(n){
+        function sortFile(n){
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("runman");
             switching = true;
@@ -173,19 +173,19 @@ if ($dbConnection->connect_error) {
 			                }
 			                }
 	                }
-		            if(n == 1){
-		                if (dir == "asc"){
-		                	if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
-				                shouldSwitch= true;
-				                break;
-		                	}
-		            }else if(dir == "desc"){
-		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
-			                shouldSwitch= true;
-			                break;
-		                }
-		                }
-		                }
+		            // if(n == 1){
+		            //     if (dir == "asc"){
+		            //     	if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+				          //       shouldSwitch= true;
+				          //       break;
+		            //     	}
+		            // }else if(dir == "desc"){
+		            //     if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+			           //      shouldSwitch= true;
+			           //      break;
+		            //     }
+		            //     }
+		            //     }
 	            }
 	            if(shouldSwitch){
 	            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
@@ -200,9 +200,301 @@ if ($dbConnection->connect_error) {
             }
         }
 
+        function sortTaskID(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log();
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x);
+                    // console.log(y);
+                    if(n == 1){
+                        if (dir == "asc"){
+                            if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                    }else if(dir == "desc"){
+                        if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+                            shouldSwitch= true;
+                            break;
+                        }
+                        }
+                        }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+
+        function sortStatus(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log();
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x);
+                    // console.log(y);
+                    if(n == 2){
+                        if(dir == "asc"){
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                shouldSwitch= true;
+                                break;
+                            }
+                        }else if(dir == "desc"){
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                            }
+                    }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+
+        function sortZone(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log();
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x);
+                    // console.log(y);
+                    if(n == 3){
+                        if (dir == "asc"){
+                            if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                    }else if(dir == "desc"){
+                        if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+                            shouldSwitch= true;
+                            break;
+                        }
+                        }
+                        }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+
+        function sortPrinter(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log();
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x);
+                    // console.log(y);
+                    if(n == 4){
+                        if(dir == "asc"){
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                shouldSwitch= true;
+                                break;
+                            }
+                        }else if(dir == "desc"){
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                            }
+                    }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+
+        function sortMatType(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log(rows);
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x); 
+                    // console.log(y); 
+                    if(n == 5){
+                        if(dir == "asc"){
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                shouldSwitch= true;
+                                break;
+                            }
+                        }else if(dir == "desc"){
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                            }
+                    }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+
+        function sortNozzleMode(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log(rows);
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x); 
+                    // console.log(y); 
+                    if(n == 6){
+                        if(dir == "asc"){
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                shouldSwitch= true;
+                                break;
+                            }
+                        }else if(dir == "desc"){
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                            }
+                    }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
+        
 
 
-
+        function sortErrorLog(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("runman");
+            switching = true;
+            dir = "asc";
+            while(switching){
+                switching = false;
+                rows = table.getElementsByTagName("TR");
+                console.log(rows);
+                for(i = 1; i < (rows.length - 1); i++){
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    // console.log(x); 
+                    // console.log(y); 
+                    if(n == 7){
+                        if(dir == "asc"){
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                shouldSwitch= true;
+                                break;
+                            }
+                        }else if(dir == "desc"){
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch= true;
+                                break;
+                            }
+                            }
+                    }
+                }
+                if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+                }else{
+                    if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                    }
+                }
+            }
+        }
 
 
 

@@ -437,8 +437,8 @@ session_start();
 					table = table + "<tr>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Size (MB)</th>";
-					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Volume (cm<sup>3</sup>)</th>";
-					table = table + "<th  style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Print Time (Hours)</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' onclick='sortVolume(2);' >Volume (cm<sup>3</sup>)</th>";
+					table = table + "<th  style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortPrintTime(3);'>Print Time (Hours)</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Controls</th>";
 					table = table + "</tr>";
 					table = table + "</thead>";
@@ -1499,6 +1499,91 @@ session_start();
 			window.onload(sortQuotes1(0));
 
 		});
+
+
+		function sortPrintTime(n){
+		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+		    table = document.getElementById("dynTable");
+		    switching = true;
+		    dir = "asc";
+		    while(switching){
+		        switching = false;
+		        rows = table.getElementsByTagName("TR");
+		        console.log();
+		        for(i = 1; i < (rows.length - 1); i++){
+		            shouldSwitch = false;
+		            x = rows[i].getElementsByTagName("TD")[n];
+		            y = rows[i + 1].getElementsByTagName("TD")[n];
+		            // console.log(x);
+		            // console.log(y);
+		            if(n == 3){
+		                if (dir == "asc"){
+		                    if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+		                        shouldSwitch= true;
+		                        break;
+		                    }
+		            }else if(dir == "desc"){
+		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+		                    shouldSwitch= true;
+		                    break;
+		                }
+		                }
+		                }
+		        }
+		        if(shouldSwitch){
+		        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		        switching = true;
+		        switchcount ++;
+		        }else{
+		            if(switchcount == 0 && dir == "asc"){
+		            dir = "desc";
+		            switching = true;
+		            }
+		        }
+		    }
+		}
+
+		function sortVolume(n){
+		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+		    table = document.getElementById("dynTable");
+		    switching = true;
+		    dir = "asc";
+		    while(switching){
+		        switching = false;
+		        rows = table.getElementsByTagName("TR");
+		        console.log();
+		        for(i = 1; i < (rows.length - 1); i++){
+		            shouldSwitch = false;
+		            x = rows[i].getElementsByTagName("TD")[n];
+		            y = rows[i + 1].getElementsByTagName("TD")[n];
+		            // console.log(x);
+		            // console.log(y);
+		            if(n == 2){
+		                if (dir == "asc"){
+		                    if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+		                        shouldSwitch= true;
+		                        break;
+		                    }
+		            }else if(dir == "desc"){
+		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+		                    shouldSwitch= true;
+		                    break;
+		                }
+		                }
+		                }
+		        }
+		        if(shouldSwitch){
+		        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+		        switching = true;
+		        switchcount ++;
+		        }else{
+		            if(switchcount == 0 && dir == "asc"){
+		            dir = "desc";
+		            switching = true;
+		            }
+		        }
+		    }
+		}
 
 	</script>
 
