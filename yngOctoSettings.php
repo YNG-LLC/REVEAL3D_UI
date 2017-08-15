@@ -669,6 +669,7 @@
                               type: "info",
                               showCancelButton: true,
                               closeOnConfirm: false,
+                              confirmButtonText: "Yes, Update!",
                               showLoaderOnConfirm: true,
                               html: true
                             },
