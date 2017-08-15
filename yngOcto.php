@@ -212,7 +212,7 @@ session_start();
 				<div class="panel panel-info">
 					<div class="panel-heading" >
 						<h3 class="panel-title">
-							<a class="btn btn-default collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
+							<a class="btn panel-info collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
 							<i class="fa fa-video-camera   fa-fw"></i>WebCam
 						</h3>
 					</div>
@@ -232,7 +232,7 @@ session_start();
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
 		                    <h3 class="panel-title">
-		                    	<a class="btn btn-primary collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">+</a><i class="fa fa-magic fa-fw"></i> Printer Control
+		                    	<a class="btn panel-primary collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">+</a><i class="fa fa-magic fa-fw"></i> Printer Control
 		                    </h3>
 		                </div>
 		                <!-- .panel-heading -->
@@ -338,7 +338,7 @@ session_start();
 					<div class="panel panel-info">
 						<div class="panel-heading">
 						    <h3 class="panel-title">
-						    	<a class="btn btn-default collapsed in" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false">+</a><i class="fa fa-folder fa-fw"></i> Available Files
+						    	<a class="btn panel-info collapsed in" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false">+</a><i class="fa fa-folder fa-fw"></i> Available Files
 						    </h3>
 						</div>
 						<!-- .panel-heading -->
@@ -1617,6 +1617,5 @@ session_start();
 <footer class="panel-footer" align="center" >
 	<p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
 </footer>
-
 
 </html>
