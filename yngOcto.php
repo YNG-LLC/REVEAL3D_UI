@@ -213,7 +213,7 @@ session_start();
 					<div class="panel-heading" >
 						<h3 class="panel-title">
 							<a class="btn panel-info collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
-							<i class="fa fa-video-camera   fa-fw"></i>WebCam
+							<i class="fa fa-video-camera   fa-fw"></i> WebCam
 						</h3>
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">

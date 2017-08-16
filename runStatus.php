@@ -88,7 +88,7 @@ if ($dbConnection->connect_error) {
 
                 // Uploaded Prints Table
                 if ($queryResult->num_rows > 0) {
-                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll'><tr><th id='fileTitle' title='Click to Sort by FileName' href='#' ' onclick='sortFile(0)' >File</th><th title='Click to Sort' id='idTitle' href='#' onclick='sortTaskID(1)'>task_id</th><th id='statusTitle' title='Click to Sort by StatusValue' href='#' onclick='sortStatus(2)' >statusValue</th><th th  id='zoneTitle' title='Click to Sort by Zone' href='#' onclick='sortZone(3)'>zone</th><th  id='printerTitle' title='Click to Sort' href='#' onclick='sortPrinter(4)'>printerType</th>Printer<th title='Click to Sort' id='materialTitle' href='#' onclick='sortMatType(5);'>materialType</th><th title='Click to Sort by Nozzle' id='nozzleTitle' href='#' onclick='sortNozzleMode(6)'>NozzleMode</th><th th title='Click to Sort Logs' id='logTitle' href='#' onclick='sortErrorLog(7)'>ErrorLog</th></tr>";
+                     echo "<div class='table-responsive'><table id='runman' class='table table-bordered table-hover table-striped table-scroll' style=' text-align:center;max-width:100%;max-height:100%;'><tr><th style=' text-align:center;max-width:100%;max-height:100%;' id='fileTitle' title='Click to Sort by FileName' href='#' ' onclick='sortFile(0)' >File</th><th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' id='idTitle' href='#' onclick='sortTaskID(1)'>task_id</th><th style=' text-align:center;max-width:100%;max-height:100%;' id='statusTitle' title='Click to Sort by StatusValue' href='#' onclick='sortStatus(2)' >statusValue</th><th style=' text-align:center;max-width:100%;max-height:100%;' id='zoneTitle' title='Click to Sort by Zone' href='#' onclick='sortZone(3)'>zone</th><th style=' text-align:center;max-width:100%;max-height:100%;'  id='printerTitle' title='Click to Sort' href='#' onclick='sortPrinter(4)'>printerType</th>Printer<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' id='materialTitle' href='#' onclick='sortMatType(5);'>materialType</th><th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort by Nozzle' id='nozzleTitle' href='#' onclick='sortNozzleMode(6)'>NozzleMode</th><th style=' text-align:center;max-width:100%;max-height:100%;'' title='Click to Sort Logs' id='logTitle' href='#' onclick='sortErrorLog(7)'>ErrorLog</th></tr>";
                      // output data of each row
                      while($row = $queryResult->fetch_assoc()) {
                          echo "<tr><td>" . $row["file"]. "</td><td>" . $row["task_id"]. "</td><td> " . $row["statusValue"]. "</td><td> " . $row["zone"]. "</td><td> " . $row["printerType"]. "</td><td> " . $row["materialType"]. "</td><td>" . $row["nozzleMode"]. "</td><td>" . $row["errorLog"]. "</td></tr>";
@@ -120,28 +120,27 @@ if ($dbConnection->connect_error) {
                                 <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Materials in DB</h3>
                             </div>
                             <div class="panel-body">
-
+                                <form id='deleteMat' name='deleteMat' onsubmit='return confirm("Do you really want to delete this material?");' action='removeRow.php' method='post'>
 
                 <?php
-
                 if ($matValue->num_rows > 0) {
-                     echo "<div class='table-responsive'><table class='table table-bordered table-hover table-striped'><tr><th>task_id</th><th>Material</th><th>Bed0_First_Layer</th><th>Bed0_Sec_Layer</th><th>HotEnd0_First_Layer</th><th>HotEnd0_Sec_Layer</th><th>Bed1_First_Layer</th><th>Bed1_Sec_Layer</th><th>HotEnd1_First_Layer</th><th>HotEnd1_Sec_Layer</th></tr>";
+                     echo "<div class='table-responsive'><table class='table table-bordered table-hover table-striped' style=' text-align:center;max-width:100%;max-height:100%;'><tr><th style=' text-align:center;max-width:100%;max-height:100%;' >Remove Material</th><th style=' text-align:center;max-width:100%;max-height:100%;' >task_id</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Material</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_Sec_Layer</th></tr>";
                      // output data of each row
                      while($row = $matValue->fetch_assoc()) {
-                         echo "<tr><td>" . $row["task_id"]. "</td><td>" . $row["Material"]. "</td><td> " . $row["Bed0_First_Layer"]. "</td><td> " . $row["Bed0_Sec_Layer"]. "</td><td> " . $row["HotEnd0_First_Layer"]. "</td><td> " . $row["HotEnd0_Sec_Layer"]. "</td><td> " . $row["Bed1_First_Layer"]. "</td><td> " . $row["Bed1_Sec_Layer"]. "</td><td> " . $row["HotEnd1_First_Layer"]. "</td><td> " . $row["HotEnd1_Sec_Layer"]. "</td></tr>";
+                         echo "<tr><td><button type='submit' id='".$row['Material']."' value='".$row['task_id']."' title='Delete Material' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]. "</td><td>" . $row["Material"]. "</td><td> " . $row["Bed0_First_Layer"]. "</td><td> " . $row["Bed0_Sec_Layer"]. "</td><td> " . $row["HotEnd0_First_Layer"]. "</td><td> " . $row["HotEnd0_Sec_Layer"]. "</td><td> " . $row["Bed1_First_Layer"]. "</td><td> " . $row["Bed1_Sec_Layer"]. "</td><td> " . $row["HotEnd1_First_Layer"]. "</td><td> " . $row["HotEnd1_Sec_Layer"]. "</td></tr>";
                      }
                      echo "</table>";
                 } else {
                      echo "No results found";
                 }
-
                 // mysqli_close($dbConnection); // Connection Closed.
                 ?>
+                </form>
                		 </div> </div>
                 </div>
                 <!-- /.col-lg-4 -->
             </div></div>
-
+            
     <script>
         
 
@@ -153,7 +152,7 @@ if ($dbConnection->connect_error) {
             while(switching){
 	            switching = false;
 	            rows = table.getElementsByTagName("TR");
-	            console.log();
+	            // console.log();
 	            for(i = 1; i < (rows.length - 1); i++){
 		            shouldSwitch = false;
 		            x = rows[i].getElementsByTagName("TD")[n];
@@ -208,7 +207,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log();
+                // console.log();
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -250,7 +249,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log();
+                // console.log();
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -292,7 +291,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log();
+                // console.log();
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -334,7 +333,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log();
+                // console.log();
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -376,7 +375,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log(rows);
+                // console.log(rows);
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -418,7 +417,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log(rows);
+                // console.log(rows);
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -462,7 +461,7 @@ if ($dbConnection->connect_error) {
             while(switching){
                 switching = false;
                 rows = table.getElementsByTagName("TR");
-                console.log(rows);
+                // console.log(rows);
                 for(i = 1; i < (rows.length - 1); i++){
                     shouldSwitch = false;
                     x = rows[i].getElementsByTagName("TD")[n];
@@ -498,6 +497,18 @@ if ($dbConnection->connect_error) {
 
 
 
+        // ### Deleting Rows from Material Table ###
+
+        var iClick = "someString";
+
+        $("button").click(function(){
+            // alert(this.id);
+            iClick = this.id;
+            buttValue = this.value;
+            console.log(buttValue);
+
+            document.deleteMat.action = "removeRow.php?deleteTaskID="+buttValue;
+        });
 
     </script>
     <!-- jQuery -->
