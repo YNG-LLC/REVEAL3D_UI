@@ -8,6 +8,7 @@
         	$dbuser = 'printerUser';
         	$dbpass = 'yngprinter17!';
 			$checkTableDelete = 0;
+			$runDelete = 1;
 			$exists = mysql_query('select 1 from `yngPrints` LIMIT 1');
 
 
@@ -20,7 +21,7 @@
 			echo 'Connected successfully<br />';
 
 			//### Delete Table ###
-			if($checkTableDelete = 0){
+			if($runDelete == 1){
 				echo "Deleting Table...\n";
 	    	 	$sql = "DROP TABLE yngPrints";
 	         	mysql_select_db( 'manipulate' );
