@@ -22,6 +22,8 @@ $delete_query = $dbc->query($selectMaterialRow);
 
 
 
+// ### Counter ###
+$exitCheck = 0;
 
 ### GET row ID ###
 $taskID = 0;
@@ -33,8 +35,6 @@ if (isset($_GET['deleteTaskID'])){
 }   
 
 
-// ### Counter ###
-$exitCheck = 0;
 
 // try{
 	// sql to delete a record
@@ -44,12 +44,17 @@ $deleteRow = "DELETE FROM materialDB WHERE task_ID = $taskID";
 if (mysqli_query($dbc, $deleteRow)) {
     echo "Record deleted successfully";
     $exitCheck = 1;
+    
 }else{
     echo "Error deleting record: ".mysqli_error($dbc);
 }
 // }
 
+echo $fetchLocalRemote;
+
 mysqli_close($dbc);
+header("Location: ".$fetchLocalRemote."Reveal3D-UI/runStatus.php");
+exit();
 
 }
 
@@ -57,38 +62,11 @@ mysqli_close($dbc);
 
 ### Redirect to page according to GET ### 
 if($exitCheck == 1){
-	header("Location: http://192.168.0.79/Reveal3D-UI/runStatus.php");
-	exit();
+header("Location: ".$fetchLocalRemote."Reveal3D-UI/runStatus.php");
+exit();
 }
 
 
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -143,7 +143,7 @@ if ($dbConnection->connect_error) {
 
                         //### Update button (SAVE)###
                         // <button type='submit' id='Update' value='".$row['task_id']."' title='UpdateMaterial' class='btn btn-sq-xs btn-warning'><i class='fa fa-exchange fa-1x'></i><br/></button>&nbsp;
-                        echo "<tr value='".$row['task_id']."''><td><button type='submit' id='Update' value='".$row['task_id']."' title='UpdateMaterial' class='btn btn-sq-xs btn-warning'><i class='fa fa-exchange fa-1x'></i><br/></button>&nbsp;<button type='submit' id='Delete' value='".$row['task_id']."' title='DeleteMaterial' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]."</td><td data-editableMatName".$row['task_id']." id='matName".$row["task_id"]."'>".$row["Material"]."</td><td data-editableBed0FL".$row['task_id'].">".$row["Bed0_First_Layer"]."</td><td data-editableBed0SL".$row['task_id'].">".$row["Bed0_Sec_Layer"]."</td><td data-editableHE0FL".$row['task_id'].">".$row["HotEnd0_First_Layer"]. "</td><td data-editableHE0SL".$row['task_id'].">".$row["HotEnd0_Sec_Layer"]."</td><td data-editablebed1FL".$row['task_id'].">".$row["Bed1_First_Layer"]."</td><td data-editablebed1SL".$row['task_id'].">".$row["Bed1_Sec_Layer"]."</td><td data-editableHE1FL".$row['task_id'].">".$row["HotEnd1_First_Layer"]."</td><td data-editableHE1SL ".$row['task_id'].">".$row["HotEnd1_Sec_Layer"]."</td></tr>";
+                        echo "<tr value='".$row['task_id']."''><td><button type='submit' id='Delete' value='".$row['task_id']."' title='DeleteMaterial' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]."</td><td data-editableMatName".$row['task_id']." id='matName".$row["task_id"]."'>".$row["Material"]."</td><td data-editableBed0FL".$row['task_id'].">".$row["Bed0_First_Layer"]."</td><td data-editableBed0SL".$row['task_id'].">".$row["Bed0_Sec_Layer"]."</td><td data-editableHE0FL".$row['task_id'].">".$row["HotEnd0_First_Layer"]. "</td><td data-editableHE0SL".$row['task_id'].">".$row["HotEnd0_Sec_Layer"]."</td><td data-editablebed1FL".$row['task_id'].">".$row["Bed1_First_Layer"]."</td><td data-editablebed1SL".$row['task_id'].">".$row["Bed1_Sec_Layer"]."</td><td data-editableHE1FL".$row['task_id'].">".$row["HotEnd1_First_Layer"]."</td><td data-editableHE1SL ".$row['task_id'].">".$row["HotEnd1_Sec_Layer"]."</td></tr>";
                     }
                     echo "</table>";
                 }else{
@@ -568,193 +568,193 @@ if ($dbConnection->connect_error) {
     // });
 
     //### get value of insert button in row when clicking on <td> ###
-    $("tr").on("click",function(event){
-        // e.preventDefault();
-        neededValue1 = $(this).attr('value');
-        neededValue = neededValue1;
-        console.log("<tr> button Value: "+neededValue);
+    // $("tr").on("click",function(event){
+    //     // e.preventDefault();
+    //     neededValue1 = $(this).attr('value');
+    //     neededValue = neededValue1;
+    //     console.log("<tr> button Value: "+neededValue);
 
 
         //### allows editing of text on <td> clicked.  ###
-        $('body').on('click','[data-editableMatName'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableMatName'+neededValue+']',function(){
             
-            //### original (keep)###
-            // $ele1 = $(this);
-            // $input1 = $('<input id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
-            // $ele1.replaceWith($input1);
-            // console.log($ele1);
+    //         //### original (keep)###
+    //         // $ele1 = $(this);
+    //         // $input1 = $('<input id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
+    //         // $ele1.replaceWith($input1);
+    //         // console.log($ele1);
 
-            //### id's called used below ###
-            // $('#matName'+neededValue+''
-            // $('#UpdatedInput'+neededValue+''
+    //         //### id's called used below ###
+    //         // $('#matName'+neededValue+''
+    //         // $('#UpdatedInput'+neededValue+''
                         
             
-            //###  Find Current ID, change accordingly ###
-            if($('#matName'+neededValue+'').length > 0){
-                console.log("Found 1st");
-                $ele1 = $(this);
-                console.log("This#1--> "+$ele1);
-                $input1 = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
-                $ele1.replaceWith($input1);
-                console.log($ele1);
-            }
-            else if($('#UpdatedInput'+neededValue+'').length > 0){
-                console.log("Found 2nd");
-                $ele1 = $(this);
-                console.log("This#2--> "+$ele1);
-                $input1 = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').val($ele1.text());
-                $ele1.replaceWith($input1);
-                console.log($ele1);
-            }
+    //         //###  Find Current ID, change accordingly ###
+    //         if($('#matName'+neededValue+'').length > 0){
+    //             console.log("Found 1st");
+    //             $ele1 = $(this);
+    //             console.log("This#1--> "+$ele1);
+    //             $input1 = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
+    //             $ele1.replaceWith($input1);
+    //             console.log($ele1);
+    //         }
+    //         else if($('#UpdatedInput'+neededValue+'').length > 0){
+    //             console.log("Found 2nd");
+    //             $ele1 = $(this);
+    //             console.log("This#2--> "+$ele1);
+    //             $input1 = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').val($ele1.text());
+    //             $ele1.replaceWith($input1);
+    //             console.log($ele1);
+    //         }
 
 
-            //### ID Check, allows user to change input more than once (current issue) ###
-            if($('#UpdatedInput'+neededValue+'').length > 0){
-                console.log("Found 3rd");
-                save = function(){
-                    var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
-                $input1.replaceWith($p);
-                console.log($p);
-                };
-            }
-            else if($('#matName'+neededValue+'').length > 0){
-                console.log("Found 4th");
-                save = function(){
-                    var $p = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').text($input1.val());
-                $input1.replaceWith($p);
-                console.log($p);
-               };
-            }
+    //         //### ID Check, allows user to change input more than once (current issue) ###
+    //         if($('#UpdatedInput'+neededValue+'').length > 0){
+    //             console.log("Found 3rd");
+    //             save = function(){
+    //                 var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
+    //             $input1.replaceWith($p);
+    //             console.log($p);
+    //             };
+    //         }
+    //         else if($('#matName'+neededValue+'').length > 0){
+    //             console.log("Found 4th");
+    //             save = function(){
+    //                 var $p = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').text($input1.val());
+    //             $input1.replaceWith($p);
+    //             console.log($p);
+    //            };
+    //         }
 
-            $input1.one('blur', save).focus();
+    //         $input1.one('blur', save).focus();
 
-            //### original (keep)###
-            // save = function(){
-            //     var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
-            //     $input1.replaceWith($p);
-            //     console.log($input1);
-            // };
-        });
+    //         //### original (keep)###
+    //         // save = function(){
+    //         //     var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
+    //         //     $input1.replaceWith($p);
+    //         //     console.log($input1);
+    //         // };
+    //     });
 
 
-        $('body').on('click','[data-editableBed0FL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableBed0FL'+neededValue+']',function(){
           
-            $ele2 = $(this);
-            $input2 = $('<input/>').val( $ele2.text());
-            $ele2.replaceWith($input2);
+    //         $ele2 = $(this);
+    //         $input2 = $('<input/>').val( $ele2.text());
+    //         $ele2.replaceWith($input2);
 
-            save = function(){
-                var $p = $('<td data-editableBed0FL'+neededValue+' id="bed0FLUD"/>').text($input2.val());
-                $input2.replaceWith($p);
-            };
+    //         save = function(){
+    //             var $p = $('<td data-editableBed0FL'+neededValue+' id="bed0FLUD"/>').text($input2.val());
+    //             $input2.replaceWith($p);
+    //         };
 
-            $input2.one('blur', save).focus();
-        });
+    //         $input2.one('blur', save).focus();
+    //     });
 
 
-        // $('body').on('click','[data-editableBed0SL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableBed0SL'+neededValue+']',function(){
           
-        //     $ele3 = $(this);
-        //     $input3 = $('<input/>').val( $ele3.text());
-        //     $ele3.replaceWith($input3);
+    //         $ele3 = $(this);
+    //         $input3 = $('<input/>').val( $ele3.text());
+    //         $ele3.replaceWith($input3);
 
-        //     save = function(){
-        //         var $p = $('<td data-editableBed0SL'+neededValue+' id="bed0SLUD"/>').text($input3.val());
-        //         $input3.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editableBed0SL'+neededValue+' id="bed0SLUD"/>').text($input3.val());
+    //             $input3.replaceWith($p);
+    //         };
 
-        //     $input3.one('blur', save).focus();
-        // });
+    //         $input3.one('blur', save).focus();
+    //     });
 
 
-        // $('body').on('click','[data-editableHE0FL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableHE0FL'+neededValue+']',function(){
           
-        //     $ele4 = $(this);
-        //     $input4 = $('<input/>').val( $ele4.text());
-        //     $ele4.replaceWith($input4);
+    //         $ele4 = $(this);
+    //         $input4 = $('<input/>').val( $ele4.text());
+    //         $ele4.replaceWith($input4);
 
-        //     save = function(){
-        //         var $p = $('<td data-editableHE0FL'+neededValue+' id="bed0HE0FL"/>').text($input4.val());
-        //         $input4.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editableHE0FL'+neededValue+' id="bed0HE0FL"/>').text($input4.val());
+    //             $input4.replaceWith($p);
+    //         };
 
-        //     $input4.one('blur', save).focus();
-        // });
+    //         $input4.one('blur', save).focus();
+    //     });
 
 
-        // $('body').on('click','[data-editableHE0SL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableHE0SL'+neededValue+']',function(){
           
-        //     $ele5 = $(this);
-        //     $input5 = $('<input/>').val( $ele5.text());
-        //     $ele5.replaceWith($input5);
+    //         $ele5 = $(this);
+    //         $input5 = $('<input/>').val( $ele5.text());
+    //         $ele5.replaceWith($input5);
 
-        //     save = function(){
-        //         var $p = $('<td data-editableHE0SL'+neededValue+' id="bed0HE0SL"/>').text($input5.val());
-        //         $input5.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editableHE0SL'+neededValue+' id="bed0HE0SL"/>').text($input5.val());
+    //             $input5.replaceWith($p);
+    //         };
 
-        //     $input5.one('blur', save).focus();
-        // });
+    //         $input5.one('blur', save).focus();
+    //     });
 
 
-        // $('body').on('click','[data-editablebed1FL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editablebed1FL'+neededValue+']',function(){
           
-        //     $ele6 = $(this);
-        //     $input6 = $('<input/>').val( $ele6.text());
-        //     $ele6.replaceWith($input6);
+    //         $ele6 = $(this);
+    //         $input6 = $('<input/>').val( $ele6.text());
+    //         $ele6.replaceWith($input6);
 
-        //     save = function(){
-        //         var $p = $('<td data-editablebed1FL'+neededValue+' id="bed1FL"/>').text($input6.val());
-        //         $input6.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editablebed1FL'+neededValue+' id="bed1FL"/>').text($input6.val());
+    //             $input6.replaceWith($p);
+    //         };
 
-        //     $input6.one('blur', save).focus();
-        // });
+    //         $input6.one('blur', save).focus();
+    //     });
 
 
-        // $('body').on('click','[data-editablebed1SL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editablebed1SL'+neededValue+']',function(){
           
-        //     $ele7 = $(this);
-        //     $input7 = $('<input/>').val( $ele7.text());
-        //     $ele7.replaceWith($input7);
+    //         $ele7 = $(this);
+    //         $input7 = $('<input/>').val( $ele7.text());
+    //         $ele7.replaceWith($input7);
 
-        //     save = function(){
-        //         var $p = $('<td data-editablebed1SL'+neededValue+' id="bed1SL"/>').text($input7.val());
-        //         $input7.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editablebed1SL'+neededValue+' id="bed1SL"/>').text($input7.val());
+    //             $input7.replaceWith($p);
+    //         };
 
-        //     $input7.one('blur', save).focus();
-        // });
+    //         $input7.one('blur', save).focus();
+    //     });
 
-        // $('body').on('click','[data-editableHE1FL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableHE1FL'+neededValue+']',function(){
           
-        //     $ele8 = $(this);
-        //     $input8 = $('<input/>').val( $ele8.text());
-        //     $ele8.replaceWith($input8);
+    //         $ele8 = $(this);
+    //         $input8 = $('<input/>').val( $ele8.text());
+    //         $ele8.replaceWith($input8);
 
-        //     save = function(){
-        //         var $p = $('<td data-editableHE1FL'+neededValue+' id="HE1FL"/>').text($input8.val());
-        //         $input8.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editableHE1FL'+neededValue+' id="HE1FL"/>').text($input8.val());
+    //             $input8.replaceWith($p);
+    //         };
 
-        //     $input8.one('blur', save).focus();
-        // });
+    //         $input8.one('blur', save).focus();
+    //     });
 
-        // $('body').on('click','[data-editableHE1SL'+neededValue+']',function(){
+    //     $('body').on('click','[data-editableHE1SL'+neededValue+']',function(){
           
-        //     $ele9 = $(this);
-        //     $input9 = $('<input/>').val( $ele9.text());
-        //     $ele9.replaceWith($input9);
+    //         $ele9 = $(this);
+    //         $input9 = $('<input/>').val( $ele9.text());
+    //         $ele9.replaceWith($input9);
 
-        //     save = function(){
-        //         var $p = $('<td data-editableHE1SL'+neededValue+' id="HE1SL"/>').text($input9.val());
-        //         $input9.replaceWith($p);
-        //     };
+    //         save = function(){
+    //             var $p = $('<td data-editableHE1SL'+neededValue+' id="HE1SL"/>').text($input9.val());
+    //             $input9.replaceWith($p);
+    //         };
 
-        //     $input9.one('blur', save).focus();
-        // });
+    //         $input9.one('blur', save).focus();
+    //     });
 
-    });
+    // });
 
 
         // ### Disable Enter Key for input, but not form###
