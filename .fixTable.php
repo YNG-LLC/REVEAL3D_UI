@@ -26,9 +26,9 @@
 	    	 	$sql = "DROP TABLE yngPrints";
 	         	mysql_select_db( 'manipulate' );
 	         	$retval = mysql_query( $sql, $conn );
-	         	if(! $retval){
-	            	die('Could not delete table: ' . mysql_error());
-	         	}
+	         	// if(! $retval){
+	          //   	die('Could not delete table: ' . mysql_error());
+	         	// }
 	         	echo "Table deleted successfully\n";
 			}else{
 				echo "Cannot Delete what does not exist<br />";
