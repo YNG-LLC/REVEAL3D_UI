@@ -20,7 +20,7 @@
 			echo 'Connected successfully<br />';
 
 			//### Delete Table ###
-			if($exists !== TRUE){
+			if($exists !== TRUE or !==FALSE){
 				echo "Deleting Table...\n";
 	    	 	$sql = "DROP TABLE yngPrints";
 	         	mysql_select_db( 'manipulate' );
