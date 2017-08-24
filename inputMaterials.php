@@ -53,7 +53,7 @@ try{
             // echo "* Here's the task ID for row selected for DELETION: ".$taskID;
         }
 
-        $updateMat = "UPDATE materialDB SET Material = '$updatedMatValue', Bed0_First_Layer = '$updatedBedFirst0', Bed0_Sec_Layer = '$updatedBedSec0', HotEnd0_First_Layer = '$updatedHotEndFirst0', HotEnd0_Sec_Layer = '$updatedHotEndSec0',Bed1_First_Layer = '$updatedBedFirst1',Bed1_Sec_Layer = '$updatedBedSec1',HotEnd1_First_Layer = '$updatedHotEndFirst1',HotEnd1_Sec_Layer = '$updatedHotEndSec1' WHERE task_ID = $taskID;
+        $updateMat = "UPDATE materialDB SET Material = '$updatedMatValue', Bed0_First_Layer = '$updatedBedFirst0', Bed0_Sec_Layer = '$updatedBedSec0', HotEnd0_First_Layer = '$updatedHotEndFirst0', HotEnd0_Sec_Layer = '$updatedHotEndSec0',Bed1_First_Layer = '$updatedBedFirst1',Bed1_Sec_Layer = '$updatedBedSec1',HotEnd1_First_Layer = '$updatedHotEndFirst1',HotEnd1_Sec_Layer = '$updatedHotEndSec1' WHERE task_ID = $taskID";
 
 
         // $updateMat = "UPDATE materialDB SET Material = '$updatedMatValue' WHERE task_ID = 2";
