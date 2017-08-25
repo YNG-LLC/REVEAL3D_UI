@@ -118,44 +118,46 @@ if ($dbConnection->connect_error) {
         </div></div></div></div>
         <!-- /#page-wrapper -->
 
+        <div class="row">
+                    <!-- <div class="col-lg-12"> -->
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                        <div class="col-lg-12" style="overflow:auto;">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Materials in DB</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form id='matForm' name='matForm' action='' method='post'>
+
+                    <?php
+                    if($matValue->num_rows > 0){
+                        echo "<div class='table-responsive'><table id='matTable' class='table table-bordered table-hover table-striped' style=' text-align:center;max-width:100%;max-height:100%;'><tr><th style=' text-align:center;max-width:100%;max-height:100%;' >Material Controls</th><th style=' text-align:center;max-width:100%;max-height:100%;' >task_id</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Material</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_Sec_Layer</th></tr>";
+                         
+                        // output data of each row
+                        while($row = $matValue->fetch_assoc()){
+
+                            //### Update button (SAVE)###
+                            // <button type='submit' id='Update' value='".$row['task_id']."' title='UpdateMaterial' class='btn btn-sq-xs btn-warning'><i class='fa fa-exchange fa-1x'></i><br/></button>&nbsp;
+                            echo "<tr value='".$row['task_id']."''><td><button type='submit' id='Delete' value='".$row['task_id']."' title='DeleteMaterial' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]."</td><td data-editableMatName".$row['task_id']." id='matName".$row["task_id"]."'>".$row["Material"]."</td><td data-editableBed0FL".$row['task_id'].">".$row["Bed0_First_Layer"]."</td><td data-editableBed0SL".$row['task_id'].">".$row["Bed0_Sec_Layer"]."</td><td data-editableHE0FL".$row['task_id'].">".$row["HotEnd0_First_Layer"]. "</td><td data-editableHE0SL".$row['task_id'].">".$row["HotEnd0_Sec_Layer"]."</td><td data-editablebed1FL".$row['task_id'].">".$row["Bed1_First_Layer"]."</td><td data-editablebed1SL".$row['task_id'].">".$row["Bed1_Sec_Layer"]."</td><td data-editableHE1FL".$row['task_id'].">".$row["HotEnd1_First_Layer"]."</td><td data-editableHE1SL ".$row['task_id'].">".$row["HotEnd1_Sec_Layer"]."</td></tr>";
+                        }
+                        echo "</table>";
+                    }else{
+                         echo "No results found";
+                    }
+                    // mysqli_close($dbConnection); // Connection Closed.
+                    ?>
+                    </form>
+                         </div> </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div></div>
+
 
     </div>
     <!-- /#wrapper -->
 
-    <div class="row">
-                <div class="col-lg-12">
-            <!-- </div> -->
-            <div class="row">
-                    <div class="col-lg-12" style="overflow:auto;">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Materials in DB</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form id='matForm' name='matForm' action='' method='post'>
-
-                <?php
-                if($matValue->num_rows > 0){
-                    echo "<div class='table-responsive'><table id='matTable' class='table table-bordered table-hover table-striped' style=' text-align:center;max-width:100%;max-height:100%;'><tr><th style=' text-align:center;max-width:100%;max-height:100%;' >Material Controls</th><th style=' text-align:center;max-width:100%;max-height:100%;' >task_id</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Material</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_Sec_Layer</th></tr>";
-                     
-                    // output data of each row
-                    while($row = $matValue->fetch_assoc()){
-
-                        //### Update button (SAVE)###
-                        // <button type='submit' id='Update' value='".$row['task_id']."' title='UpdateMaterial' class='btn btn-sq-xs btn-warning'><i class='fa fa-exchange fa-1x'></i><br/></button>&nbsp;
-                        echo "<tr value='".$row['task_id']."''><td><button type='submit' id='Delete' value='".$row['task_id']."' title='DeleteMaterial' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]."</td><td data-editableMatName".$row['task_id']." id='matName".$row["task_id"]."'>".$row["Material"]."</td><td data-editableBed0FL".$row['task_id'].">".$row["Bed0_First_Layer"]."</td><td data-editableBed0SL".$row['task_id'].">".$row["Bed0_Sec_Layer"]."</td><td data-editableHE0FL".$row['task_id'].">".$row["HotEnd0_First_Layer"]. "</td><td data-editableHE0SL".$row['task_id'].">".$row["HotEnd0_Sec_Layer"]."</td><td data-editablebed1FL".$row['task_id'].">".$row["Bed1_First_Layer"]."</td><td data-editablebed1SL".$row['task_id'].">".$row["Bed1_Sec_Layer"]."</td><td data-editableHE1FL".$row['task_id'].">".$row["HotEnd1_First_Layer"]."</td><td data-editableHE1SL ".$row['task_id'].">".$row["HotEnd1_Sec_Layer"]."</td></tr>";
-                    }
-                    echo "</table>";
-                }else{
-                     echo "No results found";
-                }
-                // mysqli_close($dbConnection); // Connection Closed.
-                ?>
-                </form>
-                     </div> </div>
-                </div>
-                <!-- /.col-lg-4 -->
-            </div></div>
+   
             
     <script>
         
@@ -777,6 +779,6 @@ if ($dbConnection->connect_error) {
 
 ?>
 
-<footer class="panel-footer" align="center">
+<footer class="panel-footer" style='text-align: center; margin-left: auto; margin-right: auto;'>
     <p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
 </footer>
