@@ -117,6 +117,7 @@ if ($dbConnection->connect_error) {
             <!-- /.row -->
         </div></div></div></div>
         <!-- /#page-wrapper -->
+        <br><br><br>
 
         <div class="row">
                     <!-- <div class="col-lg-12"> -->
