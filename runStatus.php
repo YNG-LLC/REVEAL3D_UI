@@ -46,7 +46,7 @@ if ($dbConnection->connect_error) {
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <script src=<?php echo $fetchLocalRemote;?>"YNG_Octo_UI/js/lib/jquery/jquery.min.js"></script>
+    <!-- <script src=<?php echo $fetchLocalRemote;?>"YNG_Octo_UI/js/lib/jquery/jquery.min.js"></script> -->
     <script src=<?php echo $fetchLocalRemote;?>"/js/lib/lodash.min.js"></script>
     <script src=<?php echo $fetchLocalRemote;?>"/webassets/packed_libs.js"></script>
     <script src=<?php echo $fetchLocalRemote;?>"/webassets/packed_client.js"></script>
@@ -55,7 +55,7 @@ if ($dbConnection->connect_error) {
     <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -119,49 +119,25 @@ if ($dbConnection->connect_error) {
         <!-- /#page-wrapper -->
         <br><br><br>
 
-        <div class="row">
-                    <!-- <div class="col-lg-12"> -->
-                <!-- </div> -->
-                <!-- <div class="row"> -->
-                        <div class="col-lg-12" style="overflow:auto;">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Materials in DB</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form id='matForm' name='matForm' action='' method='post'>
-
-                    <?php
-                    if($matValue->num_rows > 0){
-                        echo "<div class='table-responsive'><table id='matTable' class='table table-bordered table-hover table-striped' style=' text-align:center;max-width:100%;max-height:100%;'><tr><th style=' text-align:center;max-width:100%;max-height:100%;' >Material Controls</th><th style=' text-align:center;max-width:100%;max-height:100%;' >task_id</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Material</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd0_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >Bed1_Sec_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_First_Layer</th><th style=' text-align:center;max-width:100%;max-height:100%;' >HotEnd1_Sec_Layer</th></tr>";
-                         
-                        // output data of each row
-                        while($row = $matValue->fetch_assoc()){
-
-                            //### Update button (SAVE)###
-                            // <button type='submit' id='Update' value='".$row['task_id']."' title='UpdateMaterial' class='btn btn-sq-xs btn-warning'><i class='fa fa-exchange fa-1x'></i><br/></button>&nbsp;
-                            echo "<tr value='".$row['task_id']."''><td><button type='submit' id='Delete' value='".$row['task_id']."' title='DeleteMaterial' class='btn btn-sq-xs btn-danger'><i class='fa fa-trash-o fa-1x'></i><br/></button></td><td>".$row["task_id"]."</td><td data-editableMatName".$row['task_id']." id='matName".$row["task_id"]."'>".$row["Material"]."</td><td data-editableBed0FL".$row['task_id'].">".$row["Bed0_First_Layer"]."</td><td data-editableBed0SL".$row['task_id'].">".$row["Bed0_Sec_Layer"]."</td><td data-editableHE0FL".$row['task_id'].">".$row["HotEnd0_First_Layer"]. "</td><td data-editableHE0SL".$row['task_id'].">".$row["HotEnd0_Sec_Layer"]."</td><td data-editablebed1FL".$row['task_id'].">".$row["Bed1_First_Layer"]."</td><td data-editablebed1SL".$row['task_id'].">".$row["Bed1_Sec_Layer"]."</td><td data-editableHE1FL".$row['task_id'].">".$row["HotEnd1_First_Layer"]."</td><td data-editableHE1SL ".$row['task_id'].">".$row["HotEnd1_Sec_Layer"]."</td></tr>";
-                        }
-                        echo "</table>";
-                    }else{
-                         echo "No results found";
-                    }
-                    // mysqli_close($dbConnection); // Connection Closed.
-                    ?>
-                    </form>
-                         </div> </div>
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div></div>
-
-
+      <div class="row">
+          <div class="col-lg-12" style="overflow:auto;">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                          <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Material Temperature  (Add/Remove/Edit Temperatures of Materials)</h3>
+                  </div>
+                  <div class="panel-body">
+                      <div id="live_data">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
     <!-- /#wrapper -->
 
    
             
     <script>
-        
 
         function sortFile(n){
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -516,255 +492,212 @@ if ($dbConnection->connect_error) {
 
 
 
-        // ### Deleting Rows from Material Table ###
-        var iClick = "someString";
-        var $buttName = "someString";
-        var matName = "someString";
-        var neededValue1 = "someString";
-        var neededValue = "someString";
+        // ### Dynamic Material Table ###
+         $(document).ready(function(){
+
+           // ### Load Data from DB to Table###
+             function fetch_data(){  
+               $.ajax({  
+                   url:"select.php",  
+                   method:"POST",  
+                   success:function(data){  
+                     $('#live_data').html(data);  
+                   }  
+               });  
+             }  
+             fetch_data();
 
 
-        $("button").click(function(){
-            iClick = this.id;
-            buttValue = this.value;
-
-            if(this.id == "Delete"){
-                document.matForm.action ="removeRow.php";
-                if (confirm("Are you sure you want to DELETE "+iClick+" ?")){
-                    document.matForm.action = "removeRow.php?deleteTaskID="+buttValue;
-                }else{
-                    alert('Delete Request Cancelled');
-                }
-            }
+             $(document).on('click', '#btn_add', function(){  
+               var Material = $('#Material').text();  
+               var Bed0_First_Layer = $('#Bed0_First_Layer').text();
+               var Bed0_Sec_Layer = $('#Bed0_Sec_Layer').text();  
+               var HotEnd0_First_Layer = $('#HotEnd0_First_Layer').text();
+               var HotEnd0_Sec_Layer = $('#HotEnd0_Sec_Layer').text();  
+               var Bed1_First_Layer = $('#Bed1_First_Layer').text();
+               var Bed1_Sec_Layer = $('#Bed1_Sec_Layer').text();  
+               var HotEnd1_First_Layer = $('#HotEnd1_First_Layer').text();
+               var HotEnd1_Sec_Layer = $('#HotEnd1_Sec_Layer').text();
 
 
-            if(this.id == "Update"){
-                document.matForm.action ="inputMaterials.php";
-                if (confirm("Are you sure you want to update "+iClick)){
-                    $('#matName2').attr("id","matName"+buttValue);
-                    newMat = $('#matName'+buttValue).text();
-                    newBed0F = $('#bed0FLUD'+buttValue).text();
-                    newBed0S = $('#bed0SLUD'+buttValue).text();
-                    newHE0F = $('#bed0HE0FL'+buttValue).text();
-                    newHE0S = $('#bed0HE0SL'+buttValue).text();
-                    newBed1F = $('#bed1FL'+buttValue).text();
-                    newBed1S = $('#bed1SL'+buttValue).text();
-                    newHE1F = $('#HE1FL'+buttValue).text();
-                    newHE1S = $('#HE1SL'+buttValue).text();
-                    // task_id = $('#matNameUpdated').text();
-                    // document.matForm.action = "inputMaterials.php?updateMat="+newMat;
+               if(Material == ''){  
+                   swal(
+                     'Warning:  Material has no name!',
+                     'Please enter a name for your material',
+                     'warning'
+                   )  
+                   return false;  
+               }
+               if(Bed0_First_Layer == ''){  
+                swal(
+                  'Warning:  Bed0_First_Layer has no value!',
+                  'Please enter a value for Bed0_First_Layer',
+                  'warning'
+                  )
+                   return false;  
+               }
+               if(Bed0_Sec_Layer == ''){  
+                swal(
+                  'Warning:  Bed0_Sec_Layer has no value!',
+                  'Please enter a value for Bed0_Sec_Layer',
+                  'warning'
+                  )
+                   return false;  
+               }
+               if(HotEnd0_First_Layer == ''){  
+                swal(
+                  'Warning:  HotEnd0_First_Layer has no value!',
+                  'Please enter a value for HotEnd0_First_Layer',
+                  'warning'
+                  )
+                   return false;  
+               }
+               if(HotEnd0_Sec_Layer == ''){  
+                swal(
+                  'Warning:  HotEnd0_Sec_Layer has no value!',
+                  'Please enter a value for HotEnd0_Sec_Layer',
+                  'warning'
+                  )
+                   return false;  
+               }
 
-                    document.matForm.action = "inputMaterials.php?updateMat="+newMat+"&taskID="+buttValue+"&updateBedFirst0="+newBed0F+"&updateBedSec0="+newBed0S+"&updateHotEndFirst0="+newHE0F+"&updateHotEndSec0="+newHE0S+"&updateBedFirst1="+newBed1F+"&updateBedSec1="+newBed1S+"&updateHotEndFirst1="+newHE1F+"&updateHotEndSec1="+newHE1S;
-                }else{
-                    alert('UPDATE Request Cancelled');
-                }
-            }
+               // ### Alert for Duplication Temperatures ###
+               // if(Bed1_First_Layer == ''){  
+               //     alert("Enter Bed1 First Layer Temperature ");  
+               //     return false;  
+               // }
+               // if(Bed1_Sec_Layer == ''){  
+               //     alert("Enter Bed1 Seceding Layer Temperature ");  
+               //     return false;  
+               // }
+               // if(HotEnd1_First_Layer == ''){  
+               //     alert("Enter HotEnd1 First Layer Temperature ");  
+               //     return false;  
+               // }
+               // if(HotEnd1_Sec_Layer == ''){  
+               //     alert("Enter HotEnd1 Seceding Layer Temperature ");  
+               //     return false;  
+               // }     
+
+               // ### AJAX INSERT ###
+               $.ajax({  
+                   url:"insert.php",  
+                   method:"POST",  
+                   data:{Material:Material, Bed0_First_Layer:Bed0_First_Layer, Bed0_Sec_Layer:Bed0_Sec_Layer, HotEnd0_First_Layer:HotEnd0_First_Layer, HotEnd0_Sec_Layer:HotEnd0_Sec_Layer, Bed1_First_Layer:Bed1_First_Layer, Bed1_Sec_Layer:Bed1_Sec_Layer, HotEnd1_First_Layer:HotEnd1_First_Layer, HotEnd1_Sec_Layer:HotEnd1_Sec_Layer},  
+                   dataType:"text",  
+                   success:function(data){  
+                        swal(
+                          'Success!',
+                          'Your new material was successfully added!',
+                          'success'
+                        )
+                        fetch_data();  
+                   }  
+               })  
+             });
+
+
+             // ### Grabs column_name from <td> in select.php ###
+             function edit_data(id, text, column_name){
+                  $.ajax({  
+                       url:"edit.php",  
+                       method:"POST",  
+                       data:{id:id, text:text, column_name:column_name},  
+                       dataType:"text",  
+                       success:function(data){  
+                            // alert(data);
+                            fetch_data;
+                       }  
+                  });  
+             }
+
+             // ### id, text and column_name sent to edit_data() ###
+             $(document).on('blur', '.Material', function(){  
+                  var id = $(this).data("id1");
+                  var Material = $(this).text(); 
+                  edit_data(id, Material, "Material");  
+             });
+
+             $(document).on('blur', '.Bed0_First_Layer', function(){  
+                  var id = $(this).data("id2");  
+                  var Bed0_First_Layer = $(this).text();  
+                  edit_data(id, Bed0_First_Layer, "Bed0_First_Layer");  
+             });
+
+             $(document).on('blur', '.Bed0_Sec_Layer', function(){  
+                  var id = $(this).data("id3");  
+                  var Bed0_Sec_Layer = $(this).text();  
+                  edit_data(id, Bed0_Sec_Layer, "Bed0_Sec_Layer");  
+             });
+
+             $(document).on('blur', '.HotEnd0_First_Layer', function(){  
+                  var id = $(this).data("id4");  
+                  var HotEnd0_First_Layer = $(this).text();  
+                  edit_data(id, HotEnd0_First_Layer, "HotEnd0_First_Layer");  
+             });
+
+             $(document).on('blur', '.HotEnd0_Sec_Layer', function(){  
+                  var id = $(this).data("id5");  
+                  var HotEnd0_Sec_Layer = $(this).text();  
+                  edit_data(id, HotEnd0_Sec_Layer, "HotEnd0_Sec_Layer");  
+             });
+
+             $(document).on('blur', '.Bed1_First_Layer', function(){  
+                  var id = $(this).data("id6");  
+                  var Bed1_First_Layer = $(this).text();  
+                  edit_data(id, Bed1_First_Layer, "Bed1_First_Layer");  
+             });
+
+             $(document).on('blur', '.Bed1_Sec_Layer', function(){  
+                  var id = $(this).data("id7");  
+                  var Bed1_Sec_Layer = $(this).text();  
+                  edit_data(id, Bed1_Sec_Layer, "Bed1_Sec_Layer");  
+             });
+
+             $(document).on('blur', '.HotEnd1_First_Layer', function(){  
+                  var id = $(this).data("id8");  
+                  var HotEnd1_First_Layer = $(this).text();  
+                  edit_data(id, HotEnd1_First_Layer, "HotEnd1_First_Layer");  
+             });
+
+             $(document).on('blur', '.HotEnd1_Sec_Layer', function(){  
+                  var id = $(this).data("id9");  
+                  var HotEnd1_Sec_Layer = $(this).text();  
+                  edit_data(id, HotEnd1_Sec_Layer, "HotEnd1_Sec_Layer");
+             });
+
+
+             $(document).on('click', '.btn_delete', function(){  
+               var id=$(this).data("id3");
+               
+               swal({
+                  title: "Deleting Material",
+                  text: "Are you sure you want to DELETE this material?",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, DELETE the material",
+                  closeOnConfirm: false
+                },
+
+                function(){
+                  $.ajax({  
+                       url:"delete.php",  
+                       method:"POST",  
+                       data:{id:id},  
+                       dataType:"text",  
+                       success:function(data){  
+                            // alert(data);  
+                            fetch_data();
+                       }  
+                  });  
+
+                  swal("Deleting Material", "Material Deleted", "success");
+                });
+                
+             });  
         });
 
-
-// if(neededValue == "someString"){
-    // $('#matTable tr').click(function(event){
-    //     neededValue1 = $(this).attr('value');
-    //     neededValue = neededValue1;
-    //     console.log("<tr> button Value: "+neededValue);
-    //     event.preventDefault();
-    // });
-
-    //### get value of insert button in row when clicking on <td> ###
-    // $("tr").on("click",function(event){
-    //     // e.preventDefault();
-    //     neededValue1 = $(this).attr('value');
-    //     neededValue = neededValue1;
-    //     console.log("<tr> button Value: "+neededValue);
-
-
-        //### allows editing of text on <td> clicked.  ###
-    //     $('body').on('click','[data-editableMatName'+neededValue+']',function(){
-            
-    //         //### original (keep)###
-    //         // $ele1 = $(this);
-    //         // $input1 = $('<input id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
-    //         // $ele1.replaceWith($input1);
-    //         // console.log($ele1);
-
-    //         //### id's called used below ###
-    //         // $('#matName'+neededValue+''
-    //         // $('#UpdatedInput'+neededValue+''
-                        
-            
-    //         //###  Find Current ID, change accordingly ###
-    //         if($('#matName'+neededValue+'').length > 0){
-    //             console.log("Found 1st");
-    //             $ele1 = $(this);
-    //             console.log("This#1--> "+$ele1);
-    //             $input1 = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').val($ele1.text());
-    //             $ele1.replaceWith($input1);
-    //             console.log($ele1);
-    //         }
-    //         else if($('#UpdatedInput'+neededValue+'').length > 0){
-    //             console.log("Found 2nd");
-    //             $ele1 = $(this);
-    //             console.log("This#2--> "+$ele1);
-    //             $input1 = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').val($ele1.text());
-    //             $ele1.replaceWith($input1);
-    //             console.log($ele1);
-    //         }
-
-
-    //         //### ID Check, allows user to change input more than once (current issue) ###
-    //         if($('#UpdatedInput'+neededValue+'').length > 0){
-    //             console.log("Found 3rd");
-    //             save = function(){
-    //                 var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
-    //             $input1.replaceWith($p);
-    //             console.log($p);
-    //             };
-    //         }
-    //         else if($('#matName'+neededValue+'').length > 0){
-    //             console.log("Found 4th");
-    //             save = function(){
-    //                 var $p = $('<input data-editableMatName'+neededValue+' id="UpdatedInput'+neededValue+'"/>').text($input1.val());
-    //             $input1.replaceWith($p);
-    //             console.log($p);
-    //            };
-    //         }
-
-    //         $input1.one('blur', save).focus();
-
-    //         //### original (keep)###
-    //         // save = function(){
-    //         //     var $p = $('<td data-editableMatName'+neededValue+' id="matName'+neededValue+'"/>').text($input1.val());
-    //         //     $input1.replaceWith($p);
-    //         //     console.log($input1);
-    //         // };
-    //     });
-
-
-    //     $('body').on('click','[data-editableBed0FL'+neededValue+']',function(){
-          
-    //         $ele2 = $(this);
-    //         $input2 = $('<input/>').val( $ele2.text());
-    //         $ele2.replaceWith($input2);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableBed0FL'+neededValue+' id="bed0FLUD"/>').text($input2.val());
-    //             $input2.replaceWith($p);
-    //         };
-
-    //         $input2.one('blur', save).focus();
-    //     });
-
-
-    //     $('body').on('click','[data-editableBed0SL'+neededValue+']',function(){
-          
-    //         $ele3 = $(this);
-    //         $input3 = $('<input/>').val( $ele3.text());
-    //         $ele3.replaceWith($input3);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableBed0SL'+neededValue+' id="bed0SLUD"/>').text($input3.val());
-    //             $input3.replaceWith($p);
-    //         };
-
-    //         $input3.one('blur', save).focus();
-    //     });
-
-
-    //     $('body').on('click','[data-editableHE0FL'+neededValue+']',function(){
-          
-    //         $ele4 = $(this);
-    //         $input4 = $('<input/>').val( $ele4.text());
-    //         $ele4.replaceWith($input4);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableHE0FL'+neededValue+' id="bed0HE0FL"/>').text($input4.val());
-    //             $input4.replaceWith($p);
-    //         };
-
-    //         $input4.one('blur', save).focus();
-    //     });
-
-
-    //     $('body').on('click','[data-editableHE0SL'+neededValue+']',function(){
-          
-    //         $ele5 = $(this);
-    //         $input5 = $('<input/>').val( $ele5.text());
-    //         $ele5.replaceWith($input5);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableHE0SL'+neededValue+' id="bed0HE0SL"/>').text($input5.val());
-    //             $input5.replaceWith($p);
-    //         };
-
-    //         $input5.one('blur', save).focus();
-    //     });
-
-
-    //     $('body').on('click','[data-editablebed1FL'+neededValue+']',function(){
-          
-    //         $ele6 = $(this);
-    //         $input6 = $('<input/>').val( $ele6.text());
-    //         $ele6.replaceWith($input6);
-
-    //         save = function(){
-    //             var $p = $('<td data-editablebed1FL'+neededValue+' id="bed1FL"/>').text($input6.val());
-    //             $input6.replaceWith($p);
-    //         };
-
-    //         $input6.one('blur', save).focus();
-    //     });
-
-
-    //     $('body').on('click','[data-editablebed1SL'+neededValue+']',function(){
-          
-    //         $ele7 = $(this);
-    //         $input7 = $('<input/>').val( $ele7.text());
-    //         $ele7.replaceWith($input7);
-
-    //         save = function(){
-    //             var $p = $('<td data-editablebed1SL'+neededValue+' id="bed1SL"/>').text($input7.val());
-    //             $input7.replaceWith($p);
-    //         };
-
-    //         $input7.one('blur', save).focus();
-    //     });
-
-    //     $('body').on('click','[data-editableHE1FL'+neededValue+']',function(){
-          
-    //         $ele8 = $(this);
-    //         $input8 = $('<input/>').val( $ele8.text());
-    //         $ele8.replaceWith($input8);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableHE1FL'+neededValue+' id="HE1FL"/>').text($input8.val());
-    //             $input8.replaceWith($p);
-    //         };
-
-    //         $input8.one('blur', save).focus();
-    //     });
-
-    //     $('body').on('click','[data-editableHE1SL'+neededValue+']',function(){
-          
-    //         $ele9 = $(this);
-    //         $input9 = $('<input/>').val( $ele9.text());
-    //         $ele9.replaceWith($input9);
-
-    //         save = function(){
-    //             var $p = $('<td data-editableHE1SL'+neededValue+' id="HE1SL"/>').text($input9.val());
-    //             $input9.replaceWith($p);
-    //         };
-
-    //         $input9.one('blur', save).focus();
-    //     });
-
-    // });
-
-
-        // ### Disable Enter Key for input, but not form###
-        $('body').keypress(function(e){
-            if ( e.which == 13 ) return false;
-            if ( e.which == 13 ) e.preventDefault();
-        });
 
 
 
