@@ -7,6 +7,8 @@ include 'YNG_ACR.php';
 
 $db_tablename = "manipulate";
 
+
+
 //MySql select
 $select = "SELECT Material FROM materialDB";           # this selects material from materialDB
 $selectQuery = mysqli_query($dbConnection, $select);
@@ -52,6 +54,7 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 
     <script>
+
 
         function ShowHideDiv() {
             var ddlPrintOrAdd = document.getElementById("ddlPrintOrAdd");
@@ -228,16 +231,13 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 <body>
 
     <div id="wrapper">
-
-        
-
         <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header" align="center">3D Uploads</h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" align="center">3D File Upload</h1>
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.col-lg-12 -->
-        </div>
         <div class="row">
             <div class="col-lg-5">
                 <div class="panel panel-green">
@@ -270,9 +270,7 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                                 } else {
                                     echo "0 results";
                                 }
-                                    
                                 // mysqli_close($dbc);
-
                                 ?></td>
                             </tr>
                         </table>
@@ -286,20 +284,10 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                             <h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Controls</h3>
                         </div>
                             <div class="panel-body">
-                            <!-- <div style="display: flex; justify-content: center;">
-                                <title>Video Stream/s</title>
-                                  <img src="http://<ip here>/?action=stream" height="500" width="600">
-                            </div> -->
-                            <h3> What would you like to do? Print or Add a material? </h3><br><br>
-                            <select name = "Print or Add Temp" id="ddlPrintOrAdd" onchange="ShowHideDiv()">
-                                <option value="def" > - Select - </option>
-                                <option value="P">Print</option>
-                                <option value="1">Add Material Type</option>
-                            </select>
                             <br>
                             <br>
                             <p></p>
-                            <div id="fileUpload" name="fileUpload" style="display: none">
+                            <div id="fileUpload" name="fileUpload" style="">
                                 <form name="fileUpload" action="upload.php" method="post" enctype="multipart/form-data" />
                                 <h4> Select a file to Print </h4>
                                         <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
@@ -307,31 +295,35 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                             </div>
                             <br>
                             <p></p>
-                            <div id="printerSelect"  class="menu" style="display: none">
+                            
+                            <div id="printerSelect"  class="menu" style="">
                                 <span> Select a PRINTER (GT is 4 Beds) : </span>
                                 <select name="printerSelection" id="printerSelection" class="btn btn-primary" >
                                 </select>
 
                             </div>
                             <p></p>
-                            <div id="zoneSelect" style="display: none">
+                            
+                            <div id="zoneSelect" style="">
                                 <span> Select a ZONE (GT is only Zones 1-4) : </span>
-                                <select name="zoneSelection" id="zoneSelection" class="menu"><option disabled='disabled' selected='selected'>-Select-</option></select>
-
-                                                <!-- <option disabled="disabled" selected="selected"> - Select - </option> -->
+                                <select name="zoneSelection" id="zoneSelection" class="menu">
+                                    <option disabled='disabled' selected='selected'>-Select-</option>
+                                </select>
                             </div>
                             <br>
-                            <div id="nozzleSelect" style="display: none">
+                            
+                            <div id="nozzleSelect" style="">
                                 <span> Single or Duplication: </span>
-                                <select name="nozzleSelection" id="nozzleSelection" class="menu"><option disabled='disabled' selected='selected'>-Select-</option></select>
-                                                <!-- <option disabled="disabled" selected="selected"> - Select - </option> -->
+                                <select name="nozzleSelection" id="nozzleSelection" class="menu">
+                                    <option disabled='disabled' selected='selected'>-Select-</option>
+                                </select>
                             </div>
                             <br>
-                            <div id="materialSelection" style="display: none">
+                            
+                            <div id="materialSelection" style="">
                                 <span> Select a MATERIAL : </span>
-                                    <!-- <select required="true" id="materialSelection" name="materialSelection" onchange="ShowHideDiv()"> -->
-                                        <select required = "true" id="materialSelection" name="materialSelection">
-                                            <option disabled="disabled" selected="selected"> - Select - </option>
+                                    <select required = "true" id="materialSelection" name="materialSelection">
+                                        <option disabled="disabled" selected="selected"> - Select - </option>
                                             <?php
                                             
                                             $db_tablename = "manipulate";
@@ -351,178 +343,46 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                                             $selectQuery = mysqli_query($dbConnection, $select);
 
                                             $selectMatType = "SELECT MaterialType FROM yngprints";
+                                            
                                             $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 
                                             $q = "SELECT Material FROM materialDB";
                                             $rs=mysqli_query($dbConnection, $q);
+                                            
                                             echo "what";
+                                            
                                             if($rs && mysqli_num_rows($rs)){
                                                 echo "here";
+                                                
                                                 while($rd=mysqli_fetch_assoc($rs)){
                                                     echo "<option>" . $rd{'Material'} . "</option>";
                                                     echo $rd{'Material'};}
                                             }
 
-                                            // mysqli_close($dbConnection);
 
                                             ?>
-                                        </select>
-                            </div>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <br>
-                            <div id="dvSubmit" name="dvSubmit" style="display: none">
-                            <input type="submit" id="submitSelection" style="text-align:center" name= "submitSelection" value="Click Here to Upload to OctoPrint" />
-                            </div>
-
-
-                            <br>
-                            <div id="dvSingleDup" style="display: none" onchange="ShowHideDiv();HideDD()">
-                                <span> Add Material for SINGLE or DUPILCATION Print? </span>
-                                    <select name = " Single or Duplication" id = "ddlSingleDup" >
-                                        <option value="1"> - Select - </option>
-                                        <option value="S"> Single </option>
-                                        <option value="D"> Duplication </option>
                                     </select>
                             </div>
-                            <div id ="dvName" name ="dvName" style ="display: none" onchange = "ShowHideDiv()">
-                                 Enter a NAME for the Material Type:
-                                <input type ="text" id ="numName" name ="numName">
-                            </div>
                             <p></p>
                             <p></p>
-                            <p></p>
-                            <p></p>
-                            <div id="dvBedFirst" name="dvBedFirst" style="display: none" onchange = "ShowHideDiv()">
-                                Enter FIRST BED Layer Temperature:
-                                <input type="number" min="0" id="numBedFirst" name="numBedFirst" />
-                            </div>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <div id="dvExtruderFirst" name="dvExtruderFirst" style="display: none" onchange = "ShowHideDiv()">
-                                Enter FIRST EXTRUDER Temperature:
-                                <input type="number" min="0" id="numExtruderFirst" name="numExtruderFirst" >
-                            </div>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <div id="dvBedSec" name="dvBedSec" style="display: none" onchange = "ShowHideDiv()">
-                                Enter SECEDING BED Temperature:
-                                <input type="number" min="0" id="numBedSec" name="numBedSec"/>
-                            </div>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <div id="dvExtruderSec" name="dvExtruderSec" style="display: none" onchange = "ShowHideDiv()">
-                                Enter SECEDING EXTRUDER Temperature:
-                                <input type="number" min="0" id="numExtruderSec" name="numExtruderSec"/>
-                            </div>
-
-                            <!-- DUPLICATION SIDE -->
-
-                            <div id="dvNameDUP" name="dvNameDUP" style="display: none">
-                                 Enter a NAME for the Material Type:
-                                <input type="text" id="numNameDUP" name="numNameDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvBedFirstDUP" name="dvBedFirstDUP" style="display: none">
-                                Enter FIRST BED Layer Temperature:
-                                <input type="number" min="0" id="numBedFirstDUP" name="numBedFirstDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvExtruderFirstDUP" name="dvExtruderFirstDUP" style="display: none">
-                                Enter FIRST EXTRUDER Temperature:
-                                <input type="number" min="0" id="numExtruderFirstDUP" name="numExtruderFirstDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvBedSecDUP" name="dvBedSecDUP" style="display: none">
-                                Enter SECEDING BED Temperature:
-                                <input type="number" min="0" id="numBedSecDUP" name="numBedSecDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvExtruderSecDUP" name="dvExtruderSecDUP" style="display: none">
-                                Enter SECEDING EXTRUDER Temperature:
-                                <input type="number" min="0" id="numExtruderSecDUP" name="numExtruderSecDUP" />
-                            </div>
-                            <br>
-                            <div id="dvBed2FirstDUP" name="dvBed2FirstDUP" style="display: none">
-                                Enter DUPLICATION BED Layer Temperature:
-                                <input type="number" min="0" id="numBed2FirstDUP" name="numBed2FirstDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvExtruder2FirstDUP" name="dvExtruder2FirstDUP" style="display: none">
-                                Enter DUPLCIATION Extruder Temperature:
-                                <input type="number" min="0" id="numExtruder2FirstDUP" name="numExtruder2FirstDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvBed2SecDUP" name="dvBed2SecDUP" style="display: none">
-                                Enter DUPLICATION SECEDING BED Temperature:
-                                <input type="number" min="0" id="numBed2SecDUP" name="numBed2SecDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <div id="dvExtruder2SecDUP" name="dvExtruder2SecDUP" style="display: none">
-                                Enter DUPLICATION SECEDING EXTRUDER Temperature:
-                                <input type="number" min="0" id="numExtruder2SecDUP" name="numExtruder2SecDUP" />
-                            </div>
-                            <p></p>
-                            <p></p><p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p><p></p>
                             <p></p>
                             <br>
-                            <div id="dvSubmitSingle" name="dvSubmitSingle" style="display: none">
-                                    <!-- <form onsubmit="ShowHideDiv()" /> -->
-                                    <form onsubmit="ShowHideDiv"  method="post" enctype="text/plain" />
-                                    <input type="submit"  name= "submitSingle" value="Click Here to Add SINGLE Material to the Database" />
+                            <div id="dvSubmit" name="dvSubmit" style="">
+                            <input class="btn btn-warning" type="submit" id="submitSelection" style="text-align:center" name= "submitSelection" value="Click Here to Upload to OctoPrint" />
                             </div>
 
-                            <div id="dvSubmitDuplication" name="dvSubmitDuplication" style="display: none">
-                                    <!-- <form onsubmit="ShowHideDiv()"/> -->
-                                    <form  onsubmit="ShowHideDiv()"  method="post" enctype="text/plain" />
-                                    <input type="submit"  name= "submitDuplication" value="Click Here to Add DUPLICATION Material to the Database" />
-                            </div>
-
-                            </p>
+                            <br>
+                            
 
                             <?php
 
                             mysqli_close($dbConnection);
                             mysqli_close($dbc)
                             ?>
-
-
-                            <!-- <button  id="justFiles" onclick="getFiles()">Display Files</button> -->
-
-                            <!--    <div data-bind="text: status"></div>
-                                <button data-bind="click: refresh">refresh</button> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-                                <!-- <div class="text-right">
-                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -571,43 +431,6 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
         }
 
         getPrinterState();
-
-
-
-        //## sets the dropdown printer select to default to the ACTIVE PRINTER (AP) ##
-
-        // ### Disabled, redundant? ### 
-        // function autoSelectAP(){
-
-        //     var ddIntro = '<span> Select a PRINTER (GT is 4 Beds) : </span>'
-
-        //     if(dd_AP == '"reveal3D"'){
-        //         console.log('found reveal3D as AP');
-        //         reveal3D_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="reveal3D">reveal3D</option></select>';
-        //         document.getElementById("printerSelect").innerHTML = ddIntro+reveal3D_AP;
-
-        //     }else if(dd_AP =='"FRANK3"'){
-        //         FRANK3_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="FRANK3">FRANK3</option></select>';
-        //         document.getElementById("printerSelect").innerHTML = ddIntro+FRANK3_AP;
-
-        //     }else if(dd_AP =='"GT"'){
-        //         gt_AP = '<select name="printerSelection" id="printerSelection" class="btn btn-primary" ><option selected="selected" value="GT">GT</option></select>';
-        //         document.getElementById("printerSelect").innerHTML = ddIntro+gt_AP;
-
-        //     }else{
-        //         console.log('autoSelectAP() not working');
-        //     }
-
-        // }
-
-        // autoSelectAP();
-
-
-
-
-
-
-
 
     </script>
 

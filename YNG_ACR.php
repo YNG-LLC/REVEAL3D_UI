@@ -290,7 +290,7 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
     <a href="index.php"><i class="fa fa-fw fa-home"></i> YNG Index Page</a>
 </li>
 <li>
-    <a href="YNGUpload.php"><i class="fa fa-upload fa-fw"></i> 3D Uploads</a>
+    <a href="YNGUpload.php"><i class="fa fa-upload fa-fw"></i> Upload 3D Project</a>
 </li>
 <li class="active">
     <a href="yngOcto.php"><i class="fa fa-tasks fa-fw"></i> YNG Octo User Interface<span class="fa arrow"></span></a>
