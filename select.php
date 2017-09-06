@@ -9,6 +9,7 @@
       <table class="table table-bordered">  
         <tr> 
           <th width="100%">Available Actions</th>
+
           <th width="10%">Task ID</th>   
           <th width="10%">Material</th>  
           <th width="15%">Bed0_First_Layer</th>
@@ -43,8 +44,8 @@
       }
       $output .= '  
         <tr>
-          <td><button type="button" name="btn_add" id="btn_add" class="btn btn-success">Insert Row Here</button></td>  
-          <td id="taskID" contenteditable></td> 
+          <td><button type="button" name="btn_add" id="btn_add" class="btn btn-success">Add Material</button></td>  
+          <td id="taskID" contenteditable>AUTO</td> 
           <td id="Material" contenteditable></td>
           <td id="Bed0_First_Layer" contenteditable></td>
           <td id="Bed0_Sec_Layer" contenteditable></td>
@@ -66,7 +67,7 @@
       $output .= '  
         <tr>
           <td><button type="button" name="btn_add" id="btn_add" class="btn btn-success">Add Material</button></td>  
-          <td id="taskID" contenteditable></td> 
+          <td id="taskID" contenteditable>AUTO</td> 
           <td id="Material" contenteditable></td>
           <td id="Bed0_First_Layer" contenteditable></td>
           <td id="Bed0_Sec_Layer" contenteditable></td>
