@@ -712,7 +712,9 @@ if ($dbConnection->connect_error) {
     mysqli_close($dbc);
 
 ?>
+<?php 
+  include "footer.php"
+ ?>
 
-<footer class="panel-footer" style='text-align: center; margin-left: auto; margin-right: auto;'>
-    <p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
-</footer>
+</html>
+

@@ -49,8 +49,8 @@ include 'YNG_ACR.php';
     <script src="dist/js/sb-admin-2.js"></script>
 
 </body>
-<footer class="panel-footer" style='text-align: center; margin-left: auto; margin-right: auto;'>
-    <p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
-</footer>
+<?php 
+include 'footer.php'; 
+ ?>
 
 </html>

@@ -7,19 +7,22 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+	<title></title>
+</head>
 	<body>
 		<div id="wrapper">
 		</div>
 		<div id="page-wrapper">
-			<div class="row">
-				<h1 id='banner' style="text-align:center"  class="col-lg-12">
-				</h1>
+			<!-- <div class="row"> -->
+				<!-- <h1 id='banner' style="text-align:center"  class="col-lg-12"> -->
+				<!-- </h1> -->
 				<!-- /.col-lg-12 -->
-			</div>
+			<!-- </div> -->
 			<br>
 			<!-- </div> -->
 			<div class="row">
-				<div class="col-lg-5" style="max-width:auto;max-height:auto;">
+				<div class="col-lg-4" style="max-width:auto;max-height:auto;">
 					<div class="panel panel-green">
 						<div class="panel-heading">
 							<h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
@@ -93,126 +96,11 @@ session_start();
 					</div>
 				</div>
 			</div>
-
-			<div class="col-lg-7" style="max-width:auto;max-height:auto;float:right;flex-wrap: wrap;flex: 1 0 auto;">
-				<div class="panel panel-red">
-					<div class="panel-heading">
+			<div class="col-lg-8" style="max-width:auto;max-height:auto;flex-wrap: wrap;flex: 1 0 auto;">
+				<div class="panel panel-success">
+					<div id="webcamDD" class="panel-heading" >
 						<h3 class="panel-title">
-			        		<a class="btn btn-red collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">+</a><i class="fa fa-fire fa-fw"></i> Temperature Panel
-			        	</h3>
-					</div>
-					<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped">
-									<h1 style="max-width:100%;max-height:100%;text-align:center;" class="panel-heading">Extruders</h1>
-									<table id='bedTemps' class="table table-bordered table-hover table-striped">
-										<thead>
-											<tr>
-												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Extruder</th>
-												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Input Temp (&#8451; )</th>
-												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Actual (&#8451; )</th>
-												<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Target (&#8451;)</th>
-												<th>Controls</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
-												<td style=" text-align:center;max-width:100%;max-height:100%;">
-													<input type="number" id="tool0"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
-												</td>
-												<td id="tempStatus0A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-												<td id="tempStatus0T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-												<td id="extUpdate0" style=" text-align:center;max-width:100%;max-height:100%;">
-													<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-												</td>
-											</tr>
-											<tr id='dualNoz' class='' >
-												<th style=" text-align:center;max-width:100%;max-height:100%;">#2</th>
-												<td style=" text-align:center;max-width:100%;max-height:100%;">
-													<input type="number" id="tool1"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
-												</td>
-												<td id="tempStatus1A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-												<td id="tempStatus1T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
-												<td id="extUpdat1e" style=" text-align:center;max-width:100%;max-height:100%;">
-													<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div style=" text-align:center;max-width:100%;max-height:100%;">
-									<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
-									<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
-									<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
-									</div>
-									<hr style="color:blue">
-									<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
-									<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
-										<thead>
-											<tr>
-												<th style="max-width:100%;max-height:100%;text-align:center;">Zone</th>
-												<th style="max-width:100%;max-height:100%;text-align:center;">Input Temperature (&#8451; )</th>
-												<th style="max-width:100%;max-height:100%;text-align:center;">Zone Temp (&#8451; )</th>
-												<th style="max-width:100%;max-height:100%;text-align:center;">Controls</th>
-												<!-- <th>Target Temp (&#8451; )</th> -->
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<!-- // in file units, changed in to cm () -->
-												<th style="text-align:center;max-width:100%;max-height:100%;">
-													<?php
-													// session_start();
-													// include 'YNG_ACR.php';
-													$db_tablename = "yngUI";
-													$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
-														or die('Error communicating to MySQL server');
-													/// SELECT for : does value exist?
-													$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
-													$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
-													$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
-													// if(isset($is_reveal3D)){
-													if($is_reveal3D->num_rows == 1){
-														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-													}
-													// if(isset($is_FRANK3)){
-													elseif($is_FRANK3->num_rows == 1){
-														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
-														
-													}
-													// if(isset($is_GT)){
-													elseif($is_GT->num_rows == 1){
-														echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
-													}else{
-														echo 'No Active Printer has been Set';
-													};
-													// }
-													
-													// mysqli_close($dbc);
-												?></th>
-												<td style="text-align:center;max-width:100%;max-height:100%;">
-													<input style=" text-align:center;max-width:100%;max-height:100%;" type="number" name="zoneTempInput" id="zoneTempInput" min="0">
-												</td>
-												<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
-												<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
-													<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
-												</td>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-5" style="max-width:auto;max-height:auto;flex-wrap: wrap;flex: 1 0 auto;">
-				<div class="panel panel-info">
-					<div class="panel-heading" >
-						<h3 class="panel-title">
-							<a class="btn panel-info collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
+							<a class="btn panel-success collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false">+</a>
 							<i class="fa fa-video-camera   fa-fw"></i> WebCam
 						</h3>
 					</div>
@@ -224,13 +112,130 @@ session_start();
 				</div>
 			</div>
 
+			
 			</div> <!-- ROW END-->
-			<br><br>
+			<div class="row">
+				<div class="col-lg-12" style="max-width:auto;max-height:auto;flex-wrap: wrap;flex: 1 0 auto;">
+					<div class="panel panel-red">
+						<div id="tempDD" class="panel-heading">
+							<h3 class="panel-title">
+				        		<a class="btn btn-red collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">+ </a><i class="fa fa-fire fa-fw"></i> Temperature Panel
+				        	</h3>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover table-striped">
+										<h1 style="max-width:100%;max-height:100%;text-align:center;" class="panel-heading">Extruders</h1>
+										<table id='bedTemps' class="table table-bordered table-hover table-striped">
+											<thead>
+												<tr>
+													<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Extruder</th>
+													<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Input Temp (&#8451; )</th>
+													<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Actual (&#8451; )</th>
+													<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Target (&#8451;)</th>
+													<th style="max-width:100%;max-height:100%;max-width:100%;max-height:100%;text-align:center;">Controls</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th style=" text-align:center;max-width:100%;max-height:100%;">#1</th>
+													<td style=" text-align:center;max-width:100%;max-height:100%;">
+														<input type="number" id="tool0"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
+													</td>
+													<td id="tempStatus0A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+													<td id="tempStatus0T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+													<td id="extUpdate0" style=" text-align:center;max-width:100%;max-height:100%;">
+														<a  id="extUpdate0Click" class="btn btn-sq-xs btn-warning" onclick="set_tool0_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+													</td>
+												</tr>
+												<tr id='dualNoz' class='' >
+													<th style=" text-align:center;max-width:100%;max-height:100%;">#2</th>
+													<td style=" text-align:center;max-width:100%;max-height:100%;">
+														<input type="number" id="tool1"  min="0" style=" text-align:center;max-width:100%;max-height:100%;">
+													</td>
+													<td id="tempStatus1A" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+													<td id="tempStatus1T" style=" text-align:center;max-width:100%;max-height:100%;"></td>
+													<td id="extUpdat1e" style=" text-align:center;max-width:100%;max-height:100%;">
+														<a  id="extUpdate1Click" class="btn btn-sq-xs btn-warning" onclick="set_tool1_temp()"><i class="glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div style=" text-align:center;max-width:100%;max-height:100%;">
+										<button  id="filamentReload" class="btn btn-warning" onclick="filamentReload()" style="max-width:100%;max-height:100%;">Reload Filament</button>
+										<button  id="filament" class="btn btn-primary" onclick="filamentRetract()" style="max-width:100%;max-height:100%;">Retract Filament</button>
+										<button  id="filamentReload" class="btn btn-danger" onclick="disableExtruders()" style="max-width:100%;max-height:100%;">Disable Active Extruder Motors</button>
+										</div>
+										<hr style="color:blue">
+										<h1 style="text-align:center;max-width:100%;max-height:100%;" class="panel-heading">Zone</h1>
+										<table id='bedTemps' class="table table-bordered table-hover table-striped" style="max-width:100%;max-height:100%;">
+											<thead>
+												<tr>
+													<th style="max-width:100%;max-height:100%;text-align:center;">Zone</th>
+													<th style="max-width:100%;max-height:100%;text-align:center;">Input Temperature (&#8451; )</th>
+													<th style="max-width:100%;max-height:100%;text-align:center;">Zone Temp (&#8451; )</th>
+													<th style="max-width:100%;max-height:100%;text-align:center;">Controls</th>
+													<!-- <th>Target Temp (&#8451; )</th> -->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<!-- // in file units, changed in to cm () -->
+													<th style="text-align:center;max-width:100%;max-height:100%;">
+														<?php
+														// session_start();
+														// include 'YNG_ACR.php';
+														$db_tablename = "yngUI";
+														$dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
+															or die('Error communicating to MySQL server');
+														/// SELECT for : does value exist?
+														$is_reveal3D  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'reveal3D' ");
+														$is_FRANK3  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'FRANK3' ");
+														$is_GT  = $dbc->query("SELECT ActivePrinter FROM settingsUI WHERE ActivePrinter = 'GT' ");
+														// if(isset($is_reveal3D)){
+														if($is_reveal3D->num_rows == 1){
+															echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+														}
+														// if(isset($is_FRANK3)){
+														elseif($is_FRANK3->num_rows == 1){
+															echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='2'>3</option><option value='3'>4</option><option value='4'>5</option><option value='5'>6</option><option value='6'>7</option><option value='7'>8</option><option value='8'>9</option><option value='9'>10</option><option value='10'>11</option><option value='11'>12</option><option value='12'>13</option><option value='13'>14</option><option value='14'>15</option><option value='15'>16</option></select>";
+															
+														}
+														// if(isset($is_GT)){
+														elseif($is_GT->num_rows == 1){
+															echo "<select name='zoneSelection' id='zoneSelect' class='dropdown-toggle'><option value='0'>1</option><option value='1'>2</option><option value='6'>3</option><option value='7'>4</option></select>";
+														}else{
+															echo 'No Active Printer has been Set';
+														};
+														// }
+														
+														// mysqli_close($dbc);
+													?></th>
+													<td style="text-align:center;max-width:100%;max-height:100%;">
+														<input style=" text-align:center;max-width:100%;max-height:100%;" type="number" name="zoneTempInput" id="zoneTempInput" min="0">
+													</td>
+													<td id="bedTemp" style="text-align:center;max-width:100%;max-height:100%;">N/A</td>
+													<td id="bedUpdate" style="text-align:center;max-width:100%;max-height:100%;">
+														<a  id="bedUpdateClick" class="btn btn-sq-xs btn-warning" onclick="set_bed_temp()"><i class=" glyphicon glyphicon-fire glyphicon-fw" ></i></a>
+													</td>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
 			<div class="row">
 				<!-- add printer control here -->
 				<div class="col-lg-12">
 		            <div class="panel panel-primary">
-		                <div class="panel-heading">
+		                <div id="printerDD" class="panel-heading">
 		                    <h3 class="panel-title">
 		                    	<a class="btn panel-primary collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false">+</a><i class="fa fa-magic fa-fw"></i> Printer Control
 		                    </h3>
@@ -336,7 +341,7 @@ session_start();
 				</div> -->
 				<div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both;overflow:auto;' >
 					<div class="panel panel-info">
-						<div class="panel-heading">
+						<div id="filesDD" class="panel-heading">
 						    <h3 class="panel-title">
 						    	<a class="btn panel-info collapsed in" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false">+</a><i class="fa fa-folder fa-fw"></i> Available Files
 						    </h3>
@@ -1287,7 +1292,8 @@ session_start();
 				// console.log(nameTitle);
 				var banner = JSON.stringify(document.getElementById("currentPrinter").innerText);
 
-				document.getElementById("banner").innerHTML = nameTitle;
+				// document.getElementById("banner").innerHTML = nameTitle;
+				// document.getElementById("banner").innerHTML = nameTitle;
 
 				// if(banner == '"    reveal3D"'){
 				//     img_element = '<img src="images/reveal3D_Banner.png">';
@@ -1433,10 +1439,273 @@ session_start();
 			});
 
 		}
-
 		showSettings();
 
-		//### Sort Table1 when clicking header ###
+
+
+	//######### #Cookies# ############
+
+
+		// ### Set Cookie ###
+		function makeCookies(getCollapse, thisClass, thisExpand, thisClassA, thisAEA, thisClass2, thisExpand2, thisClassA2, thisAEA2, thisClass3, thisExpand3, thisClassA3, thisAEA3, thisClass4, thisExpand4, thisClassA4, thisAEA4){
+
+				
+// //### Collapse 1 ### // //
+			// ### get class of <a> child using <dib> parent's ID COLLAPSE1###
+			var children = [].slice.call(document.getElementById('tempDD').getElementsByTagName('*'),0);
+			var childElements = new Array(children.length);
+			var arrayLength = children.length;
+			var attrArray = [];
+
+			for (var i = 0; i < arrayLength; i++) {
+			    var name = children[i].getAttribute("aria-expanded")||children[i].getAttribute("class");    
+			    childElements[i]=name;
+			    // console.log("ele attr: "+childElements);
+			}
+
+			//### displays <a> child class & aria-expanded###
+			// console.log("show attr of element: "+childElements);
+			var getParent = document.getElementById("tempDD");
+			var classA = childElements[0];
+			var ariaExpandedA = childElements[1];
+			// var styleA = childElements[2];
+			// console.log("Which kid is this?: "+getChild);
+
+
+
+			// ############## grab Attr from div #################
+			
+				// // CollapseOne
+			var getCollapse = document.getElementById("collapseOne");
+			var oneClass = getCollapse.className;
+			var oneAE = $(getCollapse).attr("aria-expanded");
+			var getExpand = oneAE;
+			var getClass = oneClass;
+			var getClassA = classA;
+			var getExpandA = ariaExpandedA;
+
+			// ### copy attr. values from element to localStorage ###
+			myStorage = window.localstorage;
+			var thisClass = localStorage.setItem("thisClass",getClass);
+			var thisExpand = localStorage.setItem("thisExpand",getExpand);
+			var thisClassA = localStorage.setItem("thisClassA",getClassA);
+			var thisAEA = localStorage.setItem("thisAEA",getExpandA);
+
+
+
+// //### Collapse 2 ### // //
+			// ### get class of <a> child using <dib> parent's ID  COLLAPSE2###
+			var children2 = [].slice.call(document.getElementById('printerDD').getElementsByTagName('*'),0);
+			var childElements2 = new Array(children2.length);
+			var arrayLength2 = children2.length;
+			var attrArray2 = [];
+
+			for (var i = 0; i < arrayLength2; i++) {
+			    var name2 = children2[i].getAttribute("aria-expanded")||children2[i].getAttribute("class");    
+			    childElements2[i]=name2;
+			    // console.log("ele attr: "+childElements);
+			}
+
+			//### displays <a> child class & aria-expanded###
+			// console.log("show attr of element: "+childElements);
+			var getParent2 = document.getElementById("printerDD");
+			var classA2 = childElements2[0];
+			var ariaExpandedA2 = childElements2[1];
+			// var styleA = childElements[2];
+			// console.log("Which kid is this?: "+getChild);
+
+				// // CollapseTwo
+			var getCollapse2 = document.getElementById("collapseTwo");
+			var oneClass2 = getCollapse2.className;
+			var oneAE2 = $(getCollapse2).attr("aria-expanded");
+			var getExpand2 = oneAE2;
+			var getClass2 = oneClass2;
+			var getClassA2 = classA2;
+			var getExpandA2 = ariaExpandedA2;
+
+			// ### copy attr. values from element to localStorage ###
+			myStorage = window.localstorage;
+			var thisClass2 = localStorage.setItem("thisClass2",getClass2);
+			var thisExpand2 = localStorage.setItem("thisExpand2",getExpand2);
+			var thisClassA2 = localStorage.setItem("thisClassA2",getClassA2);
+			var thisAEA2 = localStorage.setItem("thisAEA2",getExpandA2);
+
+
+
+
+// //### Collapse 3 ### // //
+			// ### get class of <a> child using <dib> parent's ID  COLLAPSE2###
+			var children3 = [].slice.call(document.getElementById('webcamDD').getElementsByTagName('*'),0);
+			var childElements3 = new Array(children3.length);
+			var arrayLength3 = children3.length;
+			var attrArray3 = [];
+
+			for (var i = 0; i < arrayLength3; i++) {
+			    var name3 = children3[i].getAttribute("aria-expanded")||children3[i].getAttribute("class");    
+			    childElements3[i]=name3;
+			    // console.log("ele attr: "+childElements);
+			}
+
+			//### displays <a> child class & aria-expanded###
+			// console.log("show attr of element: "+childElements);
+			var getParent3 = document.getElementById("webcamDD");
+			var classA3 = childElements3[0];
+			var ariaExpandedA3 = childElements3[1];
+			// var styleA = childElements[2];
+			// console.log("Which kid is this?: "+getChild);
+
+				// // CollapseTwo
+			var getCollapse3 = document.getElementById("collapseThree");
+			var oneClass3 = getCollapse3.className;
+			var oneAE3 = $(getCollapse3).attr("aria-expanded");
+			var getExpand3 = oneAE3;
+			var getClass3 = oneClass3;
+			var getClassA3 = classA3;
+			var getExpandA3 = ariaExpandedA3;
+
+			// ### copy attr. values from element to localStorage ###
+			myStorage = window.localstorage;
+			var thisClass3 = localStorage.setItem("thisClass3",getClass3);
+			var thisExpand3 = localStorage.setItem("thisExpand3",getExpand3);
+			var thisClassA3 = localStorage.setItem("thisClassA3",getClassA3);
+			var thisAEA3 = localStorage.setItem("thisAEA3",getExpandA3);
+
+
+
+
+
+// //### Collapse 4 ### // //
+			// ### get class of <a> child using <dib> parent's ID  COLLAPSE2###
+			var children4 = [].slice.call(document.getElementById('webcamDD').getElementsByTagName('*'),0);
+			var childElements4 = new Array(children4.length);
+			var arrayLength4 = children4.length;
+			var attrArray4 = [];
+
+			for (var i = 0; i < arrayLength4; i++) {
+			    var name4 = children4[i].getAttribute("aria-expanded")||children4[i].getAttribute("class");    
+			    childElements4[i]=name4;
+			    // console.log("ele attr: "+childElements);
+			}
+
+			//### displays <a> child class & aria-expanded###
+			// console.log("show attr of element: "+childElements);
+			var getParent4 = document.getElementById("webcamDD");
+			var classA4 = childElements4[0];
+			var ariaExpandedA4 = childElements4[1];
+			// var styleA = childElements[2];
+			// console.log("Which kid is this?: "+getChild);
+
+				// // CollapseTwo
+			var getCollapse4 = document.getElementById("collapseFour");
+			var oneClass4 = getCollapse4.className;
+			var oneAE4 = $(getCollapse4).attr("aria-expanded");
+			var getExpand4 = oneAE4;
+			var getClass4 = oneClass4;
+			var getClassA4 = classA4;
+			var getExpandA4 = ariaExpandedA4;
+
+			// ### copy attr. values from element to localStorage ###
+			myStorage = window.localstorage;
+			var thisClass4 = localStorage.setItem("thisClass4",getClass4);
+			var thisExpand4 = localStorage.setItem("thisExpand4",getExpand4);
+			var thisClassA4 = localStorage.setItem("thisClassA4",getClassA4);
+			var thisAEA4 = localStorage.setItem("thisAEA4",getExpandA4);
+
+		}
+		// makeCookies();
+
+
+
+
+		//###### load localStorage as soon as page has loaded ######
+		$(document).ready(function(){
+
+			// ### using local storage method, defined in makeCookies ###
+			var localClass = localStorage.getItem("thisClass");
+			var localExpand = localStorage.getItem("thisExpand");
+			var localClassA = localStorage.getItem("thisClassA");
+			var localAEA = localStorage.getItem("thisAEA");
+
+			console.log("localClass: "+localClass);
+			console.log("localExpand: "+localExpand);
+			console.log("localClassA: "+localClassA);
+			console.log("localAEA: "+localAEA);
+
+
+			$("#collapseOne").attr("class", localClass);
+			$("#collapseOne").attr("aria-expanded", localExpand);
+
+			$("div#tempDD h3 a").attr("class",localClassA);
+			$("div#tempDD h3 a").attr("aria-expanded",localAEA);
+
+
+
+			// ### collapseTwo ###
+			var localClass2 = localStorage.getItem("thisClass2");
+			var localExpand2 = localStorage.getItem("thisExpand2");
+			var localClassA2 = localStorage.getItem("thisClassA2");
+			var localAEA2 = localStorage.getItem("thisAEA2");
+
+			console.log("localClass2: "+localClass2);
+			console.log("localExpand2: "+localExpand2);
+			console.log("localClassA2: "+localClassA2);
+			console.log("localAEA2: "+localAEA2);
+
+
+			$("#collapseTwo").attr("class", localClass2);
+			$("#collapseTwo").attr("aria-expanded", localExpand2);
+
+			$("div#collapseTwo h3 a").attr("class",localClassA2);
+			$("div#collapseTwo h3 a").attr("aria-expanded",localAEA2);
+
+
+
+			// ### collapseThree ###
+			var localClass3 = localStorage.getItem("thisClass3");
+			var localExpand3 = localStorage.getItem("thisExpand3");
+			var localClassA3 = localStorage.getItem("thisClassA3");
+			var localAEA3 = localStorage.getItem("thisAEA3");
+
+			console.log("localClass3: "+localClass3);
+			console.log("localExpand3: "+localExpand3);
+			console.log("localClassA3: "+localClassA3);
+			console.log("localAEA3: "+localAEA3);
+
+
+			$("#collapseThree").attr("class", localClass3);
+			$("#collapseThree").attr("aria-expanded", localExpand3);
+
+			$("div#collapseThree h3 a").attr("class",localClassA3);
+			$("div#collapseThree h3 a").attr("aria-expanded",localAEA3);
+
+
+
+			// ### collapseFour ###
+			var localClass4 = localStorage.getItem("thisClass4");
+			var localExpand4 = localStorage.getItem("thisExpand4");
+			var localClassA4 = localStorage.getItem("thisClassA4");
+			var localAEA4 = localStorage.getItem("thisAEA4");
+
+			console.log("localClass4: "+localClass4);
+			console.log("localExpand4: "+localExpand4);
+			console.log("localClassA4: "+localClassA4);
+			console.log("localAEA4: "+localAEA4);
+
+
+			$("#collapseFour").attr("class", localClass4);
+			$("#collapseFour").attr("aria-expanded", localExpand4);
+
+			$("div#collapseFour h3 a").attr("class",localClassA4);
+			$("div#collapseFour h3 a").attr("aria-expanded",localAEA4);
+
+		})
+
+		//###### save localStorage when leaving/refreshing page ######
+		window.onbeforeunload = function(event){
+			makeCookies();
+		}
+
+		//###### Sort Table1 when clicking header ######
 		function sortQuotes1(n){
 			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 			table = document.getElementById("dynTable");
@@ -1495,9 +1764,7 @@ session_start();
 		sortQuotes1();
 		$(document).ready(function(){
 			sortQuotes1();
-
 			window.onload(sortQuotes1(0));
-
 		});
 
 
@@ -1543,6 +1810,7 @@ session_start();
 		    }
 		}
 
+
 		function sortVolume(n){
 		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		    table = document.getElementById("dynTable");
@@ -1587,36 +1855,15 @@ session_start();
 
 
 
-	//### Cookies ###
-	$(document).ready(function () {
-		//when a group is shown, save it as the active accordion group
-		$("#accordion").on('shown.bs.collapse', function () {
-		   var active = $("#accordion .in").attr('id');
-		   $.cookie('activeAccordionGroup', active);
-		 //  alert(active);
-		});
-		
-		$("#accordion").on('hidden.bs.collapse', function () {
-		   $.removeCookie('activeAccordionGroup');
-		});
-		
-		var last = $.cookie('activeAccordionGroup');
-		if (last != null) {
-		   //remove default collapse settings
-		   $("#accordion .panel-collapse").removeClass('in');
-		   //show the account_last visible group
-		   $("#" + last).addClass("in");
-		}
-	   });
-
+	
 
 	</script>
 
 
+
+
 	<?php  
-
 		mysqli_close($dbc);
-
 	?>
 
 	<!-- jQuery -->
@@ -1648,8 +1895,8 @@ session_start();
 </body>
 
 
-<footer class="panel-footer" style='text-align: center; margin-left: auto; margin-right: auto;'>
-    <p style="color:rgb(4, 0, 84)"> Copyright &copy 2017 All Rights Reserved: Y.N.G LLC D.B.A. "You'll Never Guess" </p>
-</footer>
-
+<?php 
+include 'footer.php'; 
+ ?>
+ 
 </html>

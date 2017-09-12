@@ -113,7 +113,7 @@ if($ip_part == $ip_serve){
     
     if(isset($tmprem['scheme']) == false){
         // $remoteAdd = "http://".$tmprem['host'];
-	//echo $_SERVER['HTTP_HOST'];
+    //echo $_SERVER['HTTP_HOST'];
         $remoteAdd = $_SERVER['HTTP_HOST'];//$tmprem['host'];
 
     }else{
@@ -248,7 +248,7 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">YNG 3D Hub</a>
+        <a id="navTitle" class="navbar-brand" href="index.php"></a>
     </div>
     <!-- /.navbar-header -->
     <!-- insert navbar controls -->
@@ -287,13 +287,13 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
 <div class="sidebar-nav navbar-collapse">
 <ul class="nav" id="side-menu">
 <li>
-    <a href="index.php"><i class="fa fa-fw fa-home"></i> YNG Index Page</a>
+    <a href="index.php"><i class="fa fa-fw fa-home"></i> REVEAL3D Home</a>
 </li>
 <li>
-    <a href="YNGUpload.php"><i class="fa fa-upload fa-fw"></i> Upload 3D Project</a>
+    <a href="YNGUpload.php"><i class="fa fa-upload fa-fw"></i> Upload Project</a>
 </li>
 <li class="active">
-    <a href="yngOcto.php"><i class="fa fa-tasks fa-fw"></i> YNG Octo User Interface<span class="fa arrow"></span></a>
+    <a href="yngOcto.php"><i class="fa fa-tasks fa-fw"></i> REVEAL3D UI<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li class="active">
             <a href="yngOcto.php"><i class="fa fa-cube fa-fw"></i> Interface</a>
@@ -304,7 +304,7 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
     </ul>
 </li>
 <li>
-    <a href="runStatus.php"><i class="fa fa-database fa-fw"></i> Runman Status</a>
+    <a href="runStatus.php"><i class="fa fa-database fa-fw"></i> Projects & Materials Status</a>
 </li>
 <li>
     <a href='<?php echo "http://".$fetchLocalRemote;?>'><i class="fa fa-print fa-fw"></i> OctoPrint</a>
@@ -335,7 +335,7 @@ function $id(id){
 client1.system.getCommands().done(function(response){
     client1.system.getCommands();
     var getCommand = JSON.stringify(response)
-    console.dir(response);
+    // console.dir(response);
 
     // arraySource = Object.keys(response)[1];
     // nextArray = Object.keys(arraySource);
@@ -359,13 +359,13 @@ client1.system.getCommands().done(function(response){
     // commandActionCustom[2] = JSON.stringify(Object.values(response.custom[2])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
     // commandActionCustom[3] = JSON.stringify(Object.values(response.custom[3])[0]).replace(/[^a-zA-Z0-9 ]/g, "");
 
-    console.log("Source: "+commandSource);
-    console.log("Core Actions: "+commandActionCore);
-    console.log("Custom Actions: "+commandActionCustom);
+    // console.log("Source: "+commandSource);
+    // console.log("Core Actions: "+commandActionCore);
+    // console.log("Custom Actions: "+commandActionCustom);
 
 
     var commandTotal = (commandSource[1].length)-2;
-    console.log('Array Total: '+commandTotal);
+    // console.log('Array Total: '+commandTotal);
     var functinArray = [];
 
 
@@ -385,10 +385,10 @@ client1.system.getCommands().done(function(response){
         
 
         var name = JSON.stringify(commandActionCustom[d]);
-        console.log('name BEFORE: '+name);
+        // console.log('name BEFORE: '+name);
         name = name.replace(/\s/g, '');
         name = name.replace(/[^a-zA-Z0-9 ]/g, "")
-        console.log('name AFTER: '+name);
+        // console.log('name AFTER: '+name);
 
         var filler = "client1.system.getCommands().done(function(){swal({title: 'Are you sure you want to issue the command: "+commandActionCustom[d]+" ?',text: '',type: 'warning', showCancelButton: true,confirmButtonColor: '#14b200',confirmButtonText: 'Yes, run the command:  "+commandActionCustom[d]+" !', closeOnConfirm: false }, function(){swal('Command:  "+commandActionCustom[d]+" Initiated', '"+commandActionCustom[d]+" ran successfully', 'success');    client1.system.executeCommand("+'"'+commandSource[1]+'"'+",'"+commandActionCustom[d]+"').done(function(response){  }); }); });"
 
@@ -403,14 +403,27 @@ client1.system.getCommands().done(function(response){
 
 
 
-        console.log("added to array: "+functinArray);
-        console.log(newFunction);
+        // console.log("added to array: "+functinArray);
+        // console.log(newFunction);
 
 
 
     }
 
 });
+
+function updateBanner(){
+    client1.settings.get().done(function(response){
+        var nameTitle = JSON.stringify(response.appearance.name);
+        // console.log(nameTitle);
+        var banner = JSON.stringify(document.getElementById("navTitle").innerText);
+
+        document.getElementById("navTitle").innerHTML = "REVEAL3D: "+nameTitle;
+    });
+}
+updateBanner();
+
+
 
 // ######### Power Commands ##########
         function shutdown(){
@@ -496,88 +509,92 @@ client1.system.getCommands().done(function(response){
         }
 
 
-
-        // function startCam(){
-        //     client1.system.getCommands().done(function(){
-        //         swal({
-        //           title: "Are you sure you want to "+commandActionCustom[0]+" the WebCam?",
-        //           text: "View your prints in real-time, wherever, whenever!",
-        //           type: "warning",
-        //           showCancelButton: true,
-        //           confirmButtonColor: "#14b200",
-        //           confirmButtonText: "Yes, "+commandActionCustom[0]+" the WebCam!",
-        //           closeOnConfirm: false
-        //         },
-        //         function(){
-        //             swal("WebCam "+commandActionCustom[0]+" Initiated", "The WebCam will now "+commandActionCustom[0]+"", "success");
-        //             client1.system.executeCommand(commandSource[1],commandActionCustom[0]).done(function(response){
-        //             });
-        //         });
-        //     });
-        // }
-
-
-
-        // function stopCam(){
-        //     client1.system.getCommands().done(function(){
-        //         swal({
-        //           title: "Are you sure you want to "+commandActionCustom[1]+" the WebCam?",
-        //           text: "You will no longer be able to view prints through the webcam",
-        //           type: "warning",
-        //           showCancelButton: true,
-        //           confirmButtonColor: "#dd2300",
-        //           confirmButtonText: "Yes, "+commandActionCustom[1]+" the WebCam!",
-        //           closeOnConfirm: false
-        //         },
-        //         function(){
-        //             swal("WebCam "+commandActionCustom[1]+" Initiated", "The WebCam will now "+commandActionCustom[1]+"", "success");
-        //             client1.system.executeCommand(commandSource[1],commandActionCustom[1]).done(function(response){
-        //             });
-        //         });
-        //     });
-        // }
+        ////### These Power Functions were disabled. Reason: API error?### 
+        function startCam(){
+            client1.system.getCommands().done(function(){
+                swal({
+                  title: "Are you sure you want to "+commandActionCustom[0]+" the WebCam?",
+                  text: "View your prints in real-time, wherever, whenever!",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#14b200",
+                  confirmButtonText: "Yes, "+commandActionCustom[0]+" the WebCam!",
+                  closeOnConfirm: false
+                },
+                function(){
+                    swal("WebCam "+commandActionCustom[0]+" Initiated", "The WebCam will now "+commandActionCustom[0]+"", "success");
+                    client1.system.executeCommand(commandSource[1],commandActionCustom[0]).done(function(response){
+                    });
+                });
+            });
+        }
 
 
 
-        // function turnOn(){
-        //     client1.system.getCommands().done(function(){
-        //         swal({
-        //           title: "Are you sure you want to "+commandActionCustom[2]+" the Hardware (Extruders, Heatbed Controller, etc.)?",
-        //           text: "",
-        //           type: "warning",
-        //           showCancelButton: true,
-        //           confirmButtonColor: "#14b200",
-        //           confirmButtonText: "Yes, "+commandActionCustom[2]+" the Heatbed Controller!",
-        //           closeOnConfirm: false
-        //         },
-        //         function(){
-        //             swal(commandActionCustom[2]+" HeatBed Controller Initiated", "The Heatbed controller will now"+commandActionCustom[2], "success");
-        //             client1.system.executeCommand(commandSource[1],commandActionCustom[2]).done(function(response){
-        //             });
-        //         });
-        //     });
-        // }
+        function stopCam(){
+            client1.system.getCommands().done(function(){
+                swal({
+                  title: "Are you sure you want to "+commandActionCustom[1]+" the WebCam?",
+                  text: "You will no longer be able to view prints through the webcam",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#dd2300",
+                  confirmButtonText: "Yes, "+commandActionCustom[1]+" the WebCam!",
+                  closeOnConfirm: false
+                },
+                function(){
+                    swal("WebCam "+commandActionCustom[1]+" Initiated", "The WebCam will now "+commandActionCustom[1]+"", "success");
+                    client1.system.executeCommand(commandSource[1],commandActionCustom[1]).done(function(response){
+                    });
+                });
+            });
+        }
 
 
 
-        // function killPower(){
-        //     client1.system.getCommands().done(function(){
-        //         swal({
-        //           title: "Are you sure you want to"+commandActionCustom[3]+" to the Hardware(Extruders, Heatbed Controller, etc.)?",
-        //           text: "",
-        //           type: "warning",
-        //           showCancelButton: true,
-        //           confirmButtonColor: "#dd2300",
-        //           confirmButtonText: "Yes,"+commandActionCustom[3]+" ",
-        //           closeOnConfirm: false
-        //         },
-        //         function(){
-        //             swal(" "+commandActionCustom[3]+"Initiated", "The Hardware will now "+commandActionCustom[3]+"", "success");
-        //             client1.system.executeCommand(commandSource[1],commandActionCustom[3]).done(function(response){
-        //             });
-        //         });
-        //     });
-        // }
+        function turnOn(){
+            client1.system.getCommands().done(function(){
+                swal({
+                  title: "Are you sure you want to "+commandActionCustom[2]+" the Hardware (Extruders, Heatbed Controller, etc.)?",
+                  text: "",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#14b200",
+                  confirmButtonText: "Yes, "+commandActionCustom[2]+" the Heatbed Controller!",
+                  closeOnConfirm: false
+                },
+                function(){
+                    swal(commandActionCustom[2]+" HeatBed Controller Initiated", "The Heatbed controller will now"+commandActionCustom[2], "success");
+                    client1.system.executeCommand(commandSource[1],commandActionCustom[2]).done(function(response){
+                    });
+                });
+            });
+        }
+
+
+
+        function killPower(){
+            client1.system.getCommands().done(function(){
+                swal({
+                  title: "Are you sure you want to"+commandActionCustom[3]+" to the Hardware(Extruders, Heatbed Controller, etc.)?",
+                  text: "",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#dd2300",
+                  confirmButtonText: "Yes,"+commandActionCustom[3]+" ",
+                  closeOnConfirm: false
+                },
+                function(){
+                    swal(" "+commandActionCustom[3]+"Initiated", "The Hardware will now "+commandActionCustom[3]+"", "success");
+                    client1.system.executeCommand(commandSource[1],commandActionCustom[3]).done(function(response){
+                    });
+                });
+            });
+        }
+
+
+
+ 
 
 
 
@@ -588,7 +605,7 @@ client1.system.getCommands().done(function(response){
 
 <!-- jQuery -->
 <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
