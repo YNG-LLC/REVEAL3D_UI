@@ -248,7 +248,7 @@ $printerebk = $dbc->query("SELECT ActivePrinter FROM settingsUI ")->fetch_row()[
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a id="navTitle" class="navbar-brand" href="index.php"></a>
+        <a id="navTitle" class="navbar-brand" ></a>
     </div>
     <!-- /.navbar-header -->
     <!-- insert navbar controls -->
