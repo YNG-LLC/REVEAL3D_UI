@@ -40,14 +40,9 @@
     <div id="wrapper">
 
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Settings</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
                 <div class="row">
-                <div class="col-lg-5">
+                    <br>
+                <div class="col-lg-5" style="max-width:auto;max-height:auto;">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Active Printer Configuration</h3>
@@ -111,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="max-width:auto;max-height:auto;">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Active ACR (Network)</h3>
@@ -235,7 +230,8 @@
                         </div>
                     </div>
                 </div>
-                    <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
                         <div class="panel panel-yellow" >
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-cog"></i> Printer Selection</h3>
@@ -351,7 +347,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-cog"></i> ACR Configuration</h3>
@@ -502,92 +498,88 @@
 
                             ?>
                             </th>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                </div>
-                            </div>
                         </div>
                 <!-- /.col-lg-4 -->
             </div>
             <!-- /.row -->
-            <div class="col-lg-4">
-                                    <div class="panel panel-success">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"><i class="fa fa-arrows-h"></i> Auto Load Length </h3>
-                                        </div>
-                                        <br>
-                                        <form method="post">
+                                <div class="col-lg-4" style="max-width:auto;max-height:auto;">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><i class="fa fa-arrows-h"></i> Auto Load Length </h3>
+                                    </div>
+                                    <br>
+                                    <form method="post">
 
-                                        &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input Fillament Length Here</label><br><br><br>
+                                    &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input Fillament Length Here</label><br><br><br>
 
-                                        &nbsp;&nbsp;<label> Length: </label>
-                                            <input type="number" min="0" name="length" style="text-align:left;width:50%;" id="lengthInput" class="btn btn-outline btn-default"></input>
-                                            <p></p><br><br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit3" style="text-align:center;width:25%;">Apply</button>
-                                        </form><th>
-                                        
-                                        <?php
-                                        
+                                    &nbsp;&nbsp;<label> Length: </label>
+                                        <input type="number" min="0" name="length" style="text-align:left;width:50%;" id="lengthInput" class="btn btn-outline btn-default"></input>
+                                        <p></p><br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit3" style="text-align:center;width:25%;">Apply</button>
+                                    </form><th>
+                                    
+                                    <?php
+                                    
+                                        // session_start();
+
+                                        if(isset($_POST['submit3'])){
+
                                             // session_start();
 
-                                            if(isset($_POST['submit3'])){
+                                            $db_tablename = "yngUI";
 
-                                                // session_start();
+                                            $dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
+                                                or die('Error communicating to MySQL server');
 
-                                                $db_tablename = "yngUI";
+                                            /// Grab Option from selection from the form
+                                            $postLength = $_POST["length"];
 
-                                                $dbc = mysqli_connect($ACR_host, $ACR_user, $ACR_pass, $db_tablename)
-                                                    or die('Error communicating to MySQL server');
+                                            if(isset($postLength)){
 
-                                                /// Grab Option from selection from the form
-                                                $postLength = $_POST["length"];
+                                                if($postLength == ''){
 
-                                                if(isset($postLength)){
+                                                    ;
 
-                                                    if($postLength == ''){
+                                                }else{
 
-                                                        ;
+                                                    $updateLength = "UPDATE ACR SET Length = '$postLength'";
 
-                                                    }else{
+                                                    $updateLength_Query = mysqli_query($dbc, $updateLength);
 
-                                                        $updateLength = "UPDATE ACR SET Length = '$postLength'";
-
-                                                        $updateLength_Query = mysqli_query($dbc, $updateLength);
-
-                                                        if(!$updateLength_Query){
-                                                            echo "died1 insert error ";
-                                                            die('Mysql connection error: ' . mysqli_connect_error());
-                                                        }
-                                                        
-                                                        if ($updateLength_Query->connect_error) {
-                                                            echo "died2";
-                                                            die("Connection failed: " . $updateLength_Query->connect_error);
-                                                        }
-
-                                                        }
+                                                    if(!$updateLength_Query){
+                                                        echo "died1 insert error ";
+                                                        die('Mysql connection error: ' . mysqli_connect_error());
                                                     }
                                                     
-                                                echo "
-                                                    <script>
-                                                        window.location.href = yngSelf;
-                                                    </script>
-                                                    ";
+                                                    if ($updateLength_Query->connect_error) {
+                                                        echo "died2";
+                                                        die("Connection failed: " . $updateLength_Query->connect_error);
+                                                    }
 
-                                            }
-                                        ?>
-                                        </th>
-                                    </div>
-                                    <br><br>
-                                    <div class="col-lg-4" style="width: 550px">
-                                        <div class="panel panel-yellow" >
+                                                    }
+                                                }
+                                                
+                                            echo "
+                                                <script>
+                                                    window.location.href = yngSelf;
+                                                </script>
+                                                ";
+
+                                        }
+                                    ?>
+                                    </th>
+                                </div>
+                                    <br>
+                                </div>
+                                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
+                                        <div class="panel panel-yellow">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><i class="fa fa-check   "></i> Updates</h3>
+                                                <h3 class="panel-title"><i class="fa fa-check"></i> Updates</h3>
                                             </div>
-                                            <h2 style="margin-left: 125">Check For Updates</h2>
-                                            <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br>
-                                            <button id='checkUpdateUI' style="margin-left: 25px" type=button><b>Check UI</b> Update</button> <button id='checkUpdateM' style="margin-left: 150px" type=button><b>Check Manipulate</b> Update</button><br><br><br><br>
+                                            <button id='checkUpdateUI'  style=" align:center;max-width:auto;max-height:auto;" type=button><b>Check UI</b> Update</button>
+                                            <br><br><br>
+                                            <button id='checkUpdateM'  style=" align:center;max-width:auto;max-height:auto;" type=button><b>Check Manipulate</b> Update</button><br><br><br><br>
                                             <!-- <h2 style="margin-left: 200">Get Updates</h2>
                                             <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br> 
@@ -596,7 +588,6 @@
                                             <br>
                                             <br> -->
                                         </div>
-                                    </div>
                                     </div>
                             <!-- /.col-lg-4 -->
                         </div>
@@ -608,6 +599,7 @@
         <!-- /#page-wrapper -->
 
     </div>
+    <br><br>
     <!-- /#wrapper -->
 
     <script>

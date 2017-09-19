@@ -4,7 +4,6 @@
 	<title></title>
 </head>
 <body>
-
 </body>
 
 <footer class="panel-footer" style='text-align: center;position: fixed; height: 45px;  bottom: 0;   width: 100%;'>

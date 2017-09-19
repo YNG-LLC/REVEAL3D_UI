@@ -231,20 +231,22 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
 <body>
 
     <div id="wrapper">
+    </div>
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header" align="center">3D File Upload</h1>
-                </div>
+            <!-- <div class="row"> -->
+                <!-- <div class="col-lg-12"> -->
+                    <!-- <h1 class="page-header" align="center">3D File Upload</h1> -->
+                <!-- </div> -->
                 <!-- /.col-lg-12 -->
-            </div>
+            <!-- </div> -->
+            <br>
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-5"  style="max-width:auto;max-height:auto;">
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-signal fa-fw"></i> Printer State</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body"  style="max-width:auto;max-height:auto;">
                         <table id='printerState'>
                             <tr>
                                 <th>State<span id="printOptions"></span><sup></sup>:</th>
@@ -277,13 +279,15 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                     </div>
                 </div>
             </div>
+        </div>
+        <br>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12"  style="max-width:auto;max-height:auto;">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="fa fa-magic fa-fw"></i> Printer Controls</h3>
                         </div>
-                            <div class="panel-body">
+                            <div class="panel-body"  style="max-width:auto;max-height:auto;">
                             <br>
                             <br>
                             <p></p>

@@ -68,30 +68,19 @@ if ($dbConnection->connect_error) {
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">    
 
 </head>
-
 <body>
-
     <div id="wrapper">
-
-        
-
+    <!-- </div> -->
         <div id="page-wrapper">
+            <br>
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header" align="center">RunMan Status</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <div class="row" style="overflow:auto;">
-                    <div class="col-lg-12" style="overflow:auto;">
+                    <div class="col-lg-12" style="max-width:auto;max-height:auto;">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-th-list fa-fw"></i> Uploaded Prints</h3>
                             </div>
-                            <div class="panel-body">
-                            
+                            <div class="panel-body" style="max-width:auto;max-height:auto;">
                 <?php
-
                 $sql = "SELECT task_id, file, statusValue, zone, printerType, materialType, nozzleMode, errorLog FROM yngPrints";
                 $sql2 = "SELECT task_id, Material, Bed0_First_Layer, Bed0_Sec_Layer, HotEnd0_First_Layer, HotEnd0_Sec_Layer, Bed1_First_Layer, Bed1_Sec_Layer, HotEnd1_First_Layer, HotEnd1_Sec_Layer FROM materialDB";
                 $queryResult = $dbc->query($sql);
@@ -109,31 +98,30 @@ if ($dbConnection->connect_error) {
                 } else {
                      echo "No results found";
                 }
-                echo "<br>";
-
+                // echo "<br>";
                 ?>
-
-
             <!-- /.row -->
-        </div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- /#page-wrapper -->
-        <br><br><br>
-
-      <div class="row">
-          <div class="col-lg-12" style="overflow:auto;">
-              <div class="panel panel-info">
-                  <div class="panel-heading">
+        <!-- <div class="row"> -->
+            <div class="col-lg-12" style='max-width:auto;max-height:auto;clear:both;overflow:auto;'>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
                           <h3 class="panel-title"><i class="fa fa-flask fa-fw"></i> Material Temperature  (Add/Remove/Edit Temperatures of Materials)</h3>
-                  </div>
-                  <div class="panel-body">
-                      <div id="live_data">
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-    <!-- /#wrapper -->
+                    </div>
+                    <div class="panel-body">
+                        <div id="live_data">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+    </div>    
+<!-- /#wrapper -->
 
    
             
@@ -698,23 +686,13 @@ if ($dbConnection->connect_error) {
              });  
         });
 
-
-
-
     </script>
-
-    
-
 </body>
 
 <?php  
-
     mysqli_close($dbc);
-
+    include "footer.php";
 ?>
-<?php 
-  include "footer.php"
- ?>
 
 </html>
 

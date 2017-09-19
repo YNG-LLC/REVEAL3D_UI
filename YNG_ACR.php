@@ -418,7 +418,7 @@ function updateBanner(){
         // console.log(nameTitle);
         var banner = JSON.stringify(document.getElementById("navTitle").innerText);
 
-        document.getElementById("navTitle").innerHTML = "REVEAL3D: "+nameTitle;
+        document.getElementById("navTitle").innerHTML = "You are connected to: "+nameTitle;
     });
 }
 updateBanner();

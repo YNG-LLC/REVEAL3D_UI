@@ -9,20 +9,21 @@ include 'YNG_ACR.php';
     <body>
         <div id="wrapper">
             <div id="page-wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header" align="center">YNG 3D Dashboard</h1>
-                    </div>
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-lg-12"> -->
+                        <!-- <h1 class="page-header" align="center">YNG 3D Dashboard</h1> -->
+                    <!-- </div> -->
                     <!-- /.col-lg-12 -->
-                </div>
+                <!-- </div> -->
                 <!-- /.row -->
-                <div class="clearfix">
-                    <div class="col-lg-7" style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;">
+                <br>
+                <div class="row">
+                    <div class="col-lg-7" style="max-width:auto;max-height:auto;">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Live Print</h3>
                             </div>
-                            <div class="panel-body" align="center">
+                            <div class="panel-body" style="max-width:auto;max-height:auto;" align="center">
                                 <img src='http://<?php echo $fetchIp; ?>' style=" max-width:100%;max-height:100%; display: block; margin: 0 auto;" >
                             </div>
                         </div>

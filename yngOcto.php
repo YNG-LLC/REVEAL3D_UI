@@ -111,15 +111,15 @@ session_start();
 					</div>
 				</div>
 			</div>
-
-			
 			</div> <!-- ROW END-->
+
 			<div class="row">
 				<div class="col-lg-12" style="max-width:auto;max-height:auto;flex-wrap: wrap;flex: 1 0 auto;">
 					<div class="panel panel-red">
 						<div id="tempDD" class="panel-heading">
 							<h3 class="panel-title">
-				        		<a class="btn btn-red collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">+ </a><i class="fa fa-fire fa-fw"></i> Temperature Panel
+				        		<a class="btn btn-red collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">+</a>
+				        		<i class="fa fa-fire fa-fw"></i> Temperature Panel
 				        	</h3>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
