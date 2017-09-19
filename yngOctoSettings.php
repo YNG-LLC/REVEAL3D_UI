@@ -577,9 +577,13 @@
                                                 <h3 class="panel-title"><i class="fa fa-check"></i> Updates</h3>
                                             </div>
                                             <br>
-                                            <button id='checkUpdateUI'  style=" align:center;max-width:auto;max-height:auto;" type=button><b>Check UI</b> Update</button>
+                                            <div align="center">
+                                                
+                                            
+                                            <button id='checkUpdateUI' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Check UI</b> Update</button>
                                             <br><br><br>
-                                            <button id='checkUpdateM'  style=" align:center;max-width:auto;max-height:auto;" type=button><b>Check Manipulate</b> Update</button><br><br><br><br>
+                                            <button id='checkUpdateM' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Check Manipulate</b> Update</button><br><br>
+                                            </div>
                                             <!-- <h2 style="margin-left: 200">Get Updates</h2>
                                             <hr style="border: 0;clear:both; display:block;width: 96%;  background-color:black;height: 1px;">
                                             <br> 
