@@ -240,7 +240,7 @@
 
                             <form method="post" action="">
 
-                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Please select the printer for use in YNG 3D UI</label><br><br>
+                            <br>
 
                             &nbsp;&nbsp;<label> Active Printer: </label>
                                 <select name="activePS" id="printerSelection" class="btn btn-primary"></select>
@@ -353,24 +353,24 @@
 
                             <form method="post">
 
-                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input ACR options</label><br><br>
+                            <br>
 
                             &nbsp;&nbsp;<label> Camera Address: </label>
                                 <input name="camAddress" style="text-align:left;width:50%;" id="camAddressInput" class="btn btn-outline btn-default"></input>
-                                <p></p><br><br>
+                                <p></p><br>
                             &nbsp;&nbsp;<label> Address String: </label>
                                 <input name="addressString" style="text-align:left;width:50%;" id="addressStringInput" class="btn btn-outline btn-default"></input>
-                                <p></p><br><br>
+                                <p></p><br>
                             &nbsp;&nbsp;<label> Octo Port: </label>
                                 <input name="octoPort"  style="text-align:left;width:50%;" id="octoPortInput" class="btn btn-outline btn-default"></input>
-                                <p></p><br><br>
+                                <p></p><br>
                             &nbsp;&nbsp;<label> Camera Port: </label>
                                 <input name="camPort"  style="text-align:left;width:50%;" id="camPortInput" class="btn btn-outline btn-default"></input>
-                                <p></p><br><br>
+                                <p></p><br>
                             &nbsp;&nbsp;<label> API Key: </label>
                                 <input name="apiKey" style="text-align:left;width:75%;" id="apiKeyInput" class="btn btn-outline btn-default"></input>
                                 <p></p><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
                             <div align="center">
                             <button type="submit" name="submit2" style="text-align:center;width:25%;">Apply</button>
                             </div>
@@ -510,7 +510,7 @@
                                     
                                     <form method="post">
 
-                                    &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input Fillament Length</label><br><br>
+                                    &nbsp;&nbsp;<label style="text-align:center;width:100%;">Fillament Length</label><br><br>
 
                                     &nbsp;&nbsp;<label> Length: </label>
                                         <input type="number" min="0" name="length" style="text-align:left;width:50%;" id="lengthInput" class="btn btn-outline btn-default"></input>
