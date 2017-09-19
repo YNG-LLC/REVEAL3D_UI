@@ -236,22 +236,24 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-cog"></i> Printer Selection</h3>
                             </div>
-                            <br>
+                            
 
                             <form method="post" action="">
 
-                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Please select the printer for use in YNG 3D UI</label><br><br><br>
+                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Please select the printer for use in YNG 3D UI</label><br><br>
 
                             &nbsp;&nbsp;<label> Active Printer: </label>
                                 <select name="activePS" id="printerSelection" class="btn btn-primary"></select>
-                                <p></p><br><br>
+                                <p></p><br>
                                 </select>
 
                             &nbsp;&nbsp;<label> Nozzle Mode: </label>
                                 <select name="activeNozzle" id="nozzleSelection" class="btn btn-primary"></select>
                                 <p></p><br>
                                 </select>
-                            &nbsp;&nbsp;<button type="submit" name="submit1">Apply</button>
+                            <div align="center">
+                            <button type="submit" name="submit1">Apply</button>
+                            </div>
                             </form><th>
                             <?php
 
@@ -340,11 +342,6 @@
 
                             ?>
                             </th>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4" style="max-width:auto;max-height:auto;">
@@ -352,11 +349,11 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-cog"></i> ACR Configuration</h3>
                             </div>
-                            <br>
+                            
 
                             <form method="post">
 
-                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input ACR options Here</label><br><br><br>
+                            &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input ACR options</label><br><br>
 
                             &nbsp;&nbsp;<label> Camera Address: </label>
                                 <input name="camAddress" style="text-align:left;width:50%;" id="camAddressInput" class="btn btn-outline btn-default"></input>
@@ -372,8 +369,11 @@
                                 <p></p><br><br>
                             &nbsp;&nbsp;<label> API Key: </label>
                                 <input name="apiKey" style="text-align:left;width:75%;" id="apiKeyInput" class="btn btn-outline btn-default"></input>
-                                <p></p><br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit2" style="text-align:center;width:25%;">Apply</button>
+                                <p></p><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div align="center">
+                            <button type="submit" name="submit2" style="text-align:center;width:25%;">Apply</button>
+                            </div>
                             </form><th>
                             
                             <?php
@@ -507,15 +507,18 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title"><i class="fa fa-arrows-h"></i> Auto Load Length </h3>
                                     </div>
-                                    <br>
+                                    
                                     <form method="post">
 
-                                    &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input Fillament Length Here</label><br><br><br>
+                                    &nbsp;&nbsp;<label style="text-align:center;width:100%;">Input Fillament Length</label><br><br>
 
                                     &nbsp;&nbsp;<label> Length: </label>
                                         <input type="number" min="0" name="length" style="text-align:left;width:50%;" id="lengthInput" class="btn btn-outline btn-default"></input>
-                                        <p></p><br><br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit3" style="text-align:center;width:25%;">Apply</button>
+                                        <p></p>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div align="center">
+                                    <button type="submit" name="submit3" style="text-align:center;width:25%;">Apply</button>
+                                    </div>
                                     </form><th>
                                     
                                     <?php
@@ -578,8 +581,6 @@
                                             </div>
                                             <br>
                                             <div align="center">
-                                                
-                                            
                                             <button id='checkUpdateUI' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Check UI</b> Update</button>
                                             <br><br><br>
                                             <button id='checkUpdateM' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Check Manipulate</b> Update</button><br><br>
