@@ -1627,10 +1627,10 @@ session_start();
 			var localClassA = localStorage.getItem("thisClassA");
 			var localAEA = localStorage.getItem("thisAEA");
 
-			console.log("localClass: "+localClass);
-			console.log("localExpand: "+localExpand);
-			console.log("localClassA: "+localClassA);
-			console.log("localAEA: "+localAEA);
+			// console.log("localClass: "+localClass);
+			// console.log("localExpand: "+localExpand);
+			// console.log("localClassA: "+localClassA);
+			// console.log("localAEA: "+localAEA);
 
 
 			$("#collapseOne").attr("class", localClass);
@@ -1647,10 +1647,10 @@ session_start();
 			var localClassA2 = localStorage.getItem("thisClassA2");
 			var localAEA2 = localStorage.getItem("thisAEA2");
 
-			console.log("localClass2: "+localClass2);
-			console.log("localExpand2: "+localExpand2);
-			console.log("localClassA2: "+localClassA2);
-			console.log("localAEA2: "+localAEA2);
+			// console.log("localClass2: "+localClass2);
+			// console.log("localExpand2: "+localExpand2);
+			// console.log("localClassA2: "+localClassA2);
+			// console.log("localAEA2: "+localAEA2);
 
 
 			$("#collapseTwo").attr("class", localClass2);
@@ -1667,10 +1667,10 @@ session_start();
 			var localClassA3 = localStorage.getItem("thisClassA3");
 			var localAEA3 = localStorage.getItem("thisAEA3");
 
-			console.log("localClass3: "+localClass3);
-			console.log("localExpand3: "+localExpand3);
-			console.log("localClassA3: "+localClassA3);
-			console.log("localAEA3: "+localAEA3);
+			// console.log("localClass3: "+localClass3);
+			// console.log("localExpand3: "+localExpand3);
+			// console.log("localClassA3: "+localClassA3);
+			// console.log("localAEA3: "+localAEA3);
 
 
 			$("#collapseThree").attr("class", localClass3);
@@ -1687,10 +1687,10 @@ session_start();
 			var localClassA4 = localStorage.getItem("thisClassA4");
 			var localAEA4 = localStorage.getItem("thisAEA4");
 
-			console.log("localClass4: "+localClass4);
-			console.log("localExpand4: "+localExpand4);
-			console.log("localClassA4: "+localClassA4);
-			console.log("localAEA4: "+localAEA4);
+			// console.log("localClass4: "+localClass4);
+			// console.log("localExpand4: "+localExpand4);
+			// console.log("localClassA4: "+localClassA4);
+			// console.log("localAEA4: "+localAEA4);
 
 
 			$("#collapseFour").attr("class", localClass4);
@@ -1717,15 +1717,13 @@ session_start();
 		    while(switching){
 		        switching = false;
 		        rows = table.getElementsByTagName("TR");
-		        // console.log();
 		        for(i = 1; i < (rows.length - 1); i++){
 		            shouldSwitch = false;
 		            x = rows[i].getElementsByTagName("TD")[n];
 		            y = rows[i + 1].getElementsByTagName("TD")[n];
 
 		            if(n == 0){
-
-		            	// ### Find 'Q' tage filenames ### 
+		            	// ### Find 'Q' tag in file name ### 
 		            	FileName_X = x.innerHTML;
 		            	FileName_Y = y.innerHTML;
 
@@ -1737,54 +1735,30 @@ session_start();
 
 		            	if(GetNumbers_X != null){
 		            		firstNumX = String(GetNumbers_X[0]);
-		            		// console.log("found X");
-		            	}else{
-		            		firstNumX = null;
 		            	}
 
 		            	if(GetNumbers_Y != null){
 		            		firstNumY = String(GetNumbers_Y[0]);
-		            		// console.log("found Y");
-		            	}else{
-		            		firstNumY = null;
 		            	}
 
-		            	// console.log(firstNumX);
-		            	// console.log(firstNumY);
-
-		            	FindQ_X = String("Q"+firstNumX+"_");
-		            	FindQ_Y = String("Q"+firstNumY+"_");
-
-		            	// console.log("Q-Tag X: "+FindQ_X);
-		            	// console.log("Q-Tag Y: "+FindQ_Y);
-
-		            	// console.log("filename X: "+FileName_X);
-		            	// console.log("Numbers in X: "+FindNumbers_X);
-
-		            	// console.log("filename Y: "+FileName_Y);
-		            	// console.log("Numbers in Y: "+FindNumbers_Y);
+		            	FindQ_X = "Q"+firstNumX+"_";
+		            	FindQ_Y = "Q"+firstNumY+"_";
 
 		            	finalQ_X = FileName_X.search(FindQ_X);
 		            	finalQ_Y = FileName_Y.search(FindQ_Y);
 
-		            	// console.log("FINAL X: "+finalQ_X);
-		            	// console.log("FINAL Y: "+finalQ_Y);
-
 		            	removedQ_X = FileName_X.replace(FindQ_X,'');
 		            	removedQ_Y = FileName_Y.replace(FindQ_Y,'');
 
-		            	// console.log("filtered X FileName: "+removedQ_X);
-		            	// console.log("filtered Y FileName: "+removedQ_Y);
-
-		            	// ### Sort by Name, ignores 'Q' tags for sorting ### 
+        		// ### Sort by Name, ignores 'Q' tags for sorting ### 
 		                if(dir == "asc"){
 		                    if(removedQ_X.toLowerCase() > removedQ_Y.toLowerCase()){
-		                    		shouldSwitch= true;
-		                    		break;
+                    			shouldSwitch= true;
+                    			break;
 		                    }
 
 		                }else if(dir == "desc"){
-		                    if (removedQ_X.toLowerCase() < removedQ_Y.toLowerCase()){
+		                    if(removedQ_X.toLowerCase() < removedQ_Y.toLowerCase()){
 		                        shouldSwitch= true;
 		                        break;
 		                    }
