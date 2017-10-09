@@ -441,8 +441,8 @@ session_start();
 					// console.log(list);
 					table = table + "<thead style=' text-align:center;max-width:100%;max-height:100%;'>";
 					table = table + "<tr>";
-					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' href='#' onclick='sortQuotes1(0);'>File Name</th>";
-					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortQuotes1(1);'>Size (MB)</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' title='Click to Sort' href='#' onclick='sortFile(0);'>File Name</th>";
+					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortSize(1);'>Size (MB)</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;' onclick='sortVolume(2);' >Volume (cm<sup>3</sup>)</th>";
 					table = table + "<th  style=' text-align:center;max-width:100%;max-height:100%;'onclick='sortPrintTime(3);'>Print Time (Hours)</th>";
 					table = table + "<th style=' text-align:center;max-width:100%;max-height:100%;'>Controls</th>";
@@ -1706,121 +1706,158 @@ session_start();
 			makeCookies();
 		}
 
+
 		//###### Sort Table1 when clicking header ######
-		function sortQuotes1(n){
-			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-			table = document.getElementById("dynTable");
-			switching = true;
-			dir = "asc";
-			while (switching) {
-			switching = false;
-			rows = table.getElementsByTagName("TR");
-			for (i = 1; i < (rows.length - 1); i++) {
-			shouldSwitch = false;
-			x = rows[i].getElementsByTagName("TD")[n];
-			y = rows[i + 1].getElementsByTagName("TD")[n];
-			// console.log(valueX);
-			// console.log(valueY);
-			if(n == 0){
-				if (dir == "asc") {
-			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-				shouldSwitch= true;
-				break;
-			}
-			} else if (dir == "desc") {
-				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-					shouldSwitch= true;
-					break;
-				}
-				}
-				}
-			if(n == 1){
-				if (dir == "asc") {
-				if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
-				shouldSwitch= true;
-				break;
-				}
-			}else if (dir == "desc") {
-				if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
-				shouldSwitch= true;
-				break;
-				}
-				}
-				}
-			}
-			
-			if (shouldSwitch) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
-			switchcount ++;
-			} else {
-			if (switchcount == 0 && dir == "asc") {
-			dir = "desc";
-			switching = true;
-			}
-			}
-			}
-		}
-
-		sortQuotes1();
-		$(document).ready(function(){
-			sortQuotes1();
-			window.onload(sortQuotes1(0));
-		});
-
-
-		function sortPrintTime(n){
+		function sortFile(n){
 		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		    table = document.getElementById("dynTable");
 		    switching = true;
 		    dir = "asc";
+		    
 		    while(switching){
 		        switching = false;
 		        rows = table.getElementsByTagName("TR");
-		        console.log();
+		        // console.log();
+		        for(i = 1; i < (rows.length - 1); i++){
+		            shouldSwitch = false;
+		            x = rows[i].getElementsByTagName("TD")[n];
+		            y = rows[i + 1].getElementsByTagName("TD")[n];
+
+		            if(n == 0){
+
+		            	// ### Find 'Q' tage filenames ### 
+		            	FileName_X = x.innerHTML;
+		            	FileName_Y = y.innerHTML;
+
+		            	GetNumbers_X = FileName_X.match(/\d+/g);
+		            	GetNumbers_Y = FileName_Y.match(/\d+/g);
+
+		            	firstNumX = "someString";
+		            	firstNumY = "someString";
+
+		            	if(GetNumbers_X != null){
+		            		firstNumX = String(GetNumbers_X[0]);
+		            		// console.log("found X");
+		            	}else{
+		            		firstNumX = null;
+		            	}
+
+		            	if(GetNumbers_Y != null){
+		            		firstNumY = String(GetNumbers_Y[0]);
+		            		// console.log("found Y");
+		            	}else{
+		            		firstNumY = null;
+		            	}
+
+		            	// console.log(firstNumX);
+		            	// console.log(firstNumY);
+
+		            	FindQ_X = String("Q"+firstNumX+"_");
+		            	FindQ_Y = String("Q"+firstNumY+"_");
+
+		            	// console.log("Q-Tag X: "+FindQ_X);
+		            	// console.log("Q-Tag Y: "+FindQ_Y);
+
+		            	// console.log("filename X: "+FileName_X);
+		            	// console.log("Numbers in X: "+FindNumbers_X);
+
+		            	// console.log("filename Y: "+FileName_Y);
+		            	// console.log("Numbers in Y: "+FindNumbers_Y);
+
+		            	finalQ_X = FileName_X.search(FindQ_X);
+		            	finalQ_Y = FileName_Y.search(FindQ_Y);
+
+		            	// console.log("FINAL X: "+finalQ_X);
+		            	// console.log("FINAL Y: "+finalQ_Y);
+
+		            	removedQ_X = FileName_X.replace(FindQ_X,'');
+		            	removedQ_Y = FileName_Y.replace(FindQ_Y,'');
+
+		            	// console.log("filtered X FileName: "+removedQ_X);
+		            	// console.log("filtered Y FileName: "+removedQ_Y);
+
+		            	// ### Sort by Name, ignores 'Q' tags for sorting ### 
+		                if(dir == "asc"){
+		                    if(removedQ_X.toLowerCase() > removedQ_Y.toLowerCase()){
+		                    		shouldSwitch= true;
+		                    		break;
+		                    }
+
+		                }else if(dir == "desc"){
+		                    if (removedQ_X.toLowerCase() < removedQ_Y.toLowerCase()){
+		                        shouldSwitch= true;
+		                        break;
+		                    }
+	                    }
+		            }
+		        }
+
+		        if(shouldSwitch){
+			        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			        switching = true;
+			        switchcount ++;
+		        }else{
+		            if(switchcount == 0 && dir == "asc"){
+			            dir = "desc";
+			            switching = true;
+		            }
+		        }
+		    }
+		}
+
+		function sortSize(n){
+		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+		    table = document.getElementById("dynTable");
+		    switching = true;
+		    dir = "asc";
+
+		    while(switching){
+		        switching = false;
+		        rows = table.getElementsByTagName("TR");
+		        // console.log();
 		        for(i = 1; i < (rows.length - 1); i++){
 		            shouldSwitch = false;
 		            x = rows[i].getElementsByTagName("TD")[n];
 		            y = rows[i + 1].getElementsByTagName("TD")[n];
 		            // console.log(x);
 		            // console.log(y);
-		            if(n == 3){
+		            if(n == 1){
 		                if (dir == "asc"){
 		                    if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
 		                        shouldSwitch= true;
 		                        break;
 		                    }
-		            }else if(dir == "desc"){
-		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
-		                    shouldSwitch= true;
-		                    break;
+			            }else if(dir == "desc"){
+			                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+			                    shouldSwitch= true;
+			                    break;
+			                }
 		                }
-		                }
-		                }
+	                }
 		        }
 		        if(shouldSwitch){
-		        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-		        switching = true;
-		        switchcount ++;
+			        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			        switching = true;
+			        switchcount ++;
 		        }else{
 		            if(switchcount == 0 && dir == "asc"){
-		            dir = "desc";
-		            switching = true;
+			            dir = "desc";
+			            switching = true;
 		            }
 		        }
 		    }
 		}
-
 
 		function sortVolume(n){
 		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		    table = document.getElementById("dynTable");
 		    switching = true;
 		    dir = "asc";
+		    
 		    while(switching){
 		        switching = false;
 		        rows = table.getElementsByTagName("TR");
-		        console.log();
+		        // console.log();
 		        for(i = 1; i < (rows.length - 1); i++){
 		            shouldSwitch = false;
 		            x = rows[i].getElementsByTagName("TD")[n];
@@ -1829,39 +1866,100 @@ session_start();
 		            // console.log(y);
 		            if(n == 2){
 		                if (dir == "asc"){
-		                    if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+		                    if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
 		                        shouldSwitch= true;
 		                        break;
+
+		                        if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())){
+		                            shouldSwitch= true;
+		                            break;
+		                        }
 		                    }
-		            }else if(dir == "desc"){
-		                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
-		                    shouldSwitch= true;
-		                    break;
+
+			            }else if(dir == "desc"){
+			                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+			                    shouldSwitch= true;
+			                    break;
+
+			                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+			                        shouldSwitch= true;
+			                        break;
+			                    }
+			                }
 		                }
-		                }
-		                }
+	                }
 		        }
+
 		        if(shouldSwitch){
-		        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-		        switching = true;
-		        switchcount ++;
+			        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			        switching = true;
+			        switchcount ++;
 		        }else{
 		            if(switchcount == 0 && dir == "asc"){
-		            dir = "desc";
-		            switching = true;
+			            dir = "desc";
+			            switching = true;
+		            }
+		        }
+		    }
+		}
+
+		function sortPrintTime(n){
+		    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+		    table = document.getElementById("dynTable");
+		    switching = true;
+		    dir = "asc";
+		    
+		    while(switching){
+		        switching = false;
+		        rows = table.getElementsByTagName("TR");
+		        // console.log();
+		        for(i = 1; i < (rows.length - 1); i++){
+		            shouldSwitch = false;
+		            x = rows[i].getElementsByTagName("TD")[n];
+		            y = rows[i + 1].getElementsByTagName("TD")[n];
+		            // console.log(x);
+		            // console.log(y);
+		            if(n == 3){
+		                if (dir == "asc"){
+		                    if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+		                        shouldSwitch= true;
+		                        break;
+
+		                        if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())){
+		                            shouldSwitch= true;
+		                            break;
+		                        }
+		                    }
+
+			            }else if(dir == "desc"){
+			                if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())){
+			                    shouldSwitch= true;
+			                    break;
+
+			                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+			                        shouldSwitch= true;
+			                        break;
+			                    }
+			                }
+		                }
+	                }
+		        }
+
+		        if(shouldSwitch){
+			        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			        switching = true;
+			        switchcount ++;
+		        }else{
+		            if(switchcount == 0 && dir == "asc"){
+			            dir = "desc";
+			            switching = true;
 		            }
 		        }
 		    }
 		}
 
 
-
-	
-
 	</script>
-
-
-
 
 	<?php  
 		mysqli_close($dbc);
@@ -1876,8 +1974,8 @@ session_start();
 	<!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
 	<!-- Metis Menu Plugin JavaScript -->
-<!-- 	<script src="vendor/metisMenu/metisMenu.min.js"></script>
- -->
+	<!--<script src="vendor/metisMenu/metisMenu.min.js"></script>-->
+
 	<!-- Morris Charts JavaScript -->
 	<!-- <script src="vendor/raphael/raphael.min.js"></script> -->
 
