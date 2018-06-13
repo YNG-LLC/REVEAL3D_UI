@@ -294,7 +294,7 @@ $selectprintQuery = mysqli_query($dbConnection, $selectMatType);
                             <div id="fileUpload" name="fileUpload" style="">
                                 <form name="fileUpload" action="upload.php" method="post" enctype="multipart/form-data" />
                                 <h4> Select a file to Print </h4>
-                                        <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000000" />
                                         <input type="file" name="userfile" id="userfile" size="50" />
                             </div>
                             <br>
