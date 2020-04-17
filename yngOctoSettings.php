@@ -714,10 +714,8 @@
                        }  
                   });  
 
-                  swal("Deleting Projects", "Projects Deleted", "success");
-
-                
-             }); 
+        }           
+    }); 
 
     $(document).ready(function(){
         $("#checkUpdateM").click(function(){
