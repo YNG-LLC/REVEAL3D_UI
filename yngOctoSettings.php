@@ -714,11 +714,13 @@
                 },
                 function(){
                   $.ajax({  
-                       url:"clearProjectDB.php",  
-                       method:"POST",  
-                       data:{id:id},  
+                       url:'clearProjectDB.php',  
+                       type:'POST',    
                        dataType:"text",  
-                        
+                       success:function(data){  
+                            // alert(data);  
+                            fetch_data();
+                       	    }   
                   	});
                   });  
 		swal("Deleting Databes", "Database Deleted", "success");
