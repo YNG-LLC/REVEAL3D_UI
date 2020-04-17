@@ -703,6 +703,16 @@
     $(document).ready(function(){
         $("#clearProjectDB").click(function(){  
 	        var id=1;
+            swal({
+                  title: "Deleting Project Database",
+                  text: "Are you sure you want to DELETE this Database?",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, DELETE the Database",
+                  closeOnConfirm: false
+                },
+                function(){
                   $.ajax({  
                        url:"clearProjectDB.php",  
                        method:"POST",  
@@ -712,6 +722,7 @@
                             // alert(data);  
                             fetch_data();
                        }  
+                  });
                   });  
 
         });          
