@@ -700,7 +700,7 @@
         });
     });
     $(document).on('click', '.clearProjectDB', function(){  
-               var id=$(this).data("id3");
+               var id=1;
                
                swal({
                   title: "Deleting Project Database",
