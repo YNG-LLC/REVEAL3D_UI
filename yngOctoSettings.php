@@ -714,7 +714,7 @@
                        }  
                   });  
 
-        }           
+        });          
     }); 
 
     $(document).ready(function(){
