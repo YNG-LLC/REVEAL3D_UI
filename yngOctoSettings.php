@@ -722,8 +722,9 @@
                             fetch_data();
                        	    }   
                   	});
+		    swal("Deleting Databes", "Database Deleted", "success");
                   });  
-		swal("Deleting Databes", "Database Deleted", "success");
+		
 
         });          
     }); 
