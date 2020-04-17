@@ -699,7 +699,35 @@
             });
         });
     });
+    $(document).on('click', '.clearProjectDB', function(){  
+               var id=$(this).data("id3");
+               
+               swal({
+                  title: "Deleting Project Database",
+                  text: "Are you sure you want to DELETE the entire Project Database?",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, DELETE the Project Databes",
+                  closeOnConfirm: false
+                },
 
+                function(){
+                  $.ajax({  
+                       url:"clearProjectDB.php",  
+                       method:"POST",  
+                       data:{id:id},  
+                       dataType:"text",  
+                       success:function(data){  
+                            // alert(data);  
+                            fetch_data();
+                       }  
+                  });  
+
+                  swal("Deleting Projects", "Projects Deleted", "success");
+                });
+                
+             }); 
 
     $(document).ready(function(){
         $("#checkUpdateM").click(function(){
