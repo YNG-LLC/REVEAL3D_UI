@@ -702,7 +702,7 @@
     });
     $(document).ready(function(){
         $("#clearProjectDB").click(function(){  
-
+	        var id=1;
                   $.ajax({  
                        url:"clearProjectDB.php",  
                        method:"POST",  
