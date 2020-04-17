@@ -573,18 +573,7 @@
                                 </div>
                                     <br>
                                 </div>
-                                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
-                                        <div class="panel panel-red">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title"><i class="fa fa-check"></i> Clear Project Database</h3>
-                                            </div>
-                                            <br>
-                                            <div align="center">
-                                            <button id='clearProjectDB' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Clear Project Database</b></button>
-                                            <br><br><br>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-lg-4" style="max-width:auto;max-height:auto;">
                                         <div class="panel panel-yellow">
                                             <div class="panel-heading">
@@ -603,6 +592,18 @@
                                             <br>
                                             <br>
                                             <br> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
+                                        <div class="panel panel-red">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><i class="fa fa-check"></i> Clear Project Database</h3>
+                                            </div>
+                                            <br>
+                                            <div align="center">
+                                            <button id='clearProjectDB' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Clear Project Database</b></button>
+                                            <br><br><br>
+                                            </div>
                                         </div>
                                     </div>
                             <!-- /.col-lg-4 -->
@@ -701,19 +702,7 @@
     });
     $(document).ready(function(){
         $("#clearProjectDB").click(function(){  
-               var id=1;
-               
-               swal({
-                  title: "Deleting Project Database",
-                  text: "Are you sure you want to DELETE the entire Project Database?",
-                  type: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#DD6B55",
-                  confirmButtonText: "Yes, DELETE the Project Databes",
-                  closeOnConfirm: false
-                },
 
-                function(){
                   $.ajax({  
                        url:"clearProjectDB.php",  
                        method:"POST",  
@@ -726,7 +715,7 @@
                   });  
 
                   swal("Deleting Projects", "Projects Deleted", "success");
-                });
+
                 
              }); 
 
