@@ -574,6 +574,18 @@
                                     <br>
                                 </div>
                                     <div class="col-lg-4" style="max-width:auto;max-height:auto;">
+                                        <div class="panel panel-red">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><i class="fa fa-check"></i> Clear Project Database</h3>
+                                            </div>
+                                            <br>
+                                            <div align="center">
+                                            <button id='clearProjectDB' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Clear Project Database</b></button>
+                                            <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4" style="max-width:auto;max-height:auto;">
                                         <div class="panel panel-yellow">
                                             <div class="panel-heading">
                                                 <h3 class="panel-title"><i class="fa fa-check"></i> Updates</h3>
