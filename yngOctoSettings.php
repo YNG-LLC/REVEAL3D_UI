@@ -721,6 +721,7 @@
                         
                   	});
                   });  
+		swal("Deleting Databes", "Database Deleted", "success");
 
         });          
     }); 
