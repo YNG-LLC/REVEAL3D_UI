@@ -699,7 +699,8 @@
             });
         });
     });
-    $(document).on('click', '.clearProjectDB', function(){  
+    $(document).ready(function(){
+        $("#clearProjectDB").click(function(){  
                var id=1;
                
                swal({
