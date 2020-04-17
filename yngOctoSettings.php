@@ -581,7 +581,7 @@
                                             <br>
                                             <div align="center">
                                             <button id='clearProjectDB' style="text-align:center;max-width:auto;max-height:auto;" type="button" ><b>Clear Project Database</b></button>
-                                            <br>
+                                            <br><br><br>
                                             </div>
                                         </div>
                                     </div>
